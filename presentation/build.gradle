@@ -44,6 +44,7 @@ android {
 dependencies {
 
     implementation project(':domain')
+    implementation project(':util')
 
     addDependencies(dependencies, presentationDependencies)
 }

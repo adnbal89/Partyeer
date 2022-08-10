@@ -32,5 +32,6 @@ android {
 
 dependencies {
 
+    implementation project(path: ':util')
     addDependencies(dependencies, domainDependencies)
 }
