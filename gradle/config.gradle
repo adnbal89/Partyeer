@@ -1,0 +1,211 @@
+def repository = [
+        jitpack: 'https://jitpack.io',
+]
+
+ext.addRepos = { RepositoryHandler handler ->
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.maven { url repository.jitpack }
+}
+
+ext.app = [
+        minSdk     : 23,
+        targetSdk  : 32,
+        compileSdk : 32,
+        versionCode: 1,
+        versionName: '1.0.0',
+]
+
+ext.javaVersion = JavaVersion.VERSION_11
+
+ext.api = [
+        url     : '"https://gateway.xxx.com"',
+        username: '"candidate"',
+        password: '"yx6Xz62y"',
+]
+
+ext.versions = [
+        gradlePlugin    : '7.1.2',
+
+        kotlin          : '1.6.10',
+        ktx             : '1.7.0',
+
+        appCompat       : '1.4.1',
+        material        : '1.6.0-alpha03',
+        constraintlayout: '2.1.3',
+        viewpager2      : '1.1.0-beta01',
+
+        compose         : '1.1.1',
+
+        navigation      : '2.4.1',
+
+        dagger          : '2.41',
+
+        coroutines      : '1.6.0',
+
+        retrofit        : '2.9.0',
+
+        okhttp          : '5.0.0-alpha.5',
+
+        moshi           : '1.13.0',
+
+        glide           : '4.13.1',
+
+        timber          : '5.0.1',
+]
+
+def dependencies = [
+        gradle    : classpath("com.android.tools.build:gradle:${versions.gradlePlugin}"),
+
+        kotlin    : [
+                plugin: classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"),
+                stdLib: implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"),
+                ktx   : implementation("androidx.core:core-ktx:${versions.ktx}"),
+        ],
+
+        android   : [
+                appCompat       : implementation("androidx.appcompat:appcompat:${versions.appCompat}"),
+                material        : implementation("com.google.android.material:material:${versions.material}"),
+                constraintLayout: implementation("androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"),
+                viewpager2      : implementation("androidx.viewpager2:viewpager2:${versions.viewpager2}"),
+        ],
+
+        compose   : [
+                material: implementation("androidx.compose.material:material:${versions.compose}"),
+                livedata: implementation("androidx.compose.runtime:runtime-livedata:${versions.compose}"),
+        ],
+
+        navigation: [
+                safeArgs: classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}"),
+                fragment: implementation("androidx.navigation:navigation-fragment-ktx:${versions.navigation}"),
+                ui      : implementation("androidx.navigation:navigation-ui-ktx:${versions.navigation}"),
+        ],
+
+        dagger    : [
+                plugin  : classpath("com.google.dagger:hilt-android-gradle-plugin:${versions.dagger}"),
+                hilt    : implementation("com.google.dagger:hilt-android:${versions.dagger}"),
+                compiler: kapt("com.google.dagger:hilt-android-compiler:${versions.dagger}"),
+        ],
+
+        coroutines: [
+                core   : implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}"),
+                android: implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"),
+        ],
+
+        retrofit  : [
+                retrofit      : implementation("com.squareup.retrofit2:retrofit:${versions.retrofit}"),
+                moshiConverter: implementation("com.squareup.retrofit2:converter-moshi:${versions.retrofit}"),
+        ],
+
+        okhttp    : [
+                client: implementation("com.squareup.okhttp3:okhttp:${versions.okhttp}"),
+                logger: implementation("com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"),
+        ],
+
+        moshi     : [
+                core   : implementation("com.squareup.moshi:moshi-kotlin:${versions.moshi}"),
+                codegen: kapt("com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"),
+        ],
+
+        glide     : [
+                core    : implementation("com.github.bumptech.glide:glide:${versions.glide}"),
+                compiler: kapt("com.github.bumptech.glide:compiler:${versions.glide}"),
+        ],
+
+        timber    : api("com.jakewharton.timber:timber:${versions.timber}"),
+]
+
+ext.rootDependencies = [
+        dependencies.gradle,
+        dependencies.kotlin.plugin,
+        dependencies.dagger.plugin,
+        dependencies.navigation.safeArgs,
+]
+
+ext.presentationDependencies = [
+        dependencies.kotlin.stdLib,
+        dependencies.kotlin.ktx,
+        dependencies.android,
+        dependencies.compose,
+        dependencies.navigation.fragment,
+        dependencies.navigation.ui,
+        dependencies.dagger.hilt,
+        dependencies.dagger.compiler,
+        dependencies.glide,
+]
+
+ext.domainDependencies = [
+        dependencies.kotlin.stdLib,
+        dependencies.kotlin.ktx,
+        dependencies.dagger.hilt,
+        dependencies.dagger.compiler,
+        dependencies.coroutines,
+]
+
+ext.dataDependencies = [
+        dependencies.kotlin.stdLib,
+        dependencies.kotlin.ktx,
+        dependencies.dagger.hilt,
+        dependencies.dagger.compiler,
+        dependencies.coroutines,
+        dependencies.retrofit,
+        dependencies.okhttp,
+        dependencies.moshi,
+]
+
+ext.utilDependencies = [
+        dependencies.kotlin.stdLib,
+        dependencies.kotlin.ktx,
+        dependencies.timber,
+]
+
+ext.addDependencies = { DependencyHandler handler, dependencyArray ->
+    getDependencies(dependencyArray).each {
+        handler.add(it.config, it.notation)
+    }
+}
+
+static def getDependencies(holder) {
+    def dependencies = new ArrayList<Dependency>()
+
+    if (holder instanceof Dependency) {
+        dependencies.add(holder)
+    } else if (holder instanceof Map) {
+        holder.values().each {
+            dependencies.addAll(getDependencies(it))
+        }
+    } else if (holder instanceof List) {
+        holder.each {
+            dependencies.addAll(getDependencies(it))
+        }
+    }
+
+    return dependencies
+}
+
+static def classpath(notation) {
+    new Dependency('classpath', notation)
+}
+
+static def implementation(notation) {
+    new Dependency('implementation', notation)
+}
+
+static def kapt(notation) {
+    new Dependency('kapt', notation)
+}
+
+static def api(notation) {
+    new Dependency('api', notation)
+}
+
+class Dependency {
+    def config
+    def notation
+
+    Dependency(config, notation) {
+        this.config = config
+        this.notation = notation
+    }
+}
