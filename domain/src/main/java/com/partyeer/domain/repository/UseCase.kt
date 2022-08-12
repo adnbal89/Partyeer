@@ -16,7 +16,6 @@ abstract class UseCase<out Type, in Params> where Type : Any {
 
     abstract suspend fun run(params: Params): Either<Failure, Type>
 
-    //Defaultscope : GlobalScope if not defined.
     operator fun invoke(
         params: Params,
         scope: CoroutineScope = CoroutineScope(Dispatchers.Main),

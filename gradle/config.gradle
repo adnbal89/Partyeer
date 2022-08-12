@@ -80,6 +80,7 @@ def dependencies = [
                 safeArgs: classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}"),
                 fragment: implementation("androidx.navigation:navigation-fragment-ktx:${versions.navigation}"),
                 ui      : implementation("androidx.navigation:navigation-ui-ktx:${versions.navigation}"),
+
         ],
 
         dagger    : [
