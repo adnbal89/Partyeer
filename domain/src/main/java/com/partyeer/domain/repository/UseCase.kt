@@ -2,7 +2,10 @@ package com.partyeer.domain.repository
 
 import com.partyeer.util.exception.Failure
 import com.partyeer.util.functional.Either
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 /**
  * Abstract class for a Use Case (Interactor in terms of Clean Architecture).
