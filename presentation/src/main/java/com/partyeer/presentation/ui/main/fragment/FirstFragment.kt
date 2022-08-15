@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.FragmentFirstBinding
 import com.partyeer.presentation.ui.main.base.BaseFragment
