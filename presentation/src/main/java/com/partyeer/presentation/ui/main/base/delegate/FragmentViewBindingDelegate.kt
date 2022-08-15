@@ -40,5 +40,4 @@ class FragmentViewBindingDelegate<VB : ViewBinding>(
         binding = null
         fragment.lifecycle.removeObserver(this)
     }
-
 }

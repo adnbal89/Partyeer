@@ -20,6 +20,8 @@ package com.partyeer.util.exception
  * Every feature specific failure should extend [FeatureFailure] class.
  */
 sealed class Failure {
+    object DefaultError : Failure()
+    object UnknownError : Failure()
     object NetworkConnection : Failure()
     object ServerError : Failure()
 

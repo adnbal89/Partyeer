@@ -2,6 +2,7 @@ package com.partyeer.presentation.ui.main.activity
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -12,13 +13,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.snackbar.Snackbar
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityMainBinding
-import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.util.DialogManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration

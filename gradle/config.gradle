@@ -42,7 +42,7 @@ ext.versions = [
 
         dagger          : '2.41',
 
-        coroutines      : '1.6.0',
+        coroutines      : '1.6.1',
 
         retrofit        : '2.9.0',
 
@@ -159,6 +159,7 @@ ext.utilDependencies = [
         dependencies.kotlin.stdLib,
         dependencies.kotlin.ktx,
         dependencies.timber,
+        dependencies.coroutines,
 ]
 
 ext.addDependencies = { DependencyHandler handler, dependencyArray ->
