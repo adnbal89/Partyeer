@@ -16,7 +16,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return binding.root
     }
 
@@ -25,5 +24,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             findNavController().navigate(R.id.action_loginFragment_to_FirstFragment)
         }
     }
+
+
 
 }

@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.partyeer.presentation.ui.main.fragment.login.LoginFragment"
-        android:label="fragment_login"
+        android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_FirstFragment"

@@ -53,6 +53,8 @@ ext.versions = [
         glide           : '4.13.1',
 
         timber          : '5.0.1',
+
+        firebase        : '4.3.13',
 ]
 
 def dependencies = [
@@ -63,6 +65,9 @@ def dependencies = [
                 stdLib: implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"),
                 ktx   : implementation("androidx.core:core-ktx:${versions.ktx}"),
         ],
+
+        firebase      : classpath("com.google.gms:google-services:${versions.firebase}"),
+
 
         android   : [
                 appCompat       : implementation("androidx.appcompat:appcompat:${versions.appCompat}"),
@@ -115,6 +120,7 @@ def dependencies = [
         ],
 
         timber    : api("com.jakewharton.timber:timber:${versions.timber}"),
+
 ]
 
 ext.rootDependencies = [
@@ -122,6 +128,7 @@ ext.rootDependencies = [
         dependencies.kotlin.plugin,
         dependencies.dagger.plugin,
         dependencies.navigation.safeArgs,
+        dependencies.firebase,
 ]
 
 ext.presentationDependencies = [
@@ -142,6 +149,7 @@ ext.domainDependencies = [
         dependencies.dagger.hilt,
         dependencies.dagger.compiler,
         dependencies.coroutines,
+
 ]
 
 ext.dataDependencies = [

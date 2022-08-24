@@ -35,7 +35,12 @@ abstract class BaseRecyclerViewHolder<T> : RecyclerView.ViewHolder,
      * @param itemView item view
      */
     constructor(itemView: View) : super(itemView)
-
+    /**
+     * Calls to update the contents with the item.
+     *
+     * Override to set up some private fields to be used by RecyclerView.
+     */
+    abstract fun bindItem(item: T)
     /**
      * Register a callback to be invoked when this item is clicked.
      *
