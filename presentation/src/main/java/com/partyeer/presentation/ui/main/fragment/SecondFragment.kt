@@ -14,7 +14,6 @@ import com.partyeer.presentation.ui.main.base.BaseFragment
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : BaseFragment<FragmentSecondBinding>() {
-    override fun layoutId() = R.layout.fragment_second
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

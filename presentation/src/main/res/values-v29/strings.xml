@@ -4,4 +4,12 @@
     <string name="breaking">Home</string>
     <string name="search">Search</string>
     <string name="profile">profile</string>
+    <string name="title_home">Home</string>
+    <string name="title_search_party">Search Party</string>
+    <string name="title_create_party">Create Party</string>
+    <string name="party_logo">Party Logo</string>
+    <string name="party_title">Party Title</string>
+    <string name="party_start_time">Start Time</string>
+    <string name="publish">Publish</string>
+    <string name="cancel">Cancel</string>
 </resources>

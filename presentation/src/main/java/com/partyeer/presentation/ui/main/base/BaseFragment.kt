@@ -11,9 +11,6 @@ import com.partyeer.presentation.ui.main.util.DialogManager
 import javax.inject.Inject
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
-
-    abstract fun layoutId(): Int
-
     protected val binding: VB by viewBinding()
 
     @Inject

@@ -19,7 +19,7 @@ package com.partyeer.util.exception
  * Base Class for handling errors/failures/exceptions.
  * Every feature specific failure should extend [FeatureFailure] class.
  */
-sealed class Failure {
+sealed class Failure : Throwable() {
     object DefaultError : Failure()
     object UnknownError : Failure()
     object NetworkConnection : Failure()

@@ -16,6 +16,7 @@
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
+
     </style>
 
     <style name="BaseToolbarStyle">
@@ -34,6 +35,10 @@
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorTextSecondary</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ActionButton" parent="@android:style/Widget.ActionButton">
+        <item name="android:drawablePadding">@dimen/action_button_padding</item>
     </style>
 
 </resources>

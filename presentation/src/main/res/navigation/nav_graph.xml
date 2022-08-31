@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.partyeer.presentation.ui.main.fragment.login.LoginFragment"
+        android:name="com.partyeer.presentation.ui.main.features.login.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action

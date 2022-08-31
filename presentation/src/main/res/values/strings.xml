@@ -58,5 +58,18 @@
     <string name="search">Search</string>
     <string name="bookmarks">New Party</string>
     <string name="profile">profile</string>
+    <string name="title_home">Home</string>
+    <string name="title_search_party">Search Party</string>
+    <string name="title_create_party">Create Party</string>
+    <string name="title_profile">Profile</string>
+    <string name="party_logo">Party Logo</string>
+    <string name="party_title">Party Title</string>
+    <string name="party_concept">Concept</string>
+    <string name="party_location">Location</string>
+    <string name="party_start_time">Start Time</string>
+    <string name="party_end_time">End Time</string>
+    <string name="party_description">Description</string>
+    <string name="publish">Publish</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.partyeer.presentation.ui.main.fragment.login
+package com.partyeer.presentation.ui.main.features.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import com.partyeer.presentation.databinding.FragmentLoginBinding
 import com.partyeer.presentation.ui.main.base.BaseFragment
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
-    override fun layoutId() = R.layout.fragment_login
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +23,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             findNavController().navigate(R.id.action_loginFragment_to_FirstFragment)
         }
     }
-
 
 
 }

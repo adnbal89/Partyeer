@@ -55,6 +55,8 @@ ext.versions = [
         timber          : '5.0.1',
 
         firebase        : '4.3.13',
+
+        fragment        : '1.4.1',
 ]
 
 def dependencies = [
@@ -66,7 +68,7 @@ def dependencies = [
                 ktx   : implementation("androidx.core:core-ktx:${versions.ktx}"),
         ],
 
-        firebase      : classpath("com.google.gms:google-services:${versions.firebase}"),
+        firebase  : classpath("com.google.gms:google-services:${versions.firebase}"),
 
 
         android   : [
@@ -121,6 +123,8 @@ def dependencies = [
 
         timber    : api("com.jakewharton.timber:timber:${versions.timber}"),
 
+        fragment  : implementation("androidx.fragment:fragment-ktx:${versions.fragment}"),
+
 ]
 
 ext.rootDependencies = [
@@ -141,6 +145,7 @@ ext.presentationDependencies = [
         dependencies.dagger.hilt,
         dependencies.dagger.compiler,
         dependencies.glide,
+        dependencies.fragment,
 ]
 
 ext.domainDependencies = [
@@ -161,6 +166,7 @@ ext.dataDependencies = [
         dependencies.retrofit,
         dependencies.okhttp,
         dependencies.moshi,
+
 ]
 
 ext.utilDependencies = [
