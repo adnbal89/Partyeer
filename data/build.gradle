@@ -33,6 +33,7 @@ android {
 
 dependencies {
     implementation project(':domain')
+    implementation project(path: ':util')
 
     addDependencies(dependencies, dataDependencies)
 }

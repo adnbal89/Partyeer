@@ -8,9 +8,11 @@ import androidx.fragment.app.viewModels
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.FragmentCreatePartyBinding
 import com.partyeer.presentation.ui.main.base.BaseFragment
+import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class CreatePartyFragment : BaseFragment<FragmentCreatePartyBinding>() {
-    private val viewModel: CreatePartyViewModel by viewModels()
+@AndroidEntryPoint
+class CreatePartyFragment : BaseMvvmFragment<FragmentCreatePartyBinding, CreatePartyViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,5 +25,9 @@ class CreatePartyFragment : BaseFragment<FragmentCreatePartyBinding>() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_create_party, menu)
+    }
+
+    override fun observeEvents() {
+        super.observeEvents()
     }
 }

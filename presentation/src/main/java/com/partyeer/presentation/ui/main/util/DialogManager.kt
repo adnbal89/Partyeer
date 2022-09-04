@@ -34,7 +34,7 @@ class DialogManager @Inject constructor(
     }
 
     fun showErrorDialog(error: Throwable) {
-        showErrorDialog(error.localizedMessage)
+        showErrorDialog(error.message)
     }
 
     fun showErrorDialog(error: String?) {

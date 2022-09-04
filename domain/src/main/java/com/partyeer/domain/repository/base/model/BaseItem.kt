@@ -1,4 +1,4 @@
-package com.partyeer.domain.repository.model
+package com.partyeer.domain.repository.base.model
 
 import android.os.Parcelable
 

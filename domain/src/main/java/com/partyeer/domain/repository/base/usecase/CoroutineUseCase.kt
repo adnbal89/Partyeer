@@ -1,5 +1,6 @@
 package com.partyeer.domain.repository.base.usecase
 
+import com.partyeer.util.exception.Failure
 import com.partyeer.util.functional.Callback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +26,7 @@ abstract class CoroutineUseCase<Params, Response> : BaseUseCase<Params, Response
         callback: Callback<Response>?,
         params: Params?
     ) {
+
         if (job != null) {
             cancel()
         }

@@ -23,8 +23,13 @@ sealed class Failure : Throwable() {
     object DefaultError : Failure()
     object UnknownError : Failure()
     object NetworkConnection : Failure()
-    object ServerError : Failure()
+    object ServerError : Throwable(message = "Server Error")
+
+    init {
+
+    }
 
     /** * Extend this class for feature specific failures.*/
     abstract class FeatureFailure : Failure()
+
 }
