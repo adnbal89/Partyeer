@@ -22,7 +22,8 @@ class FragmentViewModelDelegate<VM : BaseViewModel>(
         fragment.lifecycle.addObserver(this)
     }
 
-    override fun onCreate(owner: LifecycleOwner) {
+    //TODO : change to onCreate()
+    override fun onStart(owner: LifecycleOwner) {
         viewModel?.onViewAttached()
     }
 

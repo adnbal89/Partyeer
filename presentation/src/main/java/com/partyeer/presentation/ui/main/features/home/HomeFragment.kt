@@ -15,6 +15,8 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun observeEvents() {
         super.observeEvents()
+
+        //Collect Party
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.party.collect{
                 with(binding){

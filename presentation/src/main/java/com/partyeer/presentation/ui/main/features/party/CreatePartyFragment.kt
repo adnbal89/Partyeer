@@ -5,11 +5,13 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.FragmentCreatePartyBinding
 import com.partyeer.presentation.ui.main.base.BaseFragment
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CreatePartyFragment : BaseMvvmFragment<FragmentCreatePartyBinding, CreatePartyViewModel>() {
@@ -29,5 +31,14 @@ class CreatePartyFragment : BaseMvvmFragment<FragmentCreatePartyBinding, CreateP
 
     override fun observeEvents() {
         super.observeEvents()
+
+        //Collect Party
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.party.collect{
+                with(binding){
+                textViewPartyTitle.editText?.setText(it.id)
+                }
+            }
+        }
     }
 }

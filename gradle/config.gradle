@@ -56,6 +56,8 @@ ext.versions = [
 
         firebase        : '4.3.13',
 
+        firebase_database    : '20.0.6',
+
         fragment        : '1.4.1',
 ]
 
@@ -70,6 +72,7 @@ def dependencies = [
 
         firebase  : classpath("com.google.gms:google-services:${versions.firebase}"),
 
+        firebase_database : implementation("com.google.firebase:firebase-database-ktx:${versions.firebase_database}"),
 
         android   : [
                 appCompat       : implementation("androidx.appcompat:appcompat:${versions.appCompat}"),
@@ -166,6 +169,7 @@ ext.dataDependencies = [
         dependencies.retrofit,
         dependencies.okhttp,
         dependencies.moshi,
+        dependencies.firebase_database
 
 ]
 

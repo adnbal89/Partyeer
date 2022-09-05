@@ -1,10 +1,48 @@
 {
   "project_info": {
     "project_number": "1002152564867",
+    "firebase_url": "https://partyeer-8888a-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "partyeer-8888a",
     "storage_bucket": "partyeer-8888a.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002152564867:android:23a990895f8b075a4ae3b6",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002152564867-8uf45dbk0v34ppo7mujrupriseg8tqof.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.quickstart.auth",
+            "certificate_hash": "9f5597e7291362f6f3b9c1743a2e5d4a737f9d8f"
+          }
+        },
+        {
+          "client_id": "1002152564867-euv1kcr9sdc3d80t73c86uatmckkm2hj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuJ2QxrktNGAUtTMHVWNyrBgbky8oVuzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002152564867-euv1kcr9sdc3d80t73c86uatmckkm2hj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:1002152564867:android:d7100b90771e83ce4ae3b6",
