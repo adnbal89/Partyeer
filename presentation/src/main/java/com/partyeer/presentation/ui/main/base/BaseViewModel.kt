@@ -1,19 +1,18 @@
 package com.partyeer.presentation.ui.main.base
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.partyeer.domain.repository.base.usecase.UseCaseRunner
 import com.partyeer.domain.repository.base.usecase.UseCaseRunnerDelegate
 import com.partyeer.util.exception.Failure
 import com.partyeer.util.functional.Callback
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 abstract class BaseViewModel : ViewModel(),
     UseCaseRunner by UseCaseRunnerDelegate() {
 
     val loading = MutableStateFlow<Boolean>(true)
-    val error : MutableStateFlow<Throwable> = MutableStateFlow<Throwable>(Failure.DefaultError)
+    val error: MutableStateFlow<Throwable> = MutableStateFlow<Throwable>(Failure.DefaultError)
 
 
     override fun onCleared() {
@@ -51,17 +50,17 @@ abstract class BaseViewModel : ViewModel(),
         },
         onError = {
             if (onError != null) {
-                if( it != Failure.DefaultError)
-                onError(it)
+                if (it != Failure.DefaultError)
+                    onError(it)
             } else {
                 error.value = it
             }
         },
         onComplete = {
             onComplete?.invoke()
-            if (showLoading){
+            if (showLoading) {
                 loading.value = false
-        }
+            }
         }
     )
 }

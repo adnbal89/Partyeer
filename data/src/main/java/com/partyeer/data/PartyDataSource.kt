@@ -1,4 +1,4 @@
-package com.partyeer.data.remote.store.party
+package com.partyeer.data
 
 import com.partyeer.data.remote.store.party.remote.model.PartyResponse
 

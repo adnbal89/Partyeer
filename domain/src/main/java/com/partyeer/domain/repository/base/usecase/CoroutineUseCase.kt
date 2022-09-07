@@ -1,6 +1,5 @@
 package com.partyeer.domain.repository.base.usecase
 
-import com.partyeer.util.exception.Failure
 import com.partyeer.util.functional.Callback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

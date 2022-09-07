@@ -1,6 +1,6 @@
 package com.partyeer.di
 
-import com.partyeer.data.remote.store.party.PartyDataRepository
+import com.partyeer.data.PartyDataRepository
 import com.partyeer.domain.repository.party.PartyRepository
 import dagger.Binds
 import dagger.Module

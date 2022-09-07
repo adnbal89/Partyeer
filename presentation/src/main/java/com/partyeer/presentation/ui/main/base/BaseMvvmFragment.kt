@@ -47,8 +47,8 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.error.collect {
                 println("adnan error.." + it.javaClass.toString())
-                if(it != Failure.DefaultError)
-                showError(it)
+                if (it != Failure.DefaultError)
+                    showError(it)
             }
         }
         //--------------stateflow-------

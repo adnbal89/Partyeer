@@ -1,6 +1,5 @@
 package com.partyeer.presentation.ui.main.features.home
 
-import androidx.compose.material.Snackbar
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.usecase.GetParty
 import com.partyeer.presentation.ui.main.base.BaseViewModel

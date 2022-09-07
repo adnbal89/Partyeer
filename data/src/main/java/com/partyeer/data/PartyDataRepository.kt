@@ -1,9 +1,8 @@
-package com.partyeer.data.remote.store.party
+package com.partyeer.data
 
-import com.partyeer.data.remote.store.party.remote.mapper.PartyResponseMapper
+import com.partyeer.data.remote.store.party.mapper.PartyResponseMapper
 import com.partyeer.domain.repository.party.PartyRepository
 import com.partyeer.domain.repository.party.model.Party
-import com.partyeer.util.exception.Failure
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton

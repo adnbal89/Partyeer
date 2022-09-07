@@ -2,7 +2,6 @@ package com.partyeer.presentation.ui.main.features.home
 
 import androidx.lifecycle.lifecycleScope
 import com.partyeer.presentation.databinding.FragmentHomeBinding
-import com.partyeer.presentation.ui.main.base.BaseFragment
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -18,8 +17,8 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
         //Collect Party
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.party.collect{
-                with(binding){
+            viewModel.party.collect {
+                with(binding) {
                     textView4.text = it.id
                 }
             }

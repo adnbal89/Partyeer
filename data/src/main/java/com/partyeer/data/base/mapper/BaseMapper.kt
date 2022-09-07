@@ -1,4 +1,4 @@
-package com.partyeer.data.remote.store.party.base.remote.mapper
+package com.partyeer.data.base.mapper
 
 interface BaseMapper<Source, Target> {
 
