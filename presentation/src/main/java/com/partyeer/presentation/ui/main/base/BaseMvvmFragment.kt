@@ -23,7 +23,6 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
         //--------------stateflow-------
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.loading.collect { loading ->
-                println("adnan loading.." + loading.toString())
                 when (loading) {
                     true -> showLoading()
                     else -> hideLoading()

@@ -1,7 +1,7 @@
 package com.partyeer.presentation.ui.main.features.party
 
 import com.partyeer.domain.repository.party.model.Party
-import com.partyeer.domain.repository.party.usecase.GetAllParties
+import com.partyeer.domain.repository.party.usecase.CreateParty
 import com.partyeer.presentation.ui.main.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreatePartyViewModel @Inject constructor(
-    private val getParty: GetAllParties
+    private val createParty: CreateParty
 ) : BaseViewModel() {
 
     private val _party = MutableStateFlow<Party>(Party("Initial"))
@@ -19,14 +19,12 @@ class CreatePartyViewModel @Inject constructor(
 
 
     override fun onViewAttached() {
-        getParty(this) {
+        createParty(this) {
             onSuccess = {
-                _party.value = it
+                println("adnan : Party Created.")
             }
-            params = GetAllParties.Params(DEFAULT_PARTY_ID)
+            params = Party("New Party")
         }
-
-
     }
 
     companion object {
