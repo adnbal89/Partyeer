@@ -11,10 +11,7 @@ class CreateParty @Inject constructor(
     private val repository: PartyRepository
 ) : CoroutineUseCase<Party, Unit>() {
 
-
     override suspend fun buildUseCase(params: Party?) {
-        return repository.insertParty(params)
+        return repository.createParty(params!!)
     }
-
-    class None
 }
