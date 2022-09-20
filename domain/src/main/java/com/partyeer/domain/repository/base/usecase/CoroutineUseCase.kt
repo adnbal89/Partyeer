@@ -15,9 +15,7 @@ import kotlin.runCatching
 abstract class CoroutineUseCase<Params, Response> : BaseUseCase<Params, Response> {
 
     private var job: Job? = null
-
     private var scope: CoroutineScope = CoroutineScope(Dispatchers.Main)
-
     private val dispatcher = Dispatchers.IO
 
     override fun execute(

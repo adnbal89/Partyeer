@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+
+    <style name="TextAppearance" parent="TextAppearance.AppCompat" />
+
+    <!--Regular Styles-->
+
+    <style name="TextAppearance.Regular">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="TextAppearance.Regular.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.14.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance.Regular.14.Gray600">
+        <item name="android:textColor">@color/gray_600</item>
+    </style>
+
+    <!--Medium Styles-->
+
+    <style name="TextAppearance.Medium">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="TextAppearance.Medium.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.12.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance.Medium.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.20.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance.Medium.20.Green500">
+        <item name="android:textColor">@color/green_500</item>
+    </style>
+
+
+    <!--Widespread-->
+
+    <style name="TextAppearance.Header" parent="TextAppearance.Medium.20.Black" />
+
+    <style name="TextAppearance.Label" parent="TextAppearance.Regular.14.Black" />
+
+    <style name="TextAppearance.Weak" parent="TextAppearance.Regular.14.Gray600" />
+
+</resources>

@@ -9,8 +9,8 @@ import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityMainBinding
 import com.partyeer.presentation.ui.main.extension.inTransaction
 import com.partyeer.presentation.ui.main.features.home.HomeFragment
-import com.partyeer.presentation.ui.main.features.party.CreatePartyFragment
-import com.partyeer.presentation.ui.main.features.party.SearchPartyFragment
+import com.partyeer.presentation.ui.main.features.party.createparty.CreatePartyFragment
+import com.partyeer.presentation.ui.main.features.party.searchparty.SearchPartyFragment
 import com.partyeer.presentation.ui.main.features.profile.ProfileFragment
 import com.partyeer.presentation.ui.main.util.DialogManager
 import dagger.hilt.android.AndroidEntryPoint

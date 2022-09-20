@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#202020</color>
+    <color name="black_transparent">#88202020</color>
+
+    <color name="gray_600">#797979</color>
+    <color name="light_gray">#E8E8E8</color>
+
+    <color name="green_400">#9FC747</color>
+    <color name="green_500">#86B817</color>
+    <color name="green_700">#508200</color>
+
+
+
     <!--Base colors-->
     <color name="colorPrimary">#000000</color>
     <color name="colorAccent">#000000</color>

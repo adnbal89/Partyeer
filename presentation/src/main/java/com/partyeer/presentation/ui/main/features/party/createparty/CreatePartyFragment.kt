@@ -1,4 +1,4 @@
-package com.partyeer.presentation.ui.main.features.party
+package com.partyeer.presentation.ui.main.features.party.createparty
 
 import android.os.Bundle
 import android.view.Menu
@@ -29,7 +29,6 @@ class CreatePartyFragment : BaseMvvmFragment<FragmentCreatePartyBinding, CreateP
 
     override fun observeEvents() {
         super.observeEvents()
-
         //Collect Party
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.party.collect {

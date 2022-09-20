@@ -1,4 +1,4 @@
-package com.partyeer.presentation.ui.main.features.party
+package com.partyeer.presentation.ui.main.features.party.createparty
 
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.usecase.CreateParty

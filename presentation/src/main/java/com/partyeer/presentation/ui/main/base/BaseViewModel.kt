@@ -14,7 +14,6 @@ abstract class BaseViewModel : ViewModel(),
     val loading = MutableStateFlow<Boolean>(true)
     val error: MutableStateFlow<Throwable> = MutableStateFlow<Throwable>(Failure.DefaultError)
 
-
     override fun onCleared() {
         super.onCleared()
         cancelUseCases()
@@ -23,14 +22,6 @@ abstract class BaseViewModel : ViewModel(),
     open fun onViewAttached() = Unit
 
     open fun onViewDetached() = Unit
-
-    private val _failure: MutableStateFlow<Failure> = MutableStateFlow(Failure.UnknownError)
-    val failure: StateFlow<Failure> = _failure
-
-    protected fun handleFailure(failure: Failure) {
-        _failure.value = failure
-
-    }
 
     override fun <T> callback(
         showLoading: Boolean,
