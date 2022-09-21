@@ -8,51 +8,83 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_view_party_banner"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_view_party_title"
-        android:layout_width="50dp"
-        android:layout_height="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_party_location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_party_location"
         app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text_view_party_location"
-        android:layout_width="50dp"
-        android:layout_height="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_party_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_party_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_party_time"
         app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_party_title" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_party_title">
+
+        <ImageView
+            android:id="@+id/imageViewLocationLogo"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_party_location"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewLocationLogo"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_party_time"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_party_concept"
+        app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_party_location">
+
+        <ImageView
+            android:id="@+id/imageViewTimeLogo"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_access_time_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_party_time"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewTimeLogo"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/text_view_party_time"
-        android:layout_width="50dp"
-        android:layout_height="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_party_type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_party_location" />
+        android:id="@+id/text_view_party_concept"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
 
-    <TextView
-        android:id="@+id/text_view_party_type"
-        android:layout_width="50dp"
-        android:layout_height="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_party_time" />
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_party_time" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Party(
-    val id: String
+    val id: String,
+    val logoUrl: String?,
+    val title: String,
+    val concept: String?,
+    val timeStart: Double
+
 ) : BaseItem() {
     constructor(
         id: String,
@@ -17,6 +22,6 @@ data class Party(
         timeStart: Double,
         timeEnd: Double,
         description: String?
-    ) : this(id)
+    ) : this(id, logoUrl, title, concept, timeStart)
 }
 

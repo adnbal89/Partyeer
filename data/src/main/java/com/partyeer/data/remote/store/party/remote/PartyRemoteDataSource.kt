@@ -24,7 +24,13 @@ class PartyRemoteDataSource @Inject constructor(
         val myRef = database.getReference("message")
 
         myRef.setValue("Hello, World!")
-        return PartyDTO(id)
+        return PartyDTO(
+            "1",
+            "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",
+            "First Party",
+            "Techno",
+            123213123.0
+        )
     }
 
     override suspend fun createParty(partyDTO: PartyDTO) {

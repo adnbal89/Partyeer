@@ -6,7 +6,6 @@ import com.partyeer.domain.repository.base.usecase.UseCaseRunnerDelegate
 import com.partyeer.util.exception.Failure
 import com.partyeer.util.functional.Callback
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 
 abstract class BaseViewModel : ViewModel(),
     UseCaseRunner by UseCaseRunnerDelegate() {

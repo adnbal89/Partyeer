@@ -23,7 +23,7 @@
                 android:id="@+id/viewPagerPictures"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="H,3:2"
+                app:layout_constraintDimensionRatio="H,2:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
                 android:id="@+id/imageViewShare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:padding="8dp"
                 android:src="@android:drawable/ic_menu_share"
@@ -64,6 +64,7 @@
             app:layout_constraintTop_toBottomOf="@id/layoutImages">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPartyList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"

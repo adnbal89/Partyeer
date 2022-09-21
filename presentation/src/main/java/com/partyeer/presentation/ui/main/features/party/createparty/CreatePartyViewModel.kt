@@ -13,7 +13,15 @@ class CreatePartyViewModel @Inject constructor(
     private val createParty: CreateParty
 ) : BaseViewModel() {
 
-    private val _party = MutableStateFlow<Party>(Party("Initial"))
+    private val _party = MutableStateFlow<Party>(
+        Party(
+            "1",
+            "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",
+            "First Party",
+            "Techno",
+            123213123.0
+        )
+    )
     val party: StateFlow<Party>
         get() = _party
 
@@ -23,7 +31,13 @@ class CreatePartyViewModel @Inject constructor(
             onSuccess = {
                 println("adnan : Party Created.")
             }
-            params = Party("New Party")
+            params = Party(
+                "1",
+                "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",
+                "First Party",
+                "Techno",
+                123213123.0
+            )
         }
     }
 

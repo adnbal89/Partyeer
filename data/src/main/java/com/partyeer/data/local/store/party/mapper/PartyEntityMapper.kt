@@ -7,7 +7,8 @@ import com.partyeer.domain.repository.party.model.Party
 class PartyEntityMapper : BaseMapper<PartyEntity, Party> {
     override fun map(source: PartyEntity, vararg extra: Any?): Party {
         return Party(
-            id = source.id
+            id = source.id, logoUrl = source.logoUrl, title = source.title,
+            concept = source.concept, timeStart = source.timeStart
         )
     }
 }
