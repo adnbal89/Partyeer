@@ -21,7 +21,7 @@ class PartyRemoteDataSource @Inject constructor(
 
         // Write a message to the database
         val database = Firebase.database
-        val myRef = database.getReference("message")
+        val myRef = database.getReference("party")
 
         myRef.setValue("Hello, World!")
         return PartyDTO(
