@@ -1,3 +1,3 @@
 # Partyeer
 
-Partyeer is a partying App that makes you feel better and cheerful.
+Partyeer is a partying app that is going to change the meaning of partying.
