@@ -15,7 +15,14 @@ class PartyMapper @Inject constructor() : BaseMapper<PartyDTO, Party> {
             title = source.title,
             logoUrl = source.logoUrl,
             concept = source.concept,
-            timeStart = source.timeStart
+            timeStart = source.timeStart,
+            pictures = source.pictures
         )
     }
+
+    override fun map(sources: List<PartyDTO>?, vararg extra: Any?): List<Party> {
+        return super.map(sources, *extra)
+    }
+
+
 }

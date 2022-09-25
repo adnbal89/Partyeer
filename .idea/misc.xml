@@ -5,7 +5,12 @@
       <map>
         <entry key="presentation/src/main/res/drawable/bg_indicator.xml" value="0.312" />
         <entry key="presentation/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.175" />
+        <entry key="presentation/src/main/res/drawable/ic_cancel.xml" value="0.108" />
         <entry key="presentation/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="presentation/src/main/res/drawable/ic_new_party.xml" value="0.108" />
+        <entry key="presentation/src/main/res/drawable/ic_profile.xml" value="0.108" />
+        <entry key="presentation/src/main/res/drawable/ic_send.xml" value="0.108" />
+        <entry key="presentation/src/main/res/layout/activity_create_party.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="presentation/src/main/res/layout/content_main.xml" value="0.18" />
         <entry key="presentation/src/main/res/layout/fragment_create_party.xml" value="0.25" />

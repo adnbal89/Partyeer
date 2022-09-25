@@ -1,37 +1,48 @@
 package com.partyeer.presentation.ui.main.features.party.home
 
+import androidx.lifecycle.viewModelScope
 import com.partyeer.domain.repository.party.model.Party
-import com.partyeer.domain.repository.party.usecase.GetParty
+import com.partyeer.domain.repository.party.usecase.GetAllParties
 import com.partyeer.presentation.ui.main.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getParty: GetParty
+    private val getParty: GetAllParties
 ) : BaseViewModel() {
 
-    private val _party = MutableStateFlow<Party>(
-        Party(
-            "1",
-            "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",
-            "First Party",
-            "Techno",
-            123213123.0
-        )
+    private val _partyList = MutableStateFlow<List<Party>>(
+        mutableListOf()
     )
-    val party: StateFlow<Party>
-        get() = _party
+    val partyList: StateFlow<List<Party>>
+        get() = _partyList
 
 
     override fun onViewAttached() {
         getParty(this) {
             onSuccess = {
-                _party.value = it
+                viewModelScope.launch {
+                    println("adnan collect launch : ")
+
+                    it.collect { list ->
+                        println("adnan collect list collect view: " + list.size)
+
+                        /*list.forEach {
+                            println("adnan collect liffffst : " + list.size)
+                            _party.value = it
+                        }*/
+                        _partyList.value = list
+                    }
+                }
+
             }
-            params = GetParty.Params(DEFAULT_PARTY_ID)
+            onError = {
+                println("adnan error : " + it.localizedMessage)
+            }
         }
 
 

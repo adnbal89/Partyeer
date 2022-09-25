@@ -12,4 +12,5 @@
     <string name="party_start_time">Start Time</string>
     <string name="publish">Publish</string>
     <string name="cancel">Cancel</string>
+    <string name="new_party">New Party</string>
 </resources>

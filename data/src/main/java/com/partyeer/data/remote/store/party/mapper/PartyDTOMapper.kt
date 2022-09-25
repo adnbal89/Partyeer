@@ -15,7 +15,8 @@ class PartyDTOMapper @Inject constructor() : BaseMapper<Party, PartyDTO> {
             title = source.title,
             logoUrl = source.logoUrl,
             concept = source.concept,
-            timeStart = source.timeStart
+            timeStart = source.timeStart,
+            pictures = source.pictures
         )
     }
 }

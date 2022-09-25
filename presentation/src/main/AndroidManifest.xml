@@ -17,5 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.main.activity.CreatePartyActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Partyeer"></activity>
     </application>
 </manifest>

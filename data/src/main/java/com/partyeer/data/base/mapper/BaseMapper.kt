@@ -2,7 +2,7 @@ package com.partyeer.data.base.mapper
 
 interface BaseMapper<Source, Target> {
 
-    fun map(sources: Collection<Source>?, vararg extra: Any?): Collection<Target> {
+    fun map(sources: List<Source>?, vararg extra: Any?): List<Target> {
         return sources?.mapNotNull {
             map(it, *extra)
         }.orEmpty()

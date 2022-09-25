@@ -19,12 +19,6 @@ ext.app = [
 
 ext.javaVersion = JavaVersion.VERSION_11
 
-ext.api = [
-        url     : '"https://gateway.xxx.com"',
-        username: '"candidate"',
-        password: '"yx6Xz62y"',
-]
-
 ext.versions = [
         gradlePlugin     : '7.1.2',
 
@@ -73,6 +67,8 @@ def dependencies = [
         firebase         : classpath("com.google.gms:google-services:${versions.firebase}"),
 
         firebase_database: implementation("com.google.firebase:firebase-database-ktx:${versions.firebase_database}"),
+        firebase_storage : implementation("com.google.firebase:firebase-storage-ktx:20.0.2"),
+
 
         android          : [
                 appCompat       : implementation("androidx.appcompat:appcompat:${versions.appCompat}"),
@@ -149,6 +145,8 @@ ext.presentationDependencies = [
         dependencies.dagger.compiler,
         dependencies.glide,
         dependencies.fragment,
+        dependencies.firebase_storage,
+
 ]
 
 ext.domainDependencies = [
@@ -169,7 +167,7 @@ ext.dataDependencies = [
         dependencies.retrofit,
         dependencies.okhttp,
         dependencies.moshi,
-        dependencies.firebase_database
+        dependencies.firebase_database,
 
 ]
 
