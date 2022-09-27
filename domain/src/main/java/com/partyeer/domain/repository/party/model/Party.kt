@@ -1,7 +1,6 @@
 package com.partyeer.domain.repository.party.model
 
 import android.location.Location
-import android.net.Uri
 import com.partyeer.domain.repository.base.model.BaseItem
 import kotlinx.parcelize.Parcelize
 
@@ -12,7 +11,7 @@ data class Party(
     val title: String,
     val concept: String?,
     val timeStart: Double,
-    val pictures: List<Uri>,
+    val pictures: MutableList<Picture>,
 
     ) : BaseItem() {
     constructor(
@@ -24,7 +23,7 @@ data class Party(
         timeStart: Double,
         timeEnd: Double,
         description: String?,
-        pictures: List<Uri>,
+        pictures: MutableList<Picture>,
     ) : this(id, logoUrl, title, concept, timeStart, pictures)
 }
 

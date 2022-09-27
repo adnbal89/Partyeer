@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import com.partyeer.presentation.R
@@ -68,6 +69,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+
+
+        val splashScreen = installSplashScreen()
+        Thread.sleep(2500L)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

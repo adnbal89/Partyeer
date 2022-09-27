@@ -19,14 +19,15 @@ class CreatePartyActivity : BaseActivity() {
     private val viewModel: CreatePartyViewModel by viewModels()
 
     private lateinit var binding: ActivityCreatePartyBinding
-    private var partyUri: Uri = Uri.EMPTY
+    private var partyPictureList: MutableList<Picture> = arrayListOf()
 
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             binding.imageViewPartyLogo.setImageURI(uri)
+            val picture = Picture(uri.toString(), uri.toString())
             if (uri != null) {
-                partyUri = uri
+                partyPictureList.add(picture)
             }
         }
 
@@ -48,14 +49,13 @@ class CreatePartyActivity : BaseActivity() {
                 finish()
             }
             R.id.action_publish -> {
-                val pictureList = arrayListOf<Uri>(partyUri)
                 val party = Party(
                     binding.textViewPartyTitle.editText?.text.toString(),
                     "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",
                     binding.textViewPartyTitle.editText?.text.toString(),
                     binding.textViewPartyConcept.editText?.text.toString(),
                     0.0,
-                    pictureList,
+                    partyPictureList,
                 )
                 viewModel.createParty(party)
             }

@@ -1,6 +1,5 @@
 package com.partyeer.data.local.model
 
-import android.net.Uri
 import com.partyeer.data.base.local.model.BaseEntity
 import com.partyeer.domain.repository.party.model.Picture
 
@@ -10,5 +9,5 @@ data class PartyEntity(
     val title: String,
     val concept: String?,
     val timeStart: Double,
-    val pictures: List<Uri>
+    val pictures: MutableList<Picture>
 ) : BaseEntity()

@@ -53,6 +53,8 @@ ext.versions = [
         firebase_database: '20.0.6',
 
         fragment         : '1.4.1',
+
+        splash_screen    : '1.0.0-beta02'
 ]
 
 def dependencies = [
@@ -124,6 +126,8 @@ def dependencies = [
 
         fragment         : implementation("androidx.fragment:fragment-ktx:${versions.fragment}"),
 
+        splash_screen    : implementation("androidx.core:core-splashscreen:${versions.splash_screen}"),
+
 ]
 
 ext.rootDependencies = [
@@ -132,6 +136,7 @@ ext.rootDependencies = [
         dependencies.dagger.plugin,
         dependencies.navigation.safeArgs,
         dependencies.firebase,
+
 ]
 
 ext.presentationDependencies = [
@@ -146,6 +151,7 @@ ext.presentationDependencies = [
         dependencies.glide,
         dependencies.fragment,
         dependencies.firebase_storage,
+        dependencies.splash_screen,
 
 ]
 
@@ -168,6 +174,7 @@ ext.dataDependencies = [
         dependencies.okhttp,
         dependencies.moshi,
         dependencies.firebase_database,
+        dependencies.firebase_storage
 
 ]
 
