@@ -43,8 +43,11 @@ class CreatePartyViewModel @Inject constructor(
 
     fun createParty(party: Party) {
         createParty(this) {
+            onStart = {
+
+            }
             onSuccess = {
-                println("adnan : Party Created.")
+
             }
             params = party
         }

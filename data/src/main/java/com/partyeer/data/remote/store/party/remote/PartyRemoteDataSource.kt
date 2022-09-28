@@ -9,14 +9,19 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import com.partyeer.data.PartyDataSource
+import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import com.partyeer.domain.repository.party.model.Picture
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import timber.log.Timber
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -26,14 +31,20 @@ class PartyRemoteDataSource @Inject constructor(
 ) : PartyDataSource {
 
     private var database: FirebaseDatabase = Firebase.database
-    private var firebaseStorageReference: StorageReference = Firebase.storage.reference
+
+    private var formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+    private val now = Date()
+    private val fileName = formatter.format(now)
+
+    private var firebaseStorageReference: StorageReference =
+        Firebase.storage.getReference("images/${fileName}")
+
 
     val myRef = database.getReference("party")
     val list = arrayListOf<PartyDTO>()
 
     override suspend fun getPartyList(): Flow<List<PartyDTO>> =
         callbackFlow {
-
             val callback = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     list.clear()
@@ -41,7 +52,7 @@ class PartyRemoteDataSource @Inject constructor(
                         val party = snapshot.getValue(PartyDTO::class.java)
                         party?.let { list.add(it) }
                     }
-                    trySend(list) //after this i dont get anything on the collect{} block
+                    trySend(list)
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -69,32 +80,29 @@ class PartyRemoteDataSource @Inject constructor(
     }
 
     override suspend fun createParty(partyDTO: PartyDTO) {
+        delay(1500L)
         createNewParty(partyDTO)
     }
 
-    private fun createNewParty(partyDTO: PartyDTO) {
+    override suspend fun getPartyConcepts(): Flow<List<ConceptDTO>> {
+        TODO("Not yet implemented")
+    }
 
+    private fun createNewParty(partyDTO: PartyDTO) {
         partyDTO.pictures.forEach {
             try {
-                firebaseStorageReference.child("images/house.jpg").putFile(Uri.parse(it.fullSize))
+                firebaseStorageReference.putFile(Uri.parse(it.fullSize))
                     .addOnSuccessListener {
                         partyDTO.pictures.clear()
-                        firebaseStorageReference.child("images/house.jpg").downloadUrl.addOnSuccessListener { uri ->
+                        firebaseStorageReference.downloadUrl.addOnSuccessListener { uri ->
                             partyDTO.pictures.add(Picture(uri.toString(), uri.toString()))
                             myRef.child(partyDTO.id).setValue(partyDTO)
                         }
                     }
-
-
             } catch (e: Exception) {
                 println("adnan error : " + e.localizedMessage)
             }
         }
-        //database.child("parties").child(partyDTO.id).setValue(partyDTO.id)
-    }
-
-    fun uploadToFirebaseStorage(uri: Uri) {
-
     }
 }
 

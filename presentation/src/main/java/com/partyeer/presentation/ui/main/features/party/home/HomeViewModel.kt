@@ -26,11 +26,8 @@ class HomeViewModel @Inject constructor(
         getParty(this) {
             onSuccess = {
                 viewModelScope.launch {
-                    println("adnan collect launch : ")
 
                     it.collect { list ->
-                        println("adnan collect list collect view: " + list.size)
-
                         /*list.forEach {
                             println("adnan collect liffffst : " + list.size)
                             _party.value = it
@@ -41,7 +38,7 @@ class HomeViewModel @Inject constructor(
 
             }
             onError = {
-                println("adnan error : " + it.localizedMessage)
+
             }
         }
 

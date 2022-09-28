@@ -1,5 +1,6 @@
 package com.partyeer.data
 
+import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import kotlinx.coroutines.flow.Flow
 
@@ -10,4 +11,6 @@ interface PartyDataSource {
     suspend fun getParty(id: String): PartyDTO
 
     suspend fun createParty(partyDTO: PartyDTO)
+
+    suspend fun getPartyConcepts() : Flow<List<ConceptDTO>>
 }
