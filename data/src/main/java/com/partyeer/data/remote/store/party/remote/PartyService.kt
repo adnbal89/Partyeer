@@ -1,13 +1,16 @@
 package com.partyeer.data.remote.store.party.remote
 
+import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
-import retrofit2.http.GET
-import retrofit2.http.Path
+import kotlinx.coroutines.flow.Flow
 
 interface PartyService {
 
-    @GET("products/{id}")
-    suspend fun getParty(
-        @Path("id") id: String
-    ): PartyDTO
+    suspend fun getPartyList(): Flow<List<PartyDTO>>
+
+    suspend fun getParty(id: String): PartyDTO
+
+    suspend fun createParty(partyDTO: PartyDTO)
+
+    suspend fun getPartyConcepts(): Flow<List<ConceptDTO>>
 }

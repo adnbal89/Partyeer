@@ -9,7 +9,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import com.partyeer.data.PartyDataSource
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
@@ -27,15 +26,19 @@ import javax.inject.Singleton
 
 @Singleton
 class PartyRemoteDataSource @Inject constructor(
-    private val service: PartyService,
+    private val partyApiService: PartyService,
 ) : PartyDataSource {
 
+    //add to DI
     private var database: FirebaseDatabase = Firebase.database
 
+    //decide if inject or private property
     private var formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
     private val now = Date()
     private val fileName = formatter.format(now)
 
+
+    //add to DI
     private var firebaseStorageReference: StorageReference =
         Firebase.storage.getReference("images/${fileName}")
 
