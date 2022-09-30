@@ -1,7 +1,6 @@
 package com.partyeer.data.local.store.party.local
 
 import com.partyeer.data.PartyDataSource
-import com.partyeer.data.remote.store.party.remote.PartyService
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import kotlinx.coroutines.flow.Flow

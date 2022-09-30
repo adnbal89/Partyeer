@@ -4,7 +4,7 @@ import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import kotlinx.coroutines.flow.Flow
 
-interface PartyService {
+interface PartyRemoteService{
 
     suspend fun getPartyList(): Flow<List<PartyDTO>>
 
