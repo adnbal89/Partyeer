@@ -9,7 +9,7 @@ data class Party(
     val id: String,
     val logoUrl: String?,
     val title: String,
-    val concept: String?,
+    val concept: Concept,
     val timeStart: Double,
     val pictures: MutableList<Picture>,
 
@@ -18,7 +18,7 @@ data class Party(
         id: String,
         logoUrl: String?,
         title: String,
-        concept: String?,
+        concept: Concept,
         locationInfo: Location,
         timeStart: Double,
         timeEnd: Double,

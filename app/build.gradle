@@ -6,6 +6,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     // Add the Google services Gradle plugin
     id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
 }
 
@@ -54,6 +55,7 @@ dependencies {
     // Declare the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth-ktx'
+
 
     implementation project(':presentation')
     implementation project(':domain')

@@ -1,4 +1,4 @@
-package com.partyeer.data.remote.store.party.remote
+package com.partyeer.data.remote.store.party.remote.service
 
 import android.net.Uri
 import com.google.firebase.FirebaseException
@@ -6,10 +6,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.FirebaseStorage
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import com.partyeer.domain.repository.party.model.Picture
+import com.partyeer.util.formatter.FileNameFormatter
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -20,10 +21,11 @@ import javax.inject.Singleton
 @Singleton
 class FirebaseRemoteService @Inject constructor(
     private val firebaseDatabaseReference: DatabaseReference,
-    private val firebaseStorageReference: StorageReference
+    private val firebaseStorage: FirebaseStorage
 ) : PartyRemoteService {
 
     private val list = arrayListOf<PartyDTO>()
+    private var listSizeCounter = 0
 
     override suspend fun getPartyList(): Flow<List<PartyDTO>> =
         callbackFlow {
@@ -67,19 +69,38 @@ class FirebaseRemoteService @Inject constructor(
     }
 
     private fun createNewParty(partyDTO: PartyDTO) {
-        partyDTO.pictures.forEach {
+        val copyPartDTO = partyDTO.copy(pictures = mutableListOf())
+        listSizeCounter = partyDTO.pictures.size
+
+        partyDTO.pictures.forEach { picture ->
             try {
-                firebaseStorageReference.putFile(Uri.parse(it.fullSize))
+                val storageRef =
+                    firebaseStorage.getReference("images/" + FileNameFormatter.getFormattedFileName())
+
+                storageRef.putFile(Uri.parse(picture.fullSize))
                     .addOnSuccessListener {
-                        partyDTO.pictures.clear()
-                        firebaseStorageReference.downloadUrl.addOnSuccessListener { uri ->
-                            partyDTO.pictures.add(Picture(uri.toString(), uri.toString()))
-                            firebaseDatabaseReference.child(partyDTO.id).setValue(partyDTO)
+                        storageRef.downloadUrl.addOnSuccessListener { uri ->
+                            //when a picture uploaded to Storage successfully then put it into
+                            //partyDTO pictures List so that partyDTO will be uploaded to realtime DB
+                            copyPartDTO.pictures.add(Picture(uri.toString(), uri.toString()))
+
+                            //send partyDTO to realtime database when all pictures are uploaded successfully.
+                            if (copyPartDTO.pictures.size == listSizeCounter && copyPartDTO.pictures.size > 0) {
+                                copyPartDTO.logoUrl = copyPartDTO.pictures.get(0).preview
+                                createFirebaseEntry(copyPartDTO)
+                            }
                         }
                     }
             } catch (e: Exception) {
-                println("adnan error : " + e.localizedMessage)
+                Timber.e(e.localizedMessage)
             }
+        }
+    }
+
+    private fun createFirebaseEntry(partyDTO: PartyDTO) {
+        firebaseDatabaseReference.child(partyDTO.id).setValue(partyDTO).addOnSuccessListener {
+            //TODO : implement Flow so that activity finish() when upload completes.
+
         }
     }
 }

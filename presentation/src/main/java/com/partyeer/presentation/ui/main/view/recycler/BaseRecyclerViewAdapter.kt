@@ -1,5 +1,6 @@
 package com.partyeer.presentation.ui.main.view.recycler
 
+import android.graphics.Color
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ abstract class BaseRecyclerViewAdapter<T>(
 ) : RecyclerView.Adapter<BaseRecyclerViewHolder<T>>() {
 
     private val items = ArrayList<T>()
+    private var selectedItemPosition: Int = 0
 
     init {
         items?.let {
@@ -34,7 +36,7 @@ abstract class BaseRecyclerViewAdapter<T>(
         }
 
         onItemLongClick?.let { listener ->
-            viewHolder.setItemClickListener { position ->
+            viewHolder.setItemLongClickListener { position ->
                 getItem(position)?.let { item ->
                     listener(item)
                 }
@@ -187,6 +189,7 @@ abstract class BaseRecyclerViewAdapter<T>(
      */
     fun setItemClickListener(onItemClick: ((T) -> Unit)) {
         this.onItemClick = onItemClick
+
     }
 
     /**

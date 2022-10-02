@@ -4,8 +4,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.model.Picture
 import com.partyeer.presentation.R
@@ -20,13 +22,30 @@ class CreatePartyActivity : BaseActivity() {
 
     private lateinit var binding: ActivityCreatePartyBinding
     private var partyPictureList: MutableList<Picture> = arrayListOf()
+    private lateinit var party: Party
+    private lateinit var logoUri: String
 
 
-    private val getContent =
+    /*private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             binding.imageViewPartyLogo.setImageURI(uri)
+            logoUri = uri.toString() ?: ""
+
             val picture = Picture(uri.toString(), uri.toString())
             if (uri != null) {
+                partyPictureList.add(picture)
+            }
+        }*/
+
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetMultipleContents())
+        { uriList ->
+            binding.imageViewPartyLogo.setImageURI(uriList[0])
+            logoUri = uriList[0].toString()
+
+            uriList.forEach{
+                val picture = Picture(it.toString(), it.toString())
+                println("adnan uriList : " + it.toString())
                 partyPictureList.add(picture)
             }
         }
@@ -41,6 +60,11 @@ class CreatePartyActivity : BaseActivity() {
         binding.imageViewPartyLogo.setOnClickListener {
             getContent.launch("image/*")
         }
+
+        val partyConceptList = resources.getStringArray(R.array.party_concepts)
+        val arrayAdapter =
+            ArrayAdapter(this, R.layout.item_loyout_concept_dropdown, partyConceptList)
+        binding.autoCompleteTextViewConcept.setAdapter(arrayAdapter)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -49,11 +73,11 @@ class CreatePartyActivity : BaseActivity() {
                 finish()
             }
             R.id.action_publish -> {
-                val party = Party(
+                party = Party(
                     binding.textViewPartyTitle.editText?.text.toString(),
-                    "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",
+                    logoUri,
                     binding.textViewPartyTitle.editText?.text.toString(),
-                    binding.textViewPartyConcept.editText?.text.toString(),
+                    Concept(binding.textViewPartyConcept.editText?.text.toString()),
                     0.0,
                     partyPictureList,
                 )

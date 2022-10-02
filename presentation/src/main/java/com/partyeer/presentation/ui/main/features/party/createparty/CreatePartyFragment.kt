@@ -19,6 +19,11 @@ class CreatePartyFragment : BaseMvvmFragment<ActivityCreatePartyBinding, CreateP
     }
 
     override fun initViews() {
+
+        binding.apply {
+
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

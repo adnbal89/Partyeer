@@ -1,8 +1,8 @@
 package com.partyeer.di
 
 import com.partyeer.data.PartyDataRepository
-import com.partyeer.data.remote.store.party.remote.FirebaseRemoteService
-import com.partyeer.data.remote.store.party.remote.PartyRemoteService
+import com.partyeer.data.remote.store.party.remote.service.FirebaseRemoteService
+import com.partyeer.data.remote.store.party.remote.service.PartyRemoteService
 import com.partyeer.domain.repository.party.PartyRepository
 import dagger.Binds
 import dagger.Module
@@ -21,6 +21,6 @@ interface RepositoryModule {
 
     @Singleton
     @Binds
-    fun bindPartyRemoteService(remoteService: FirebaseRemoteService) : PartyRemoteService
+    fun bindPartyRemoteService(remoteService: FirebaseRemoteService): PartyRemoteService
 
 }

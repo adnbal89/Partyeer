@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.viewbinding.ViewBinding
 import com.partyeer.presentation.R
-import com.partyeer.presentation.ui.main.extension.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

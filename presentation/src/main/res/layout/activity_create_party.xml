@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     tools:context=".ui.main.activity.CreatePartyActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -64,6 +65,7 @@
         tools:hint="Concept">
 
         <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewConcept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none" />
@@ -147,6 +149,5 @@
             android:datePickerMode="calendar" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

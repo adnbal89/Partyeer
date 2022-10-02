@@ -2,6 +2,7 @@ package com.partyeer.data.local.store.party.mapper
 
 import com.partyeer.data.base.mapper.BaseMapper
 import com.partyeer.data.local.model.PartyEntity
+import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 
 class PartyEntityMapper : BaseMapper<PartyEntity, Party> {
@@ -10,7 +11,7 @@ class PartyEntityMapper : BaseMapper<PartyEntity, Party> {
             id = source.id,
             logoUrl = source.logoUrl,
             title = source.title,
-            concept = source.concept,
+            concept = Concept(source.concept.description),
             timeStart = source.timeStart,
             pictures = source.pictures
         )

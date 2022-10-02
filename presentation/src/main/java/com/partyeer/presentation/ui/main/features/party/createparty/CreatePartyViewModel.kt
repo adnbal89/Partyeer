@@ -2,8 +2,10 @@ package com.partyeer.presentation.ui.main.features.party.createparty
 
 import android.app.Activity
 import android.content.Intent
+import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.usecase.CreateParty
+import com.partyeer.domain.repository.party.usecase.GetPartyConceptList
 import com.partyeer.presentation.ui.main.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,15 +14,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreatePartyViewModel @Inject constructor(
-    private val createParty: CreateParty
+    private val createPartyUseCase: CreateParty,
+    private val getPartyConceptList: GetPartyConceptList
 ) : BaseViewModel() {
 
     private val _party = MutableStateFlow<Party>(
         Party(
-            "1",
-            "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",
-            "First Party",
-            "Techno",
+            id = "1",
+            "",
+            title = "First Party",
+            Concept("Techno"),
             123213123.0,
             arrayListOf()
         )
@@ -42,15 +45,21 @@ class CreatePartyViewModel @Inject constructor(
     }
 
     fun createParty(party: Party) {
-        createParty(this) {
-            onStart = {
-
-            }
+        createPartyUseCase(this) {
             onSuccess = {
 
             }
             params = party
         }
+    }
+
+    fun getConceptList() {
+        getPartyConceptList(this) {
+            onSuccess = {
+
+            }
+        }
+
     }
 
     fun selectImage(activity: Activity) {

@@ -13,5 +13,5 @@ interface PartyRepository : BaseRepository {
 
     suspend fun createParty(party: Party)
 
-    suspend fun getPartyConcepts() : Flow<List<Concept>>
+    suspend fun getPartyConcepts(): Flow<List<Concept>>
 }

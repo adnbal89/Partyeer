@@ -1,6 +1,7 @@
 package com.partyeer.data.remote.store.party.mapper
 
 import com.partyeer.data.base.mapper.BaseMapper
+import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import com.partyeer.domain.repository.party.model.Party
 import javax.inject.Inject
@@ -14,7 +15,7 @@ class PartyDTOMapper @Inject constructor() : BaseMapper<Party, PartyDTO> {
             id = source.id,
             title = source.title,
             logoUrl = source.logoUrl,
-            concept = source.concept,
+            concept = ConceptDTO(source.concept.description),
             timeStart = source.timeStart,
             pictures = source.pictures
         )

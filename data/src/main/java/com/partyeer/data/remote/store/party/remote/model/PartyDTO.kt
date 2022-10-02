@@ -5,9 +5,9 @@ import com.partyeer.domain.repository.party.model.Picture
 
 data class PartyDTO(
     val id: String = "",
-    val logoUrl: String? = "",
+    var logoUrl: String? = "",
     val title: String = "",
-    val concept: String? = "",
+    val concept: ConceptDTO = ConceptDTO(""),
     val timeStart: Double = 0.0,
     val pictures: MutableList<Picture> = arrayListOf()
 ) : BaseResponse()

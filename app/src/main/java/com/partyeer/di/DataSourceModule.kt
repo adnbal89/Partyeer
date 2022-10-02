@@ -1,7 +1,7 @@
 package com.partyeer.di
 
-import com.partyeer.data.PartyDataSource
-import com.partyeer.data.remote.store.party.remote.PartyRemoteDataSource
+import com.partyeer.data.remote.store.party.remote.datasource.PartyDataSource
+import com.partyeer.data.remote.store.party.remote.datasource.PartyRemoteDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

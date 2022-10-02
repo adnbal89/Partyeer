@@ -1,10 +1,10 @@
-package com.partyeer.data.remote.store.party.remote
+package com.partyeer.data.remote.store.party.remote.datasource
 
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import kotlinx.coroutines.flow.Flow
 
-interface PartyRemoteService{
+interface PartyDataSource {
 
     suspend fun getPartyList(): Flow<List<PartyDTO>>
 

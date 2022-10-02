@@ -74,5 +74,15 @@
 
     <string name="picture_indicator">%1$d/%2$d</string>
     <string name="new_party">New Party</string>
+    <string name="map">Open Map</string>
+
+
+    <string-array name="party_concepts">
+        <item>Electronica</item>
+        <item>House</item>
+        <item>Jazz</item>
+        <item>Rock</item>
+        <item>Techno</item>
+    </string-array>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.partyeer.presentation.ui.main.features.party.home
 
+import android.graphics.Color
 import android.net.Uri
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,9 +9,11 @@ import com.partyeer.domain.repository.party.model.Picture
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.FragmentHomeBinding
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
+import com.partyeer.presentation.ui.main.extension.viewBinding
 import com.partyeer.presentation.ui.main.features.party.PartyListRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.features.party.createparty.PictureRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.util.IntentUtil
+import com.partyeer.presentation.ui.main.util.setDivider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -40,6 +43,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
         }
 
         with(binding.recyclerViewPartyList) {
+            setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = partyListRecyclerViewAdapter.apply {
                 onItemClick = {

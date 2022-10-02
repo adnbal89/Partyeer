@@ -1,16 +1,11 @@
-package com.partyeer.data.local.store.party.local
+package com.partyeer.data.remote.store.party.remote.service
 
-import com.partyeer.data.remote.store.party.remote.datasource.PartyDataSource
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class PartyLocalDataSource @Inject constructor(
-    private val dao: PartyDao
-) : PartyDataSource {
+class RetrofitRemoteService : PartyRemoteService {
+
     override suspend fun getPartyList(): Flow<List<PartyDTO>> {
         TODO("Not yet implemented")
     }
@@ -26,4 +21,5 @@ class PartyLocalDataSource @Inject constructor(
     override suspend fun getPartyConcepts(): Flow<List<ConceptDTO>> {
         TODO("Not yet implemented")
     }
+
 }
