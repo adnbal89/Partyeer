@@ -1,6 +1,5 @@
 package com.partyeer.presentation.ui.main.activity
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -43,7 +42,7 @@ class CreatePartyActivity : BaseActivity() {
             binding.imageViewPartyLogo.setImageURI(uriList[0])
             logoUri = uriList[0].toString()
 
-            uriList.forEach{
+            uriList.forEach {
                 val picture = Picture(it.toString(), it.toString())
                 println("adnan uriList : " + it.toString())
                 partyPictureList.add(picture)
@@ -90,6 +89,12 @@ class CreatePartyActivity : BaseActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_create_party, menu)
+
+        val actionNewParty = menu.findItem(R.id.action_new_party)
+        val actionOpenMapActivity = menu.findItem(R.id.action_open_map_activity)
+        actionNewParty.isVisible = false
+        actionOpenMapActivity.isVisible = false
+
         return true
     }
 

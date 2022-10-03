@@ -1,7 +1,5 @@
 package com.partyeer.presentation.ui.main.features.party
 
-import android.graphics.Color
-import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.partyeer.domain.repository.party.model.Party

@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="8dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackgroundBorderless"
     android:paddingBottom="8dp">
 
     <com.google.android.material.imageview.ShapeableImageView

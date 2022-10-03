@@ -1,7 +1,10 @@
 package com.partyeer.presentation.ui.main.features.party.home
 
-import android.graphics.Color
 import android.net.Uri
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
@@ -9,7 +12,6 @@ import com.partyeer.domain.repository.party.model.Picture
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.FragmentHomeBinding
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
-import com.partyeer.presentation.ui.main.extension.viewBinding
 import com.partyeer.presentation.ui.main.features.party.PartyListRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.features.party.createparty.PictureRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.util.IntentUtil
@@ -19,6 +21,11 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     private val pictureRecyclerViewAdapter by lazy {
         PictureRecyclerViewAdapter()
@@ -81,6 +88,15 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+        val actionCancel = menu.findItem(R.id.action_cancel)
+        val actionPublish = menu.findItem(R.id.action_publish)
+        actionCancel.isVisible = false
+        actionPublish.isVisible = false
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun setPictureIndicatorText(position: Int) {
