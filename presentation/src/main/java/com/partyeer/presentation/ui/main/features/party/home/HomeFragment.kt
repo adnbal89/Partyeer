@@ -36,7 +36,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     override fun initViews() {
-        with(binding.viewPagerPictures) {
+        with(binding.viewPagerPicturesHeadline) {
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     setPictureIndicatorText(position)
@@ -68,7 +68,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             setOnClickListener {
                 IntentUtil.shareImage(
                     activity = requireActivity(),
-                    uri = Uri.parse(pictureRecyclerViewAdapter.getItem(binding.viewPagerPictures.currentItem)!!.preview)
+                    uri = Uri.parse(pictureRecyclerViewAdapter.getItem(binding.viewPagerPicturesHeadline.currentItem)!!.preview)
                 )
             }
         }

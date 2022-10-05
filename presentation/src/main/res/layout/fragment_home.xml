@@ -15,12 +15,13 @@
             android:id="@+id/layoutImages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerPictures"
+                android:id="@+id/viewPagerPicturesHeadline"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="H,2:1"
@@ -37,8 +38,8 @@
                 android:padding="4dp"
                 android:src="@android:drawable/ic_menu_share"
                 android:textAppearance="@style/TextAppearance.Medium.12.White"
-                app:layout_constraintEnd_toEndOf="@id/viewPagerPictures"
-                app:layout_constraintTop_toTopOf="@id/viewPagerPictures"
+                app:layout_constraintEnd_toEndOf="@id/viewPagerPicturesHeadline"
+                app:layout_constraintTop_toTopOf="@id/viewPagerPicturesHeadline"
                 tools:text="13/20" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -50,8 +51,8 @@
                 android:background="@drawable/bg_indicator"
                 android:padding="8dp"
                 android:textAppearance="@style/TextAppearance.Medium.12.White"
-                app:layout_constraintBottom_toBottomOf="@id/viewPagerPictures"
-                app:layout_constraintEnd_toEndOf="@id/viewPagerPictures"
+                app:layout_constraintBottom_toBottomOf="@id/viewPagerPicturesHeadline"
+                app:layout_constraintEnd_toEndOf="@id/viewPagerPicturesHeadline"
                 tools:text="2/8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

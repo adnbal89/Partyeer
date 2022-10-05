@@ -39,6 +39,14 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextAppearance.Medium.30">
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.30.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextAppearance.Medium.20.Black">
         <item name="android:textColor">@color/black</item>
     </style>
@@ -50,9 +58,18 @@
 
     <!--Widespread-->
 
-    <style name="TextAppearance.Header" parent="TextAppearance.Medium.20.Black" />
 
-    <style name="TextAppearance.Label" parent="TextAppearance.Regular.14.Black" />
+    <style name="TextAppearance.Header" parent="TextAppearance.Medium.20.Black">
+    <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextAppearance.Header30" parent="TextAppearance.Medium.30.Black">
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextAppearance.Label" parent="TextAppearance.Regular.14.Black">
+        <item name="android:textAlignment">center</item>
+    </style>
 
     <style name="TextAppearance.Weak" parent="TextAppearance.Regular.14.Gray600" />
 

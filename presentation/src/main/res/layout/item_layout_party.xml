@@ -1,93 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="4dp"
-    android:focusable="true"
+    android:layout_height="360dp"
     android:clickable="true"
+    android:focusable="true"
     android:foreground="?android:attr/selectableItemBackgroundBorderless"
+    android:paddingTop="8dp"
     android:paddingBottom="4dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image_view_party_banner"
-        android:layout_margin="4dp"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        app:layout_constraintHorizontal_bias="0.5"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeadLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/text_view_party_title"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_party_location"
-        app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_layout_party_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_party_time"
-        app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_party_title">
-
-        <ImageView
-            android:id="@+id/imageViewLocationLogo"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_baseline_location_on_24"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewPartyCreatorLogo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_view_party_location"
-            android:layout_width="120dp"
-            android:layout_height="20dp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewLocationLogo"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_layout_party_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_party_concept"
-        app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
-        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_party_location">
-
-        <ImageView
-            android:id="@+id/imageViewTimeLogo"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_baseline_access_time_24"
-            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/text_view_party_title"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Header30"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_party_concept"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewOptions"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPartyCreatorLogo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_view_party_time"
-            android:layout_width="120dp"
+            android:id="@+id/text_view_party_concept"
+            android:layout_width="0dp"
             android:layout_height="20dp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewTimeLogo"
+            android:layout_margin="8dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewOptions"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPartyCreatorLogo"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_party_title" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewOptions"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="4dp"
+            android:src="@drawable/ic_options_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/text_view_party_concept"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutImages"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_margin="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeadLines">
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image_view_party_banner"
-        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_party_time" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerPictures"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="H,2:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_share"
+            android:textAppearance="@style/TextAppearance.Medium.12.White"
+            app:layout_constraintEnd_toEndOf="@id/viewPagerPictures"
+            app:layout_constraintTop_toTopOf="@id/viewPagerPictures"
+            tools:text="13/20" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewPictureIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_indicator"
+            android:padding="8dp"
+            android:textAppearance="@style/TextAppearance.Medium.12.White"
+            app:layout_constraintBottom_toBottomOf="@id/viewPagerPictures"
+            app:layout_constraintEnd_toEndOf="@id/viewPagerPictures"
+            tools:text="2/8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_bottom_pane"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutImages">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_party_location"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewLocationLogo"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_location_on_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_view_party_location"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewLocationLogo"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_party_time"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/constraint_layout_party_location"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewTime"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_access_time_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_view_party_time"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewTime"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_party_like_count"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraint_layout_party_time"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewLikeCount"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_like"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_view_party_like_counter"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+
+                android:textAppearance="@style/TextAppearance.Label"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewLikeCount"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
