@@ -60,7 +60,7 @@
 
 
     <style name="TextAppearance.Header" parent="TextAppearance.Medium.20.Black">
-    <item name="android:textAlignment">center</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="TextAppearance.Header30" parent="TextAppearance.Medium.30.Black">

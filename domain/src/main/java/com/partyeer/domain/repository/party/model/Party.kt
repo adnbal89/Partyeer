@@ -12,8 +12,9 @@ data class Party(
     val concept: Concept,
     val timeStart: Double,
     val pictures: MutableList<Picture>,
+    var likeCount: Int = 0
 
-    ) : BaseItem() {
+) : BaseItem() {
     constructor(
         id: String,
         logoUrl: String?,
@@ -24,6 +25,7 @@ data class Party(
         timeEnd: Double,
         description: String?,
         pictures: MutableList<Picture>,
-    ) : this(id, logoUrl, title, concept, timeStart, pictures)
+        likeCount: Int
+    ) : this(id, logoUrl, title, concept, timeStart, pictures, likeCount)
 }
 

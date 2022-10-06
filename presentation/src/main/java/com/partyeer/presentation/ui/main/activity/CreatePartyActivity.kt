@@ -79,6 +79,7 @@ class CreatePartyActivity : BaseActivity() {
                     Concept(binding.textViewPartyConcept.editText?.text.toString()),
                     0.0,
                     partyPictureList,
+                    likeCount = 51
                 )
                 viewModel.createParty(party)
             }

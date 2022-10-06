@@ -9,5 +9,6 @@ data class PartyDTO(
     val title: String = "",
     val concept: ConceptDTO = ConceptDTO(""),
     val timeStart: Double = 0.0,
-    val pictures: MutableList<Picture> = arrayListOf()
+    val pictures: MutableList<Picture> = arrayListOf(),
+    var likeCount: Int = 0
 ) : BaseResponse()

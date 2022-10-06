@@ -19,9 +19,12 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewPartyCreatorLogo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +34,11 @@
             android:id="@+id/text_view_party_title"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Header30"
             app:layout_constraintBottom_toTopOf="@+id/text_view_party_concept"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewOptions"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewOptionsMenu"
             app:layout_constraintStart_toEndOf="@+id/imageViewPartyCreatorLogo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,19 +46,22 @@
             android:id="@+id/text_view_party_concept"
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Label"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewOptions"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewOptionsMenu"
             app:layout_constraintStart_toEndOf="@+id/imageViewPartyCreatorLogo"
             app:layout_constraintTop_toBottomOf="@+id/text_view_party_title" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewOptions"
+            android:id="@+id/imageViewOptionsMenu"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_options_menu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,6 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_margin="4dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutHeadLines">
@@ -75,6 +82,9 @@
             android:id="@+id/viewPagerPictures"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             app:layout_constraintDimensionRatio="H,2:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +96,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:padding="4dp"
             android:src="@android:drawable/ic_menu_share"
             android:textAppearance="@style/TextAppearance.Medium.12.White"
@@ -120,22 +133,25 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_layout_party_location"
-            android:layout_width="100dp"
+            android:layout_width="130dp"
             android:layout_height="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imageViewLocationLogo"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_location_on_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text_view_party_location"
-                android:layout_width="140dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
 
                 android:textAlignment="center"
@@ -147,23 +163,26 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_layout_party_time"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="20dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             app:layout_constraintStart_toEndOf="@+id/constraint_layout_party_location"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imageViewTime"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_access_time_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text_view_party_time"
-                android:layout_width="140dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Label"
@@ -174,24 +193,26 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_layout_party_like_count"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/constraint_layout_party_time"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imageViewLikeCount"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_like"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text_view_party_like_counter"
-                android:layout_width="140dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
 

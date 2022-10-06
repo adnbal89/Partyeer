@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!--<androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutImages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,14 +55,15 @@
                 app:layout_constraintEnd_toEndOf="@id/viewPagerPicturesHeadline"
                 tools:text="2/8" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutPartyList"
             style="@style/AddLayoutSection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/layoutImages">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewPartyList"

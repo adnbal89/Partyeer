@@ -9,5 +9,6 @@ data class PartyEntity(
     val title: String,
     val concept: ConceptEntity,
     val timeStart: Double,
-    val pictures: MutableList<Picture>
+    val pictures: MutableList<Picture>,
+    var likeCount: Int = 0
 ) : BaseEntity()
