@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.partyeer.presentation.R
+import com.partyeer.presentation.databinding.BottomSheetDialogLayoutBinding
 import com.partyeer.presentation.databinding.FragmentHomeBinding
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
 import com.partyeer.presentation.ui.main.features.party.PartyListRecyclerViewAdapter
@@ -31,24 +31,20 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
     private val partyListRecyclerViewAdapter by lazy {
         PartyListRecyclerViewAdapter() { party ->
             val bottomSheetDialog = BottomSheetDialog(requireContext())
-            val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog_layout, null)
-            bottomSheetDialog.setContentView(view);
+            val view = BottomSheetDialogLayoutBinding.inflate(layoutInflater, binding.root, false)
+            bottomSheetDialog.setContentView(view.root);
 
             bottomSheetDialog.show();
 
-            val textViewApply = view.findViewById<TextView>(R.id.textViewApply)
-            val textViewHide = view.findViewById<TextView>(R.id.textViewHide)
-            val textViewAddToFav = view.findViewById<TextView>(R.id.textViewAddFavorite)
-
-            textViewApply.setOnClickListener {
+            view.textViewApply.setOnClickListener {
                 bottomSheetDialog.dismiss()
                 //implement party application process.
             }
-            textViewHide.setOnClickListener {
+            view.textViewHide.setOnClickListener {
                 bottomSheetDialog.dismiss()
                 //implement party application process.
             }
-            textViewAddToFav.setOnClickListener {
+            view.textViewAddFavorite.setOnClickListener {
                 bottomSheetDialog.dismiss()
                 //implement party application process.
             }
