@@ -2,6 +2,7 @@ package com.partyeer.presentation.ui.main.features.party.createparty
 
 import android.app.Activity
 import android.content.Intent
+import android.location.Location
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.usecase.CreateParty
@@ -17,15 +18,25 @@ class CreatePartyViewModel @Inject constructor(
     private val createPartyUseCase: CreateParty,
     private val getPartyConceptList: GetPartyConceptList
 ) : BaseViewModel() {
+    private val targetLocation = Location("") //provider name is unnecessary
 
     private val _party = MutableStateFlow<Party>(
         Party(
-            id = "1",
+            "1",
             "",
-            title = "First Party",
+            "Example",
             Concept("Techno"),
-            123213123.0,
-            arrayListOf()
+            40.254,
+            28.987,
+            1665264150,
+            1665264150,
+            "Example Description",
+            mutableListOf(),
+            likeCount = 51,
+            mutableListOf<String>("1"),
+            mutableListOf<String>("1"),
+            mutableMapOf(),
+            "1"
         )
     )
     val party: StateFlow<Party>
@@ -33,6 +44,7 @@ class CreatePartyViewModel @Inject constructor(
 
 
     override fun onViewAttached() {
+
         /*val party = Party(
             "1",
             "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",

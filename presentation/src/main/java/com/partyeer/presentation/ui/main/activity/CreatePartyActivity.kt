@@ -77,9 +77,17 @@ class CreatePartyActivity : BaseActivity() {
                     logoUri,
                     binding.textViewPartyTitle.editText?.text.toString(),
                     Concept(binding.textViewPartyConcept.editText?.text.toString()),
-                    0.0,
+                    28.987,
+                    40.254,
+                    1665254150,
+                    1665264150,
+                    "Example Description",
                     partyPictureList,
-                    likeCount = 51
+                    likeCount = 51,
+                    mutableListOf<String>("1"),
+                    mutableListOf<String>("1"),
+                    mutableMapOf<String,Boolean>(),
+                    "1"
                 )
                 viewModel.createParty(party)
             }

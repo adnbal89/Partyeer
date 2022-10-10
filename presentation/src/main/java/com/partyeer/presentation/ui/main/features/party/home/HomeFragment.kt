@@ -1,5 +1,6 @@
 package com.partyeer.presentation.ui.main.features.party.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -7,17 +8,21 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.BottomSheetDialogLayoutBinding
 import com.partyeer.presentation.databinding.FragmentHomeBinding
+import com.partyeer.presentation.ui.main.activity.PartyMapsActivity
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
 import com.partyeer.presentation.ui.main.features.party.PartyListRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.util.setDivider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
+    private lateinit var partyArrayList: ArrayList<Party>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,9 +41,18 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
             bottomSheetDialog.show();
 
+            //TODO: Refactor
+            if (party?.appliedUserIdList?.containsKey("adnbal89") == false) {
+                view.textViewApply.visibility = View.VISIBLE
+            } else {
+                //TODO : implement application cancellation
+                view.textViewApply.visibility = View.GONE
+            }
+
             view.textViewApply.setOnClickListener {
                 bottomSheetDialog.dismiss()
                 //implement party application process.
+                viewModel.applyToParty(party?.id)
             }
             view.textViewHide.setOnClickListener {
                 bottomSheetDialog.dismiss()
@@ -48,7 +62,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 bottomSheetDialog.dismiss()
                 //implement party application process.
             }
-
         }
     }
 
@@ -89,6 +102,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun observeEvents() {
         super.observeEvents()
+        partyArrayList = ArrayList<Party>()
         //Collect Party
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.partyList.collect { partyList ->
@@ -96,6 +110,9 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                     //pictureRecyclerViewAdapter.setItems(list)
                     partyListRecyclerViewAdapter.setItems(partyList)
                     //setPictureIndicatorText(list.size.coerceAtLeast(1))
+                }
+                partyList.forEach {
+                    partyArrayList.add(it)
                 }
             }
         }
@@ -107,6 +124,16 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
         val actionPublish = menu.findItem(R.id.action_publish)
         actionCancel.isVisible = false
         actionPublish.isVisible = false
+
+        //open map activity and send party list
+        val actionMap = menu.findItem(R.id.action_open_map_activity)
+        actionMap.setOnMenuItemClickListener {
+            val intent = Intent(activity, PartyMapsActivity::class.java)
+            intent.putExtra("partyList", partyArrayList)
+            activity!!.startActivity(intent)
+            true
+        }
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 

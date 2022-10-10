@@ -22,4 +22,8 @@ class RetrofitRemoteService : PartyRemoteService {
         TODO("Not yet implemented")
     }
 
+    override suspend fun applyToParty(partyId: String) {
+        TODO("Not yet implemented")
+    }
+
 }

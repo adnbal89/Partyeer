@@ -3,35 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
-
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.partyeer.presentation.ui.main.fragment.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.partyeer.presentation.ui.main.fragment.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.partyeer.presentation.ui.main.features.login.LoginFragment"
-        android:label="Login"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+    app:startDestination="@id/mainActivity">
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.partyeer.presentation.ui.main.activity.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/partyMapsActivity"
+        android:name="com.partyeer.presentation.ui.main.activity.PartyMapsActivity"
+        android:label="activity_party_maps"
+        tools:layout="@layout/activity_party_maps" />
 </navigation>

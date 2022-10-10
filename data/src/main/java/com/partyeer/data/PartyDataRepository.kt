@@ -43,5 +43,9 @@ class PartyDataRepository @Inject constructor(
         TODO("Not yet implemented")
     }
 
+    override suspend fun applyToParty(partyId: String) {
+        partyDataSource.applyToParty(partyId)
+    }
+
 
 }

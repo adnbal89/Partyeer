@@ -26,4 +26,8 @@ class PartyLocalDataSource @Inject constructor(
     override suspend fun getPartyConcepts(): Flow<List<ConceptDTO>> {
         TODO("Not yet implemented")
     }
+
+    override suspend fun applyToParty(partyId: String) {
+        TODO("Not yet implemented")
+    }
 }

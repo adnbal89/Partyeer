@@ -1,23 +1,17 @@
-package com.partyeer.domain.repository.party.model
+package com.partyeer.data.remote.store.party.remote.model
 
-import com.partyeer.domain.repository.base.model.BaseItem
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
-data class User(
+data class UserDTO(
     val id: String = "",
     val userName: String = "",
     val name: String = "",
     val surname: String = "",
-    val dateOfBirth: Long,
-    val signUpDate: Long,
+    val dateOfBirth: Long = 0,
+    val signUpDate: Long = 0,
     val createdPartyIdList: MutableList<String>,
-    val profilePicture: Picture,
+    val profilePicture: PictureDTO = PictureDTO("", ""),
     var invitedPartyIdList: MutableList<String>,
     var appliedPartyIdList: MutableList<String>,
     var followerUserIdList: MutableList<String>,
     var followingUserIdList: MutableList<String>,
     var favoritePartyIdList: MutableList<String>,
-
-    ) : BaseItem()
-
+)

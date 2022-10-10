@@ -1,10 +1,8 @@
-package com.partyeer.domain.repository.party.model
+package com.partyeer.data.local.model
 
-import com.partyeer.domain.repository.base.model.BaseItem
-import kotlinx.parcelize.Parcelize
+import com.partyeer.data.base.local.model.BaseEntity
 
-@Parcelize
-data class User(
+data class UserEntity(
     val id: String = "",
     val userName: String = "",
     val name: String = "",
@@ -12,12 +10,10 @@ data class User(
     val dateOfBirth: Long,
     val signUpDate: Long,
     val createdPartyIdList: MutableList<String>,
-    val profilePicture: Picture,
+    val profilePicture: PictureEntity,
     var invitedPartyIdList: MutableList<String>,
     var appliedPartyIdList: MutableList<String>,
     var followerUserIdList: MutableList<String>,
     var followingUserIdList: MutableList<String>,
     var favoritePartyIdList: MutableList<String>,
-
-    ) : BaseItem()
-
+) : BaseEntity()

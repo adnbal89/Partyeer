@@ -166,8 +166,9 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_open_map_activity -> {
-                val intent = Intent(this, PartyMapsActivity::class.java)
-                startActivity(intent)
+                //val intent = Intent(this, PartyMapsActivity::class.java)
+                //intent.putExtra("message_key", str);
+                //startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -9,7 +9,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
-import com.partyeer.domain.repository.party.model.Picture
+import com.partyeer.data.remote.store.party.remote.model.PictureDTO
 import com.partyeer.util.formatter.FileNameFormatter
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -68,6 +68,11 @@ class FirebaseRemoteService @Inject constructor(
         TODO("Not yet implemented")
     }
 
+    override suspend fun applyToParty(partyId: String) {
+        val party = firebaseDatabaseReference.child(partyId)
+        party.child("appliedUserIdList").child("adnbal89").setValue(true)
+    }
+
     private fun createNewParty(partyDTO: PartyDTO) {
         val copyPartDTO = partyDTO.copy(pictures = mutableListOf())
         listSizeCounter = partyDTO.pictures.size
@@ -82,7 +87,7 @@ class FirebaseRemoteService @Inject constructor(
                         storageRef.downloadUrl.addOnSuccessListener { uri ->
                             //when a picture uploaded to Storage successfully then put it into
                             //partyDTO pictures List so that partyDTO will be uploaded to realtime DB
-                            copyPartDTO.pictures.add(Picture(uri.toString(), uri.toString()))
+                            copyPartDTO.pictures.add(PictureDTO(uri.toString(), uri.toString()))
 
                             //send partyDTO to realtime database when all pictures are uploaded successfully.
                             if (copyPartDTO.pictures.size == listSizeCounter && copyPartDTO.pictures.size > 0) {

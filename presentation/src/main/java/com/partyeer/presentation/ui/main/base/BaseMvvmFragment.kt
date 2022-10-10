@@ -60,6 +60,10 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
         //------------------ livedata-------
     }
 
+    fun applyToParty(partyId: String){
+
+    }
+
     open fun onViewModelAttached() {
         // Override if needed
     }

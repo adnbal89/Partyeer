@@ -13,4 +13,6 @@ interface PartyRemoteService : RemoteService {
     suspend fun createParty(partyDTO: PartyDTO)
 
     suspend fun getPartyConcepts(): Flow<List<ConceptDTO>>
+
+    suspend fun applyToParty(partyId: String)
 }

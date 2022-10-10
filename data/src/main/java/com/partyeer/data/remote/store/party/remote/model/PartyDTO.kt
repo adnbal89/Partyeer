@@ -1,14 +1,21 @@
 package com.partyeer.data.remote.store.party.remote.model
 
 import com.partyeer.data.base.remote.model.BaseResponse
-import com.partyeer.domain.repository.party.model.Picture
 
 data class PartyDTO(
     val id: String = "",
     var logoUrl: String? = "",
     val title: String = "",
     val concept: ConceptDTO = ConceptDTO(""),
-    val timeStart: Double = 0.0,
-    val pictures: MutableList<Picture> = arrayListOf(),
-    var likeCount: Int = 0
+    val longitude: Double = 0.0,
+    val latitude: Double = 0.0,
+    val timeStart: Long = 0,
+    var timeEnd: Long = 0,
+    val description: String? = "",
+    val pictures: MutableList<PictureDTO> = mutableListOf(),
+    var likeCount: Int = 0,
+    var inviteeList: MutableList<String> = mutableListOf(),
+    var likedUserIdList: MutableList<String> = mutableListOf(),
+    var appliedUserIdList: MutableMap<String,Boolean> = HashMap(),
+    val creatorUserId: String = "",
 ) : BaseResponse()
