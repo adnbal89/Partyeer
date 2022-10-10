@@ -14,8 +14,8 @@ data class PartyDTO(
     val description: String? = "",
     val pictures: MutableList<PictureDTO> = mutableListOf(),
     var likeCount: Int = 0,
-    var inviteeList: MutableList<String> = mutableListOf(),
-    var likedUserIdList: MutableList<String> = mutableListOf(),
+    var inviteeList: MutableMap<String,Boolean> = HashMap(),
+    var likedUserIdList: MutableMap<String,Boolean> = HashMap(),
     var appliedUserIdList: MutableMap<String,Boolean> = HashMap(),
     val creatorUserId: String = "",
 ) : BaseResponse()

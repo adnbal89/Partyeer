@@ -19,8 +19,8 @@ class PartyListRecyclerViewAdapter(
     override fun createNewViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseRecyclerViewHolder<Party> = PartyViewHolder(parent) {
-        clickListener(getItem(it))
+    ): BaseRecyclerViewHolder<Party> = PartyViewHolder(parent) { position ->
+        clickListener(getItem(position))
     }
 }
 

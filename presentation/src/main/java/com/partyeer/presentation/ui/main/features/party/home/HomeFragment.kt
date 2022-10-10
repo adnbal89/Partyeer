@@ -38,7 +38,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             val bottomSheetDialog = BottomSheetDialog(requireContext())
             val view = BottomSheetDialogLayoutBinding.inflate(layoutInflater, binding.root, false)
             bottomSheetDialog.setContentView(view.root);
-
             bottomSheetDialog.show();
 
             //TODO: Refactor
@@ -50,13 +49,11 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             }
 
             view.textViewApply.setOnClickListener {
-                bottomSheetDialog.dismiss()
-                //implement party application process.
                 viewModel.applyToParty(party?.id)
+                bottomSheetDialog.dismiss()
             }
             view.textViewHide.setOnClickListener {
                 bottomSheetDialog.dismiss()
-                //implement party application process.
             }
             view.textViewAddFavorite.setOnClickListener {
                 bottomSheetDialog.dismiss()

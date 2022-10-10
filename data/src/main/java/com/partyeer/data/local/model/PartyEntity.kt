@@ -14,8 +14,8 @@ data class PartyEntity(
     val description: String?,
     val pictures: MutableList<PictureEntity>,
     var likeCount: Int = 0,
-    var inviteeList: MutableList<String>,
-    var likedUserIdList: MutableList<String>,
+    var inviteeList: MutableMap<String,Boolean> = HashMap(),
+    var likedUserIdList: MutableMap<String,Boolean> = HashMap(),
     var appliedUserIdList: MutableMap<String,Boolean> = HashMap(),
     val creatorUserId: String,
 ) : BaseEntity()

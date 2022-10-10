@@ -33,8 +33,8 @@ class CreatePartyViewModel @Inject constructor(
             "Example Description",
             mutableListOf(),
             likeCount = 51,
-            mutableListOf<String>("1"),
-            mutableListOf<String>("1"),
+            mutableMapOf(),
+            mutableMapOf(),
             mutableMapOf(),
             "1"
         )

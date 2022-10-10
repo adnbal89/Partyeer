@@ -84,8 +84,8 @@ class CreatePartyActivity : BaseActivity() {
                     "Example Description",
                     partyPictureList,
                     likeCount = 51,
-                    mutableListOf<String>("1"),
-                    mutableListOf<String>("1"),
+                    mutableMapOf<String,Boolean>(),
+                    mutableMapOf<String,Boolean>(),
                     mutableMapOf<String,Boolean>(),
                     "1"
                 )
