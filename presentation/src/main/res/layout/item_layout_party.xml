@@ -163,7 +163,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_layout_party_time"
-            android:layout_width="100dp"
+            android:layout_width="160dp"
             android:layout_height="20dp"
             android:layout_marginStart="24dp"
             android:clickable="true"
@@ -182,9 +182,9 @@
 
             <TextView
                 android:id="@+id/text_view_party_time"
-                android:layout_width="70dp"
+                android:layout_width="130dp"
                 android:layout_height="match_parent"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textAppearance="@style/TextAppearance.Label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewTime"
@@ -193,7 +193,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_layout_party_like_count"
-            android:layout_width="100dp"
+            android:layout_width="70dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +212,7 @@
 
             <TextView
                 android:id="@+id/text_view_party_like_counter"
-                android:layout_width="70dp"
+                android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
 
