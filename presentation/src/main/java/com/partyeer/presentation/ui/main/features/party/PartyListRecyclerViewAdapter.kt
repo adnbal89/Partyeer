@@ -1,5 +1,6 @@
 package com.partyeer.presentation.ui.main.features.party
 
+import android.text.format.DateFormat
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.partyeer.domain.repository.party.model.Party
@@ -56,27 +57,24 @@ private class PartyViewHolder(
                     }
                 })
             }
-
-
-            imageViewPartyCreatorLogo.setOnClickListener {
-
-            }
             textViewPartyTitle.text = item.title
             textViewPartyConcept.text = item.concept.description
-            constraintLayoutPartyLocation.setOnClickListener {
-
-            }
             textViewPartyLocation.text = "Berlin, Germany"
-            textViewPartyTime.text = item.timeStart.toString()
-
+            textViewPartyTime.text = DateFormat.format(" dd/MM HH:mm", item.timeStart)
             textViewPartyLikeCounter.text = item.likeCount.toString()
-
 
             imageViewShare.setOnClickListener {
 
             }
-        }
 
+            constraintLayoutPartyLocation.setOnClickListener {
+
+            }
+
+            imageViewPartyCreatorLogo.setOnClickListener {
+
+            }
+        }
     }
 
     fun setPictureIndicatorText(position: Int, pictureCount: Int) {

@@ -3,7 +3,6 @@ package com.partyeer.domain.repository.party
 import com.partyeer.domain.repository.base.BaseRepository
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
-import com.partyeer.util.uistate.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface PartyRepository : BaseRepository {

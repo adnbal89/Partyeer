@@ -45,7 +45,6 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
         //--------------stateflow-------
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.error.collect {
-                println("adnan error.." + it.javaClass.toString())
                 if (it != Failure.DefaultError)
                     showError(it)
             }
@@ -60,7 +59,7 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
         //------------------ livedata-------
     }
 
-    fun applyToParty(partyId: String){
+    fun applyToParty(partyId: String) {
 
     }
 

@@ -33,18 +33,8 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
     private lateinit var logoUri: String
     private lateinit var dateTime: DateTime
     private lateinit var timeView: View
-
-
-    /*private val getContent =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            binding.imageViewPartyLogo.setImageURI(uri)
-            logoUri = uri.toString() ?: ""
-
-            val picture = Picture(uri.toString(), uri.toString())
-            if (uri != null) {
-                partyPictureList.add(picture)
-            }
-        }*/
+    private var startTime: Long = 0
+    private var endTime: Long = 0
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetMultipleContents())
@@ -54,7 +44,6 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
 
             uriList.forEach {
                 val picture = Picture(it.toString(), it.toString())
-                println("adnan uriList : " + it.toString())
                 partyPictureList.add(picture)
             }
         }
@@ -69,16 +58,19 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         binding.imageViewPartyLogo.setOnClickListener {
             getContent.launch("image/*")
         }
-       timeView = View(this)
+        timeView = View(this)
         binding.apply {
             textViewStartTime.setOnTouchListener { view, motionEvent ->
                 when (motionEvent.action) {
                     MotionEvent.ACTION_DOWN -> {
                         pickDate()
                         timeView = textViewStartTime
-                        textViewStartTime.setText("${dateTime.day}/${dateTime.month}/${dateTime.year} @ ${dateTime.hour}:${dateTime.minute}")
+                        //textViewStartTime.setText("${dateTime.day}/${dateTime.month}/${dateTime.year} @ ${dateTime.hour}:${dateTime.minute}")
                         true
-                    }else -> { false }
+                    }
+                    else -> {
+                        false
+                    }
                 }
             }
 
@@ -87,9 +79,12 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
                     MotionEvent.ACTION_DOWN -> {
                         pickDate()
                         timeView = textViewEndsTime
-                        textViewEndsTime.setText("${dateTime.day}/${dateTime.month}/${dateTime.year} @ ${dateTime.hour}:${dateTime.minute}")
+                        //textViewEndsTime.setText("${dateTime.day}/${dateTime.month}/${dateTime.year} @ ${dateTime.hour}:${dateTime.minute}")
                         true
-                    }else -> { false }
+                    }
+                    else -> {
+                        false
+                    }
                 }
             }
         }
@@ -113,8 +108,8 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
                     Concept(binding.textViewPartyConcept.editText?.text.toString()),
                     28.987,
                     40.254,
-                    1665254150,
-                    1665264150,
+                    timeStart = startTime,
+                    timeEnd = endTime,
                     "Example Description",
                     partyPictureList,
                     likeCount = 51,
@@ -149,7 +144,6 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         dateTime.year = calendar.get(Calendar.YEAR)
         dateTime.hour = calendar.get(Calendar.HOUR)
         dateTime.minute = calendar.get(Calendar.MINUTE)
-
     }
 
     private fun pickDate() {
@@ -159,7 +153,7 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         DatePickerDialog(this, this, dateTime.year, dateTime.month, dateTime.month).show()
     }
 
-    override fun onDateSet(p0: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+    override fun onDateSet(datePicker: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         dateTime.year = year
         dateTime.month = month
         dateTime.day = dayOfMonth
@@ -167,13 +161,23 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         TimePickerDialog(this, this, dateTime.hour, dateTime.minute, true).show()
     }
 
-    override fun onTimeSet(p0: TimePicker?, hour: Int, minute: Int) {
+    override fun onTimeSet(timePicker: TimePicker?, hour: Int, minute: Int) {
         dateTime.hour = hour
         dateTime.minute = minute
-        if(timeView == binding.textViewStartTime) {
-            binding.textViewStartTime.setText("${dateTime.day}/${dateTime.month}/${dateTime.year} @ ${dateTime.hour}:${dateTime.minute}")
-        }else if(timeView == binding.textViewEndsTime) {
-            binding.textViewEndsTime.setText("${dateTime.day}/${dateTime.month}/${dateTime.year} @ ${dateTime.hour}:${dateTime.minute}")
+        val gregCalendar = GregorianCalendar(
+            dateTime.year,
+            dateTime.month,
+            dateTime.day,
+            dateTime.hour,
+            dateTime.minute
+        )
+
+        if (timeView == binding.textViewStartTime) {
+            binding.textViewStartTime.setText("${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${dateTime.minute}")
+            startTime = gregCalendar.timeInMillis
+        } else if (timeView == binding.textViewEndsTime) {
+            binding.textViewEndsTime.setText("${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${dateTime.minute}")
+            endTime = gregCalendar.timeInMillis
         }
     }
 

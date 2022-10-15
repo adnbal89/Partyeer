@@ -60,10 +60,14 @@ ext.versions = [
 
         play_services_maps           : '18.1.0',
 
+        maps_utils_version           : '1.1.0',
+
 ]
 
 def dependencies = [
         gradle               : classpath("com.android.tools.build:gradle:${versions.gradlePlugin}"),
+
+        maps_utils           : implementation("com.google.maps.android:android-maps-utils:${versions.maps_utils_version}"),
 
         secrets_gradle_plugin: classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:${versions.secrets_gradle_plugin_version}"),
 
@@ -146,6 +150,7 @@ ext.rootDependencies = [
         dependencies.navigation.safeArgs,
         dependencies.firebase,
         dependencies.secrets_gradle_plugin,
+
 ]
 
 ext.presentationDependencies = [
@@ -161,7 +166,8 @@ ext.presentationDependencies = [
         dependencies.fragment,
         dependencies.firebase_storage,
         dependencies.splash_screen,
-        dependencies.play_services_maps
+        dependencies.play_services_maps,
+        dependencies.maps_utils,
 
 ]
 

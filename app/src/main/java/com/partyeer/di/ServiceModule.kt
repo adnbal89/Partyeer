@@ -34,7 +34,6 @@ object ServiceModule {
 
     @Singleton
     @Provides
-    fun provideFirebaseStorage() =
-        Firebase.storage
+    fun provideFirebaseStorage() = Firebase.storage
 
 }

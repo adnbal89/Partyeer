@@ -34,7 +34,6 @@ class HomeViewModel @Inject constructor(
                 viewModelScope.launch {
                     it.collect { list ->
                         /*list.forEach {
-                            println("adnan collect liffffst : " + list.size)
                             _party.value = it
                         }*/
                         _partyList.value = list
