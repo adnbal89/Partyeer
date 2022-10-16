@@ -8,13 +8,14 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.BottomSheetDialogLayoutBinding
 import com.partyeer.presentation.databinding.FragmentHomeBinding
 import com.partyeer.presentation.ui.main.activity.PartyMapsActivity
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
 import com.partyeer.presentation.ui.main.features.party.PartyListRecyclerViewAdapter
+import com.partyeer.presentation.ui.main.features.party.googlemaps.PartyToPartyMapItemMapper
+import com.partyeer.presentation.ui.main.features.party.googlemaps.model.PartyMapItem
 import com.partyeer.presentation.ui.main.util.setDivider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -22,7 +23,9 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
-    private lateinit var partyArrayList: ArrayList<Party>
+    private lateinit var partyArrayList: ArrayList<PartyMapItem>
+    private val partymapper: PartyToPartyMapItemMapper = PartyToPartyMapItemMapper()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -99,7 +102,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun observeEvents() {
         super.observeEvents()
-        partyArrayList = ArrayList<Party>()
+        partyArrayList = ArrayList<PartyMapItem>()
         //Collect Party
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.partyList.collect { partyList ->
@@ -109,14 +112,14 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                     //setPictureIndicatorText(list.size.coerceAtLeast(1))
                 }
                 partyList.forEach {
-                    partyArrayList.add(it)
+                    //map [Party] to [PartyMapItem] while adding to arraylist
+                    partyArrayList.add(partymapper.map(it))
                 }
             }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-
         val actionCancel = menu.findItem(R.id.action_cancel)
         val actionPublish = menu.findItem(R.id.action_publish)
         actionCancel.isVisible = false

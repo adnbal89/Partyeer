@@ -20,5 +20,6 @@ data class Party(
     var likedUserIdList: MutableMap<String, Boolean> = HashMap(),
     var appliedUserIdList: MutableMap<String, Boolean> = HashMap(),
     val creatorUserId: String,
+    var address: String = "Party Address"
 ) : BaseItem()
 
