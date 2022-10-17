@@ -3,14 +3,18 @@ package com.partyeer.presentation.ui.main.features.party.createparty
 import android.app.Activity
 import android.content.Intent
 import android.location.Location
+import androidx.lifecycle.viewModelScope
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.usecase.CreateParty
 import com.partyeer.domain.repository.party.usecase.GetPartyConceptList
 import com.partyeer.presentation.ui.main.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,6 +23,9 @@ class CreatePartyViewModel @Inject constructor(
     private val getPartyConceptList: GetPartyConceptList
 ) : BaseViewModel() {
     private val targetLocation = Location("") //provider name is unnecessary
+
+    private val eventChannel = Channel<Event>()
+    val events = eventChannel.receiveAsFlow()
 
     private val _party = MutableStateFlow<Party>(
         Party(
@@ -59,7 +66,9 @@ class CreatePartyViewModel @Inject constructor(
     fun createParty(party: Party) {
         createPartyUseCase(this) {
             onSuccess = {
-
+                viewModelScope.launch {
+                    eventChannel.send(Event.FinishActivity)
+                }
             }
             params = party
         }
@@ -84,5 +93,9 @@ class CreatePartyViewModel @Inject constructor(
 
     companion object {
         private const val DEFAULT_PARTY_ID = "From Network"
+    }
+
+    sealed class Event {
+        object FinishActivity : Event()
     }
 }

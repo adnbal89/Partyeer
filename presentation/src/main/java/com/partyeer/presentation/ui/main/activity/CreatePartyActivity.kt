@@ -10,8 +10,10 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.model.Picture
@@ -35,6 +37,7 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
     private lateinit var timeView: View
     private var startTime: Long = 0
     private var endTime: Long = 0
+
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetMultipleContents())
@@ -93,6 +96,18 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         val arrayAdapter =
             ArrayAdapter(this, R.layout.item_loyout_concept_dropdown, partyConceptList)
         binding.autoCompleteTextViewConcept.setAdapter(arrayAdapter)
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.events.collect { event ->
+                when (event) {
+                    is CreatePartyViewModel.Event.FinishActivity -> {
+                        Toast.makeText(baseContext, "Party Created", Toast.LENGTH_LONG).show()
+                        finish()
+                    }
+                }
+            }
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -188,4 +203,6 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         var hour: Int = 0,
         var minute: Int = 0
     )
+
+
 }

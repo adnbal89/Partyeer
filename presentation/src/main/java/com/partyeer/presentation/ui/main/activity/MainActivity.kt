@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val splashScreen = installSplashScreen()
-        Thread.sleep(2500L)
+        Thread.sleep(1500L)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

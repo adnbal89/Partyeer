@@ -70,6 +70,7 @@ class FirebaseRemoteService @Inject constructor(
 
     override suspend fun applyToParty(partyId: String) {
         val party = firebaseDatabaseReference.child(partyId)
+        //TODO : implement dynamically.
         party.child("appliedUserIdList").child("adnbal89").setValue(true)
     }
 
@@ -104,8 +105,6 @@ class FirebaseRemoteService @Inject constructor(
 
     private fun createFirebaseEntry(partyDTO: PartyDTO) {
         firebaseDatabaseReference.child(partyDTO.id).setValue(partyDTO).addOnSuccessListener {
-            //TODO : implement Flow so that activity finish() when upload completes.
-
         }
     }
 }

@@ -31,7 +31,6 @@ class PartyMapsActivity : BaseActivity(), OnMapReadyCallback {
             mapFragment?.awaitMap()
         }
 
-
         mapFragment?.getMapAsync(this)
         //get partyList from previous activity
         partyList = intent.getParcelableArrayListExtra<PartyMapItem>("partyList").let { it!! }

@@ -16,7 +16,9 @@ class PartyRemoteDataSource @Inject constructor(
 
     override suspend fun getParty(id: String) = partyRemoteService.getParty(id)
 
-    override suspend fun createParty(partyDTO: PartyDTO) = partyRemoteService.createParty(partyDTO)
+    override suspend fun createParty(partyDTO: PartyDTO) {
+        partyRemoteService.createParty(partyDTO)
+    }
 
     override suspend fun getPartyConcepts(): Flow<List<ConceptDTO>> =
         partyRemoteService.getPartyConcepts()
