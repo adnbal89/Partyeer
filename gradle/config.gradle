@@ -68,8 +68,8 @@ def dependencies = [
         gradle               : classpath("com.android.tools.build:gradle:${versions.gradlePlugin}"),
 
         maps_utils           : implementation("com.google.maps.android:maps-utils-ktx:${versions.maps_utils_version}"),
-        maps_ktx             : implementation("com.google.maps.android:maps-ktx:${versions.maps_utils_version}"),
 
+        maps_ktx             : implementation("com.google.maps.android:maps-ktx:${versions.maps_utils_version}"),
 
         secrets_gradle_plugin: classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:${versions.secrets_gradle_plugin_version}"),
 

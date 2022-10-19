@@ -97,6 +97,7 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
             ArrayAdapter(this, R.layout.item_loyout_concept_dropdown, partyConceptList)
         binding.autoCompleteTextViewConcept.setAdapter(arrayAdapter)
 
+        //finish activity when party creation success.
         lifecycleScope.launchWhenStarted {
             viewModel.events.collect { event ->
                 when (event) {
