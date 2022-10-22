@@ -80,6 +80,8 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
         }*/
 
         with(binding.recyclerViewPartyList) {
+            isNestedScrollingEnabled = false
+            setHasFixedSize(true)
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = partyListRecyclerViewAdapter.apply {
@@ -102,10 +104,11 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun observeEvents() {
         super.observeEvents()
-        partyArrayList = ArrayList<PartyMapItem>()
+
         //Collect Party
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.partyList.collect { partyList ->
+                partyArrayList = ArrayList<PartyMapItem>()
                 with(binding) {
                     //pictureRecyclerViewAdapter.setItems(list)
                     partyListRecyclerViewAdapter.setItems(partyList)
@@ -130,7 +133,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
         actionMap.setOnMenuItemClickListener {
             val intent = Intent(activity, PartyMapsActivity::class.java)
             intent.putExtra("partyList", partyArrayList)
-            activity!!.startActivity(intent)
+            requireContext().startActivity(intent)
             true
         }
 

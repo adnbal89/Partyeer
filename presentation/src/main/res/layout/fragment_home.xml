@@ -1,81 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutImages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!--<androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutImages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerPicturesHeadline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="H,2:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerPicturesHeadline"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="H,2:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageViewShare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:padding="4dp"
-                android:src="@android:drawable/ic_menu_share"
-                android:textAppearance="@style/TextAppearance.Medium.12.White"
-                app:layout_constraintEnd_toEndOf="@id/viewPagerPicturesHeadline"
-                app:layout_constraintTop_toTopOf="@id/viewPagerPicturesHeadline"
-                tools:text="13/20" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewPictureIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_indicator"
-                android:padding="8dp"
-                android:textAppearance="@style/TextAppearance.Medium.12.White"
-                app:layout_constraintBottom_toBottomOf="@id/viewPagerPicturesHeadline"
-                app:layout_constraintEnd_toEndOf="@id/viewPagerPicturesHeadline"
-                tools:text="2/8" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutPartyList"
-            style="@style/AddLayoutSection"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewShare"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_share"
+            android:textAppearance="@style/TextAppearance.Medium.12.White"
+            app:layout_constraintEnd_toEndOf="@id/viewPagerPicturesHeadline"
+            app:layout_constraintTop_toTopOf="@id/viewPagerPicturesHeadline"
+            tools:text="13/20" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewPartyList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@id/layoutPartyList"
-                app:layout_constraintStart_toStartOf="@+id/layoutPartyList"
-                app:layout_constraintTop_toTopOf="@id/layoutPartyList"
-                tools:listitem="@layout/item_layout_party" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewPictureIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_indicator"
+            android:padding="8dp"
+            android:textAppearance="@style/TextAppearance.Medium.12.White"
+            app:layout_constraintBottom_toBottomOf="@id/viewPagerPicturesHeadline"
+            app:layout_constraintEnd_toEndOf="@id/viewPagerPicturesHeadline"
+            tools:text="2/8" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-</ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPartyList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_layout_party" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

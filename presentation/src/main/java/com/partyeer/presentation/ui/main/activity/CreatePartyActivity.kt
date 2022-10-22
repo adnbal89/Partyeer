@@ -1,5 +1,6 @@
 package com.partyeer.presentation.ui.main.activity
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -51,6 +52,7 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
             }
         }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -61,7 +63,9 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         binding.imageViewPartyLogo.setOnClickListener {
             getContent.launch("image/*")
         }
+
         timeView = View(this)
+
         binding.apply {
             textViewStartTime.setOnTouchListener { view, motionEvent ->
                 when (motionEvent.action) {
@@ -97,7 +101,7 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
             ArrayAdapter(this, R.layout.item_loyout_concept_dropdown, partyConceptList)
         binding.autoCompleteTextViewConcept.setAdapter(arrayAdapter)
 
-        //finish activity when party creation success.
+
         lifecycleScope.launchWhenStarted {
             viewModel.events.collect { event ->
                 when (event) {
