@@ -75,6 +75,7 @@
     <string name="picture_indicator">%1$d/%2$d</string>
     <string name="new_party">New Party</string>
     <string name="map">Open Map</string>
+    <string name="refresh">Refresh</string>
 
 
     <string-array name="party_concepts">
