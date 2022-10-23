@@ -43,8 +43,6 @@ private class PartyViewHolder(
         val pictureRecyclerViewAdapter = PictureRecyclerViewAdapter()
         pictureRecyclerViewAdapter.setItems(item.pictures)
 
-
-
         with(itemBinding) {
 
             with(viewPagerPictures) {

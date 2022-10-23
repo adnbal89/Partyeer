@@ -1,8 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_popular_parties"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_view_title_popular_parties"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/popular_parties"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Header30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPopularParties"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_title_popular_parties"
+                tools:listitem="@layout/item_layout_search_party" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_happy_hours"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_popular_parties">
+
+            <TextView
+                android:id="@+id/text_view_title_happy_hours"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/happy_hours"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Header30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHappyHours"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_title_happy_hours"
+                tools:listitem="@layout/item_layout_search_party" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_discount_parties"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_happy_hours">
+
+            <TextView
+                android:id="@+id/text_view_title_discount_parties"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/discount_parties"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Header30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDiscountParties"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_title_discount_parties"
+                tools:listitem="@layout/item_layout_search_party" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_elite_parties"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_discount_parties">
+
+            <TextView
+                android:id="@+id/text_view_title_elite_parties"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/elite_parties"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Header30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewEliteParties"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_title_elite_parties"
+                tools:listitem="@layout/item_layout_search_party" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
