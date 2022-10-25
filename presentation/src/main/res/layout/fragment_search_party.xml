@@ -17,27 +17,35 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_popular_parties"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="200dp"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/text_view_title_popular_parties"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:text="@string/popular_parties"
+                android:textAppearance="@style/TextAppearance.Medium.20.Black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image_view_popular_parties_continuous"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_arrow"
                 android:text="@string/popular_parties"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Header30"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textAppearance="@style/TextAppearance.Medium.20.Black"
+                app:layout_constraintStart_toEndOf="@+id/text_view_title_popular_parties"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewPopularParties"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_margin="5dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_title_popular_parties"
@@ -47,20 +55,29 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_happy_hours"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="60dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_popular_parties">
 
             <TextView
                 android:id="@+id/text_view_title_happy_hours"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
                 android:text="@string/happy_hours"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Header30"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image_view_party_logo"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_arrow"
+                android:text="@string/popular_parties"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Medium.20.Black"
+                app:layout_constraintStart_toEndOf="@+id/text_view_title_happy_hours"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -77,19 +94,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_discount_parties"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="60dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_happy_hours">
 
             <TextView
                 android:id="@+id/text_view_title_discount_parties"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:text="@string/discount_parties"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Header30"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,18 +122,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_elite_parties"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="60dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_discount_parties">
 
             <TextView
                 android:id="@+id/text_view_title_elite_parties"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:text="@string/elite_parties"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Header30"
+                android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

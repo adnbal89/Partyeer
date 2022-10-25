@@ -28,7 +28,13 @@
         <activity
             android:name=".ui.main.activity.PartyMapsActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/Maps"
+            android:theme="@style/Theme.Partyeer" />
+
+        <activity
+            android:name=".ui.main.activity.PartyDetailActivity"
+            android:exported="true"
+            android:label="@string/party_details"
             android:theme="@style/Theme.Partyeer" />
     </application>
 </manifest>

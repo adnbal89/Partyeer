@@ -1,4 +1,4 @@
-package com.partyeer.presentation.ui.main.features.party.createparty
+package com.partyeer.presentation.ui.main.activity.viewmodel
 
 import android.app.Activity
 import android.content.Intent

@@ -13,22 +13,24 @@ import com.partyeer.presentation.ui.main.view.recycler.BaseRecyclerViewHolder
 import com.partyeer.presentation.ui.main.view.recycler.ViewBindingRecyclerViewHolder
 
 class PartyListRecyclerViewAdapter(
-    private val clickListener: (Party?) -> Unit
+    private val clickListener: (Party?) -> Unit,
+    private val clickPartyTitleListener: (Party?) -> Unit
 ) : BaseRecyclerViewAdapter<Party>() {
 
 
     override fun createNewViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseRecyclerViewHolder<Party> = PartyViewHolder(parent) { position ->
-        clickListener(getItem(position))
-    }
+    ): BaseRecyclerViewHolder<Party> = PartyViewHolder(parent,
+        { position -> clickListener(getItem(position)) },
+        { position -> clickPartyTitleListener(getItem(position)) })
 }
 
 
 private class PartyViewHolder(
     parent: ViewGroup,
-    clickAtPosition: (Int) -> Unit
+    clickAtPosition: (Int) -> Unit,
+    clickPartyTitleAtPosition: (Int) -> Unit
 ) : ViewBindingRecyclerViewHolder<Party, ItemLayoutPartyBinding>(
     ItemLayoutPartyBinding.inflate(parent.inflater(), parent, false)
 ) {
@@ -36,10 +38,14 @@ private class PartyViewHolder(
         itemBinding.imageViewOptionsMenu.setOnClickListener {
             clickAtPosition(bindingAdapterPosition)
         }
+
+        itemBinding.textViewPartyTitle.setOnClickListener {
+            clickPartyTitleAtPosition(bindingAdapterPosition)
+        }
     }
 
     override fun bindItem(item: Party) {
-
+        //TODO: refactor
         val pictureRecyclerViewAdapter = PictureRecyclerViewAdapter()
         pictureRecyclerViewAdapter.setItems(item.pictures)
 

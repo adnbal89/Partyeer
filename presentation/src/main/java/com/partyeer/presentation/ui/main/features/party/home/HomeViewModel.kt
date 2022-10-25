@@ -25,6 +25,7 @@ class HomeViewModel @Inject constructor(
     val partyList: StateFlow<List<Party>>
         get() = _partyList
 
+    //events to be sent to fragment when triggered.
     private val eventChannel = Channel<Event>()
     val events = eventChannel.receiveAsFlow()
 

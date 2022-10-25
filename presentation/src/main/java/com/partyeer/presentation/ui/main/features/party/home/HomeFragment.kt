@@ -11,6 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.BottomSheetDialogLayoutBinding
 import com.partyeer.presentation.databinding.FragmentHomeBinding
+import com.partyeer.presentation.ui.main.activity.PartyDetailActivity
 import com.partyeer.presentation.ui.main.activity.PartyMapsActivity
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
 import com.partyeer.presentation.ui.main.features.party.PartyListRecyclerViewAdapter
@@ -26,7 +27,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
     private lateinit var partyArrayList: ArrayList<PartyMapItem>
     private val partymapper: PartyToPartyMapItemMapper = PartyToPartyMapItemMapper()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
@@ -37,7 +37,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
       }*/
 
     private val partyListRecyclerViewAdapter by lazy {
-        PartyListRecyclerViewAdapter() { party ->
+        PartyListRecyclerViewAdapter({ party ->
             val bottomSheetDialog = BottomSheetDialog(requireContext())
             val view = BottomSheetDialogLayoutBinding.inflate(layoutInflater, binding.root, false)
             bottomSheetDialog.setContentView(view.root);
@@ -51,6 +51,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 view.textViewApply.visibility = View.GONE
             }
 
+
             view.textViewApply.setOnClickListener {
                 viewModel.applyToParty(party?.id)
                 bottomSheetDialog.dismiss()
@@ -62,7 +63,12 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 bottomSheetDialog.dismiss()
                 //implement party application process.
             }
-        }
+        },
+            { party ->
+                val intent = Intent(requireActivity(), PartyDetailActivity::class.java)
+                intent.putExtra("party", party)
+                requireContext().startActivity(intent)
+            })
     }
 
     override fun initViews() {
@@ -131,7 +137,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
         //open map activity and send party list
         val actionMap = menu.findItem(R.id.action_open_map_activity)
         actionMap.setOnMenuItemClickListener {
-            val intent = Intent(activity, PartyMapsActivity::class.java)
+            val intent = Intent(requireActivity(), PartyMapsActivity::class.java)
             intent.putExtra("partyList", partyArrayList)
             requireContext().startActivity(intent)
             true

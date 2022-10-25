@@ -6,16 +6,14 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackgroundBorderless"
-    android:paddingTop="8dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
     android:paddingBottom="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutImages"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="4dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,7 +36,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeadLines"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutImages">
 
@@ -48,8 +46,8 @@
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:text="@string/search"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Medium.20.Black"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Medium.12"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         />

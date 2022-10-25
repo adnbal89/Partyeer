@@ -19,4 +19,12 @@
     <string name="happy_hours">Happy Hours</string>
     <string name="discount_parties">Discount Parties</string>
     <string name="elite_parties">Elite Parties</string>
+    <string name="tag">tag</string>
+    <string name="starts_at">Starts at</string>
+    <string name="ends_at">Ends At</string>
+    <string name="entry_fee">Entry Fee</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="Maps">Maps</string>
+    <string name="party_details">Party Details</string>
 </resources>
