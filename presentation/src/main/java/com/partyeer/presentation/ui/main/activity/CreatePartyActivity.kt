@@ -133,9 +133,9 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
                     "Example Description",
                     partyPictureList,
                     likeCount = 51,
-                    mutableMapOf<String, Boolean>(),
-                    mutableMapOf<String, Boolean>(),
-                    mutableMapOf<String, Boolean>(),
+                    hashMapOf<String, Boolean>(),
+                    hashMapOf<String, Boolean>(),
+                    hashMapOf<String, Boolean>(),
                     "1"
                 )
                 viewModel.createParty(party)

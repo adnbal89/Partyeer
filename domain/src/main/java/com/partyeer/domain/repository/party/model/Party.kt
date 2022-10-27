@@ -16,9 +16,9 @@ data class Party(
     val description: String?,
     val pictures: MutableList<Picture>,
     var likeCount: Int = 0,
-    var inviteeList: MutableMap<String, Boolean> = HashMap(),
-    var likedUserIdList: MutableMap<String, Boolean> = HashMap(),
-    var appliedUserIdList: MutableMap<String, Boolean> = HashMap(),
+    var inviteeList: HashMap<String, Boolean> = HashMap(),
+    var likedUserIdList: HashMap<String, Boolean> = HashMap(),
+    var appliedUserIdList: HashMap<String, Boolean> = HashMap(),
     val creatorUserId: String,
     var address: String = "Party Address"
 ) : BaseItem()

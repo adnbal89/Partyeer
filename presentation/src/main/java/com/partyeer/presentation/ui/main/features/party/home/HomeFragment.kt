@@ -51,7 +51,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 view.textViewApply.visibility = View.GONE
             }
 
-
             view.textViewApply.setOnClickListener {
                 viewModel.applyToParty(party?.id)
                 bottomSheetDialog.dismiss()

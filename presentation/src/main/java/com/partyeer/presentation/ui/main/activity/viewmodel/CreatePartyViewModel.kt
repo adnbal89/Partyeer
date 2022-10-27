@@ -40,9 +40,9 @@ class CreatePartyViewModel @Inject constructor(
             "Example Description",
             mutableListOf(),
             likeCount = 51,
-            mutableMapOf(),
-            mutableMapOf(),
-            mutableMapOf(),
+            hashMapOf(),
+            hashMapOf(),
+            hashMapOf(),
             "1"
         )
     )

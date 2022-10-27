@@ -27,4 +27,7 @@
     <string name="location">Location</string>
     <string name="Maps">Maps</string>
     <string name="party_details">Party Details</string>
+    <string name="invitee_list">Invitee List</string>
+    <string name="follow">Follow</string>
+    <string name="search_user">Search User</string>
 </resources>

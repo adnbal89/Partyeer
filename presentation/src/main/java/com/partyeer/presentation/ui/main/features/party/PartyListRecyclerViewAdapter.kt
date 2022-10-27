@@ -17,7 +17,6 @@ class PartyListRecyclerViewAdapter(
     private val clickPartyTitleListener: (Party?) -> Unit
 ) : BaseRecyclerViewAdapter<Party>() {
 
-
     override fun createNewViewHolder(
         parent: ViewGroup,
         viewType: Int

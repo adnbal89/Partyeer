@@ -36,5 +36,11 @@
             android:exported="true"
             android:label="@string/party_details"
             android:theme="@style/Theme.Partyeer" />
+
+        <activity
+            android:name=".ui.main.activity.InviteeListActivity"
+            android:exported="true"
+            android:label="@string/invitee_list"
+            android:theme="@style/Theme.Partyeer" />
     </application>
 </manifest>

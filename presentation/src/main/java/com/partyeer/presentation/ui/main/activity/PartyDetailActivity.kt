@@ -1,6 +1,8 @@
 package com.partyeer.presentation.ui.main.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.format.DateFormat
 import androidx.activity.viewModels
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.databinding.ActivityPartyDetailBinding
@@ -22,17 +24,28 @@ class PartyDetailActivity : BaseActivity() {
         setSupportActionBar(binding.toolbar)
 
         party = intent.getParcelableExtra<Party>("party").let { it!! }
-
         pictureRecyclerViewAdapter.setItems(party.pictures)
 
-        binding.textViewStartTimeValue.text = party.timeStart.toString()
-        binding.textViewLocationValue.text = party.address
-        binding.textViewEndTimeValue.text = party.timeEnd.toString()
-        binding.textViewDescriptionValue.text = party.description
-
         with(binding) {
+            textViewStartTimeValue.text = party.timeStart.toString()
+            textViewLocationValue.text = party.address
+            textViewApprovedCount.text = party.inviteeList.count().toString()
+            textViewLikeCount.text = party.likeCount.toString()
+            textViewStartTimeValue.text =
+                DateFormat.format("E, dd/MMM/yyyy HH:mm", party.timeStart)
+            textViewEndTimeValue.text =
+                DateFormat.format("E, dd/MMM/yyyy HH:mm", party.timeStart)
+            textViewCreatorName.text = party.creatorUserId
+            textViewEndTimeValue.text = party.timeEnd.toString()
+            textViewDescriptionValue.text = party.description
+
             with(viewPagerPartyDetail) {
                 adapter = pictureRecyclerViewAdapter
+            }
+            imageViewApprovedUsers.setOnClickListener {
+                val intent = Intent(this@PartyDetailActivity, InviteeListActivity::class.java)
+                intent.putExtra("partyInviteeList", party.inviteeList)
+                startActivity(intent)
             }
         }
     }
