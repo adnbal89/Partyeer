@@ -40,7 +40,7 @@
         <activity
             android:name=".ui.main.activity.InviteeListActivity"
             android:exported="true"
-            android:label="@string/invitee_list"
+            android:label="@string/guest_list"
             android:theme="@style/Theme.Partyeer" />
     </application>
 </manifest>

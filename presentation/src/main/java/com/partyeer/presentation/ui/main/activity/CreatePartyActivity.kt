@@ -20,8 +20,8 @@ import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.model.Picture
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityCreatePartyBinding
-import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.activity.viewmodel.CreatePartyViewModel
+import com.partyeer.presentation.ui.main.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -133,6 +133,7 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
                     "Example Description",
                     partyPictureList,
                     likeCount = 51,
+                    entranceFee = "Free",
                     hashMapOf<String, Boolean>(),
                     hashMapOf<String, Boolean>(),
                     hashMapOf<String, Boolean>(),

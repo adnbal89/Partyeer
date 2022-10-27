@@ -23,6 +23,7 @@ class PartyDTOMapper @Inject constructor(
             timeStart = source.timeStart,
             timeEnd = source.timeEnd,
             description = source.description,
+            entranceFee = source.entranceFee,
             pictures = pictureDTOMapper.map(source.pictures).toMutableList(),
             likeCount = source.likeCount,
             inviteeList = source.inviteeList,

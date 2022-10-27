@@ -12,6 +12,7 @@ data class PartyEntity(
     var timeStart: Long,
     var timeEnd: Long,
     val description: String?,
+    var entranceFee: String,
     val pictures: MutableList<PictureEntity>,
     var likeCount: Int = 0,
     var inviteeList: HashMap<String, Boolean> = HashMap(),

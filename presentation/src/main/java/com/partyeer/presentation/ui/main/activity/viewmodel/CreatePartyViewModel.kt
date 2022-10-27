@@ -40,6 +40,7 @@ class CreatePartyViewModel @Inject constructor(
             "Example Description",
             mutableListOf(),
             likeCount = 51,
+            entranceFee = "Free",
             hashMapOf(),
             hashMapOf(),
             hashMapOf(),

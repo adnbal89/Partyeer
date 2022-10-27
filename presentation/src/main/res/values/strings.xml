@@ -91,6 +91,7 @@
     <string name="invitee_list">Invitee List</string>
     <string name="follow">Follow</string>
     <string name="search_user">Search User</string>
+    <string name="guest_list">Guest List</string>
 
 
     <string-array name="party_concepts">

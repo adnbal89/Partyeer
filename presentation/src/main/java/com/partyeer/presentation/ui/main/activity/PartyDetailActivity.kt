@@ -23,8 +23,11 @@ class PartyDetailActivity : BaseActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
+
         party = intent.getParcelableExtra<Party>("party").let { it!! }
         pictureRecyclerViewAdapter.setItems(party.pictures)
+
+        supportActionBar?.title = party.title
 
         with(binding) {
             textViewStartTimeValue.text = party.timeStart.toString()
@@ -36,7 +39,7 @@ class PartyDetailActivity : BaseActivity() {
             textViewEndTimeValue.text =
                 DateFormat.format("E, dd/MMM/yyyy HH:mm", party.timeStart)
             textViewCreatorName.text = party.creatorUserId
-            textViewEndTimeValue.text = party.timeEnd.toString()
+            textViewEntryFeeValue.text = party.entranceFee
             textViewDescriptionValue.text = party.description
 
             with(viewPagerPartyDetail) {

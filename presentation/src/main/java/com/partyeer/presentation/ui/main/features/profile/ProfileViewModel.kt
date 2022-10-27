@@ -12,14 +12,14 @@ class ProfileViewModel @Inject constructor(
 
     override fun onViewAttached() {
         super.onViewAttached()
-            getPartyList(this) {
-                onSuccess = {
+        getPartyList(this) {
+            onSuccess = {
 
-                }
-                onError = {
+            }
+            onError = {
 
-                }
             }
         }
+    }
 
 }

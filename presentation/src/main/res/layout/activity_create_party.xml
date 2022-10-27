@@ -37,9 +37,9 @@
             android:layout_margin="2dp"
             android:contentDescription="@string/party_logo"
             android:maxHeight="300dp"
-            app:layout_constraintHeight_max="500dp"
             android:src="@drawable/ic_add_photo"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="500dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbarLayout"
             tools:srcCompat="@drawable/ic_add_photo" />

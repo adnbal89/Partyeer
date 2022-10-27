@@ -34,7 +34,8 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
     override fun initViews() {
         with(binding.recyclerViewPopularParties) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = searchPartyListRecyclerViewAdapter.apply {
                 onItemClick = {
 
@@ -44,7 +45,8 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
 
         with(binding.recyclerViewHappyHours) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = searchPartyListRecyclerViewAdapter.apply {
                 onItemClick = {
 
@@ -54,7 +56,8 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
 
         with(binding.recyclerViewDiscountParties) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = searchPartyListRecyclerViewAdapter.apply {
                 onItemClick = {
 
@@ -64,7 +67,8 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
 
         with(binding.recyclerViewEliteParties) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = searchPartyListRecyclerViewAdapter.apply {
                 onItemClick = {
 

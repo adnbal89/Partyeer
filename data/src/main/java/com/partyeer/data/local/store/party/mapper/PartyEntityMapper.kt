@@ -18,6 +18,7 @@ class PartyEntityMapper : BaseMapper<PartyEntity, Party> {
             latitude = source.latitude,
             timeStart = source.timeStart,
             timeEnd = source.timeEnd,
+            entranceFee = source.entranceFee,
             description = source.description,
             pictures = pictureMapper.map(source.pictures).toMutableList(),
             likeCount = source.likeCount,

@@ -12,6 +12,7 @@ data class PartyDTO(
     val timeStart: Long = 0,
     var timeEnd: Long = 0,
     val description: String? = "",
+    var entranceFee: String = "",
     val pictures: MutableList<PictureDTO> = mutableListOf(),
     var likeCount: Int = 0,
     var inviteeList: HashMap<String, Boolean> = HashMap(),

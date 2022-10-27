@@ -4,15 +4,14 @@ Partyeer is a partying app lets you to find nearby parties and also create your 
 
 Techstack :
 
-- Clean Architecture
-  Project divided into 5 modules;
-  - App
-  - Presentation 
-  - Domain
-  - Data
-  - Util
-  
-- Coroutines, Flow, Viewbinding, 
+- Clean Architecture Project divided into 5 modules;
+    - App
+    - Presentation
+    - Domain
+    - Data
+    - Util
+
+- Coroutines, Flow, Viewbinding,
 - Dagger2(Hilt)
 - Glide,
 - Limited usage of Jetpack Compose (for error dialog)

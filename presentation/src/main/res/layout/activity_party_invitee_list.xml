@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="1000dp"
-    android:layout_marginTop="4dp"
+    android:layout_marginTop="8dp"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
     tools:context=".ui.main.activity.PartyDetailActivity">
