@@ -34,9 +34,6 @@ class HomeViewModel @Inject constructor(
             onSuccess = {
                 viewModelScope.launch {
                     it.collect { list ->
-                        /*list.forEach {
-                            _party.value = it
-                        }*/
                         _partyList.value = list
                     }
                 }

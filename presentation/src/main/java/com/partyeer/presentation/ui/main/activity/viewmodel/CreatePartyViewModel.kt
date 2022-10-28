@@ -52,7 +52,6 @@ class CreatePartyViewModel @Inject constructor(
 
 
     override fun onViewAttached() {
-
         /*val party = Party(
             "1",
             "https://images.unsplash.com/photo-1661612117616-84b7fcf639d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MzY5MjQ5Nw&ixlib=rb-1.2.1&q=80&w=200",
@@ -82,14 +81,6 @@ class CreatePartyViewModel @Inject constructor(
             }
         }
 
-    }
-
-    fun selectImage(activity: Activity) {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-
-        activity.startActivityForResult(intent, 100)
     }
 
     companion object {

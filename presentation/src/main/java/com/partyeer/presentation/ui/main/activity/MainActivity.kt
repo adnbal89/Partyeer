@@ -70,8 +70,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
-
-        val splashScreen = installSplashScreen()
+        installSplashScreen()
         Thread.sleep(1500L)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -130,15 +129,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
-
-        /* binding.fab.setOnClickListener { view ->
-             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                 .setAnchorView(R.id.fab)
-                 .setAction("Action", null).show()
-         }*/
-
-
     }
 
     override fun onBackPressed() {
