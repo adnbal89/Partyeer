@@ -32,10 +32,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
         setHasOptionsMenu(true)
     }
 
-    /*  private val pictureRecyclerViewAdapter by lazy {
-          PictureRecyclerViewAdapter()
-      }*/
-
     private val partyListRecyclerViewAdapter by lazy {
         PartyListRecyclerViewAdapter({ party ->
             val bottomSheetDialog = BottomSheetDialog(requireContext())
@@ -60,7 +56,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             }
             view.textViewAddFavorite.setOnClickListener {
                 bottomSheetDialog.dismiss()
-                //implement party application process.
+                //TODO: //implement party application process.
             }
         },
             { party ->
@@ -71,18 +67,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     override fun initViews() {
-        /*with(binding.viewPagerPicturesHeadline) {
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    setPictureIndicatorText(position)
-                }
-            })
-            adapter = pictureRecyclerViewAdapter.apply {
-                onItemClick = {
-
-                }
-            }
-        }*/
 
         with(binding.recyclerViewPartyList) {
             isNestedScrollingEnabled = false
@@ -96,15 +80,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 }
             }
         }
-
-        /*with(binding.imageViewShare) {
-            setOnClickListener {
-                IntentUtil.shareImage(
-                    activity = requireActivity(),
-                    uri = Uri.parse(pictureRecyclerViewAdapter.getItem(binding.viewPagerPicturesHeadline.currentItem)!!.preview)
-                )
-            }
-        }*/
     }
 
     override fun observeEvents() {
@@ -115,9 +90,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             viewModel.partyList.collect { partyList ->
                 partyArrayList = ArrayList<PartyMapItem>()
                 with(binding) {
-                    //pictureRecyclerViewAdapter.setItems(list)
                     partyListRecyclerViewAdapter.setItems(partyList)
-                    //setPictureIndicatorText(list.size.coerceAtLeast(1))
                 }
                 partyList.forEach {
                     //map [Party] to [PartyMapItem] while adding to arraylist
@@ -141,15 +114,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             requireContext().startActivity(intent)
             true
         }
-
         super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    private fun setPictureIndicatorText(position: Int) {
-        /*binding.textViewPictureIndicator.text = getString(
-            R.string.picture_indicator,
-            position + 1,
-            pictureRecyclerViewAdapter.itemCount
-        )*/
     }
 }

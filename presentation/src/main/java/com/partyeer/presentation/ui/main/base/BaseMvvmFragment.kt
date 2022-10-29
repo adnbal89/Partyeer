@@ -59,8 +59,8 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
         //------------------ livedata-------
     }
 
+    //TODO: party application function to be implemented
     fun applyToParty(partyId: String) {
-
     }
 
     open fun onViewModelAttached() {

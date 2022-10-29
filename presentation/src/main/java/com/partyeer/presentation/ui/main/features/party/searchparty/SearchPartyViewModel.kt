@@ -19,6 +19,7 @@ class SearchPartyViewModel @Inject constructor(
     state: SavedStateHandle
 ) : BaseViewModel() {
     private val currentQuery = state.getLiveData<String?>("currentQuery", null)
+    //TODO: current query to be preserved for search bar
     val hasCurrentQuery = currentQuery.asFlow().map { it != null }
 
     private val _partyList = MutableStateFlow<List<Party>>(
@@ -27,7 +28,6 @@ class SearchPartyViewModel @Inject constructor(
     val partyList: StateFlow<List<Party>>
         get() = _partyList
 
-
     override fun onViewAttached() {
         super.onViewAttached()
 
@@ -35,9 +35,6 @@ class SearchPartyViewModel @Inject constructor(
             onSuccess = {
                 viewModelScope.launch {
                     it.collect { list ->
-                        /*list.forEach {
-                            _party.value = it
-                        }*/
                         _partyList.value = list
                     }
                 }

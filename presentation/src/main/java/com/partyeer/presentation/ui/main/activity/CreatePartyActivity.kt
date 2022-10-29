@@ -39,7 +39,6 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
     private var startTime: Long = 0
     private var endTime: Long = 0
 
-
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetMultipleContents())
         { uriList ->
