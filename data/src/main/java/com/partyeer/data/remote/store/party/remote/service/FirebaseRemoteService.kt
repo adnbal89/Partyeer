@@ -45,7 +45,7 @@ class FirebaseRemoteService @Inject constructor(
             }
 
             try {
-                firebaseDatabaseReference.addValueEventListener(callback)
+                firebaseDatabaseReference.addListenerForSingleValueEvent(callback)
             } catch (e: FirebaseException) {
                 Timber.e(e.localizedMessage)
             }
