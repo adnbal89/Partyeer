@@ -14,6 +14,7 @@ import com.partyeer.presentation.databinding.FragmentHomeBinding
 import com.partyeer.presentation.ui.main.activity.PartyDetailActivity
 import com.partyeer.presentation.ui.main.activity.PartyMapsActivity
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
+import com.partyeer.presentation.ui.main.extension.showSnackbar
 import com.partyeer.presentation.ui.main.features.party.PartyListRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.features.party.googlemaps.PartyToPartyMapItemMapper
 import com.partyeer.presentation.ui.main.features.party.googlemaps.model.PartyMapItem
@@ -26,35 +27,38 @@ import kotlinx.coroutines.launch
 class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
     private lateinit var partyArrayList: ArrayList<PartyMapItem>
     private val partymapper: PartyToPartyMapItemMapper = PartyToPartyMapItemMapper()
+    private lateinit var bottomSheetView: BottomSheetDialogLayoutBinding
+    private lateinit var bottomSheetDialog: BottomSheetDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+
+        bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetView =
+            BottomSheetDialogLayoutBinding.inflate(layoutInflater, binding.root, false)
+        bottomSheetDialog.setContentView(bottomSheetView.root);
+        //TODO: Refactor
+
     }
 
     private val partyListRecyclerViewAdapter by lazy {
         PartyListRecyclerViewAdapter({ party ->
-            val bottomSheetDialog = BottomSheetDialog(requireContext())
-            val view = BottomSheetDialogLayoutBinding.inflate(layoutInflater, binding.root, false)
-            bottomSheetDialog.setContentView(view.root);
+            if (party?.appliedUserIdList?.containsKey("adnbal89") == false) {
+                bottomSheetView.textViewApply.visibility = View.VISIBLE
+            }else{
+                bottomSheetView.textViewApply.visibility = View.GONE
+            }
             bottomSheetDialog.show();
 
-            //TODO: Refactor
-            if (party?.appliedUserIdList?.containsKey("adnbal89") == false) {
-                view.textViewApply.visibility = View.VISIBLE
-            } else {
-                //TODO : implement application cancellation
-                view.textViewApply.visibility = View.GONE
-            }
-
-            view.textViewApply.setOnClickListener {
+            bottomSheetView.textViewApply.setOnClickListener {
                 viewModel.applyToParty(party?.id)
+                party?.appliedUserIdList?.set("adnbal89", true)
+            }
+            bottomSheetView.textViewHide.setOnClickListener {
                 bottomSheetDialog.dismiss()
             }
-            view.textViewHide.setOnClickListener {
-                bottomSheetDialog.dismiss()
-            }
-            view.textViewAddFavorite.setOnClickListener {
+            bottomSheetView.textViewAddFavorite.setOnClickListener {
                 bottomSheetDialog.dismiss()
                 //TODO: //implement party application process.
             }
@@ -95,6 +99,19 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 partyList.forEach {
                     //map [Party] to [PartyMapItem] while adding to arraylist
                     partyArrayList.add(partymapper.map(it))
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.events.collect {
+                when (it) {
+                    is HomeViewModel.Event.ErrorOccurred -> TODO()
+                    is HomeViewModel.Event.PartyApplicationSuccessfullyCompleted -> {
+                        showSnackbar("You have applied to Party")
+                        bottomSheetView.textViewApply.visibility = View.GONE
+                        bottomSheetDialog.dismiss()
+                    }
                 }
             }
         }
