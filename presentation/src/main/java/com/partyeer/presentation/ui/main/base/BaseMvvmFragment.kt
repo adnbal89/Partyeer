@@ -3,7 +3,9 @@ package com.partyeer.presentation.ui.main.base
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.CallSuper
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.partyeer.presentation.ui.main.base.delegate.viewModel
 import com.partyeer.util.exception.Failure
@@ -22,11 +24,13 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
     protected open fun observeEvents() {
         //--------------stateflow-------
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
             viewModel.loading.collect { loading ->
                 when (loading) {
                     true -> showLoading()
                     else -> hideLoading()
                 }
+            }
             }
         }
         //--------------stateflow-------
@@ -44,9 +48,11 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
 
         //--------------stateflow-------
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.error.collect {
-                if (it != Failure.DefaultError)
-                    showError(it)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.error.collect {
+                    if (it != Failure.DefaultError)
+                        showError(it)
+                }
             }
         }
         //--------------stateflow-------

@@ -6,7 +6,9 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.R
@@ -81,10 +83,12 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
         super.observeEvents()
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.partyList.collect { partyList ->
-                partyArrayList = ArrayList<Party>()
-                with(binding) {
-                    searchPartyListRecyclerViewAdapter.setItems(partyList)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.partyList.collect { partyList ->
+                    partyArrayList = ArrayList<Party>()
+                    with(binding) {
+                        searchPartyListRecyclerViewAdapter.setItems(partyList)
+                    }
                 }
             }
         }

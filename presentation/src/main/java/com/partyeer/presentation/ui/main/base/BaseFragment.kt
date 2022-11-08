@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.partyeer.presentation.R
 import com.partyeer.presentation.ui.main.extension.viewBinding
+import com.partyeer.presentation.ui.main.features.party.home.HomeFragment
 import com.partyeer.presentation.ui.main.util.DialogManager
 import javax.inject.Inject
 

@@ -21,7 +21,6 @@ ext.javaVersion = JavaVersion.VERSION_11
 
 ext.versions = [
         gradlePlugin                 : '7.1.2',
-
         kotlin                       : '1.6.10',
         ktx                          : '1.7.0',
 
@@ -36,7 +35,7 @@ ext.versions = [
 
         dagger                       : '2.41',
 
-        coroutines                   : '1.6.1',
+        coroutines                   : '1.6.4',
 
         retrofit                     : '2.9.0',
 
@@ -61,6 +60,9 @@ ext.versions = [
         play_services_maps           : '18.1.0',
 
         maps_utils_version           : '3.0.0',
+        lifecycle_version            : '2.5.1',
+
+
 
 ]
 
@@ -74,6 +76,10 @@ def dependencies = [
         secrets_gradle_plugin: classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:${versions.secrets_gradle_plugin_version}"),
 
         play_services_maps   : implementation("com.google.android.gms:play-services-maps:${versions.play_services_maps}"),
+
+        lifecycle_viewmodel   : implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle_version}"),
+
+        lifecycle_runtime   : implementation("androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle_version}"),
 
         kotlin               : [
                 plugin: classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"),
@@ -171,7 +177,9 @@ ext.presentationDependencies = [
         dependencies.splash_screen,
         dependencies.play_services_maps,
         dependencies.maps_utils,
-        dependencies.maps_ktx
+        dependencies.maps_ktx,
+        dependencies.lifecycle_viewmodel,
+        dependencies.lifecycle_runtime,
 
 ]
 

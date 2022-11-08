@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.BottomSheetDialogLayoutBinding
@@ -26,7 +29,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
     private lateinit var partyArrayList: ArrayList<PartyMapItem>
-    private val partymapper: PartyToPartyMapItemMapper = PartyToPartyMapItemMapper()
+    private val partyMapper: PartyToPartyMapItemMapper = PartyToPartyMapItemMapper()
     private lateinit var bottomSheetView: BottomSheetDialogLayoutBinding
     private lateinit var bottomSheetDialog: BottomSheetDialog
 
@@ -46,7 +49,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
         PartyListRecyclerViewAdapter({ party ->
             if (party?.appliedUserIdList?.containsKey("adnbal89") == false) {
                 bottomSheetView.textViewApply.visibility = View.VISIBLE
-            }else{
+            } else {
                 bottomSheetView.textViewApply.visibility = View.GONE
             }
             bottomSheetDialog.show();
@@ -62,13 +65,13 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 bottomSheetDialog.dismiss()
                 //TODO: //implement party application process.
             }
-        },
-            { party ->
-                val intent = Intent(requireActivity(), PartyDetailActivity::class.java)
-                intent.putExtra("party", party)
-                requireContext().startActivity(intent)
-            })
+        }, { party ->
+            val intent = Intent(requireActivity(), PartyDetailActivity::class.java)
+            intent.putExtra("party", party)
+            requireContext().startActivity(intent)
+        })
     }
+
 
     override fun initViews() {
 
@@ -82,6 +85,9 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
                     //setPictureIndicatorText(list.size.coerceAtLeast(1))
                 }
+            }.also {
+                it.stateRestorationPolicy =
+                    RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             }
         }
     }
@@ -91,26 +97,30 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
         //Collect Party
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.partyList.collect { partyList ->
-                partyArrayList = ArrayList<PartyMapItem>()
-                with(binding) {
-                    partyListRecyclerViewAdapter.setItems(partyList)
-                }
-                partyList.forEach {
-                    //map [Party] to [PartyMapItem] while adding to arraylist
-                    partyArrayList.add(partymapper.map(it))
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.partyList.collect { partyList ->
+                    partyArrayList = ArrayList<PartyMapItem>()
+                    with(binding) {
+                        partyListRecyclerViewAdapter.setItems(partyList)
+                    }
+                    partyList.forEach {
+                        //map [Party] to [PartyMapItem] while adding to arraylist
+                        partyArrayList.add(partyMapper.map(it))
+                    }
                 }
             }
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.events.collect {
-                when (it) {
-                    is HomeViewModel.Event.ErrorOccurred -> TODO()
-                    is HomeViewModel.Event.PartyApplicationSuccessfullyCompleted -> {
-                        showSnackbar("You have applied to Party")
-                        bottomSheetView.textViewApply.visibility = View.GONE
-                        bottomSheetDialog.dismiss()
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.events.collect {
+                    when (it) {
+                        is HomeViewModel.Event.ErrorOccurred -> TODO()
+                        is HomeViewModel.Event.PartyApplicationSuccessfullyCompleted -> {
+                            showSnackbar("You have applied to Party")
+                            bottomSheetView.textViewApply.visibility = View.GONE
+                            bottomSheetDialog.dismiss()
+                        }
                     }
                 }
             }
@@ -134,3 +144,4 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 }
+

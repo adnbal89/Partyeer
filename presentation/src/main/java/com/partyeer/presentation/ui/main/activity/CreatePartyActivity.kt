@@ -14,7 +14,9 @@ import android.widget.TimePicker
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.model.Picture
@@ -102,11 +104,13 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
 
 
         lifecycleScope.launchWhenStarted {
-            viewModel.events.collect { event ->
-                when (event) {
-                    is CreatePartyViewModel.Event.FinishActivity -> {
-                        Toast.makeText(baseContext, "Party Created", Toast.LENGTH_LONG).show()
-                        finish()
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.events.collect { event ->
+                    when (event) {
+                        is CreatePartyViewModel.Event.FinishActivity -> {
+                            Toast.makeText(baseContext, "Party Created", Toast.LENGTH_LONG).show()
+                            finish()
+                        }
                     }
                 }
             }
