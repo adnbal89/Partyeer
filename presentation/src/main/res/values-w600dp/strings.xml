@@ -31,4 +31,8 @@
     <string name="follow">Follow</string>
     <string name="search_user">Search User</string>
     <string name="guest_list">Guest List</string>
+    <string name="parties">Parties</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>
