@@ -80,12 +80,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             setHasFixedSize(true)
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = partyListRecyclerViewAdapter.apply {
-                onItemClick = {
-
-                    //setPictureIndicatorText(list.size.coerceAtLeast(1))
-                }
-            }.also {
+            adapter = partyListRecyclerViewAdapter.also {
                 it.stateRestorationPolicy =
                     RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             }

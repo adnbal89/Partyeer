@@ -4,11 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
 import androidx.activity.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.partyeer.domain.repository.party.model.Party
+import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityPartyDetailBinding
 import com.partyeer.presentation.ui.main.activity.viewmodel.PartyDetailViewModel
 import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.features.party.createparty.PictureRecyclerViewAdapter
+import com.partyeer.presentation.ui.main.util.navigation.Navigator
+import javax.inject.Inject
 
 class PartyDetailActivity : BaseActivity() {
     private val viewModel: PartyDetailViewModel by viewModels()
@@ -16,6 +20,9 @@ class PartyDetailActivity : BaseActivity() {
     private lateinit var binding: ActivityPartyDetailBinding
     private lateinit var party: Party
     private val pictureRecyclerViewAdapter = PictureRecyclerViewAdapter()
+
+    @Inject
+    lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +51,13 @@ class PartyDetailActivity : BaseActivity() {
 
             with(viewPagerPartyDetail) {
                 adapter = pictureRecyclerViewAdapter
+                setPictureIndicatorText(currentItem, party.pictures.size.coerceAtLeast(1))
+
+                registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        setPictureIndicatorText(position, party.pictures.size.coerceAtLeast(1))
+                    }
+                })
             }
             imageViewApprovedUsers.setOnClickListener {
                 val intent = Intent(this@PartyDetailActivity, InviteeListActivity::class.java)
@@ -51,6 +65,14 @@ class PartyDetailActivity : BaseActivity() {
                 startActivity(intent)
             }
         }
+    }
+
+    fun setPictureIndicatorText(position: Int, pictureCount: Int) {
+        binding.textViewPictureIndicator.text = this.getString(
+            R.string.picture_indicator,
+            position + 1,
+            pictureCount
+        )
     }
 
 }

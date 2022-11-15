@@ -9,12 +9,17 @@ import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityPartyInviteeListBinding
 import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.features.party.InviteeListRecyclerViewAdapter
+import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import com.partyeer.presentation.ui.main.util.setDivider
 import com.partyeer.presentation.ui.main.view.extension.onQueryTextSubmit
+import javax.inject.Inject
 
 class InviteeListActivity : BaseActivity() {
     private lateinit var partyInviteeList: HashMap<String, Boolean>
     private lateinit var binding: ActivityPartyInviteeListBinding
+
+    @Inject
+    lateinit var navigator: Navigator
 
     private val inviteeListRecyclerViewAdapter by lazy {
         InviteeListRecyclerViewAdapter { userName ->

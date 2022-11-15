@@ -26,6 +26,7 @@
                 android:id="@+id/text_view_title_popular_parties"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
+                android:paddingLeft="16dp"
                 android:text="@string/popular_parties"
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +36,11 @@
                 android:id="@+id/image_view_popular_parties_continuous"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
+                android:paddingRight="16dp"
                 android:src="@drawable/ic_arrow"
-                android:text="@string/popular_parties"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
-                app:layout_constraintStart_toEndOf="@+id/text_view_title_popular_parties"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -64,20 +65,21 @@
                 android:id="@+id/text_view_title_happy_hours"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
+                android:paddingLeft="16dp"
                 android:text="@string/happy_hours"
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/image_view_party_logo"
+                android:id="@+id/image_view_popular_parties_continuous2"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
+                android:paddingRight="16dp"
                 android:src="@drawable/ic_arrow"
-                android:text="@string/popular_parties"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
-                app:layout_constraintStart_toEndOf="@+id/text_view_title_happy_hours"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -103,9 +105,21 @@
                 android:id="@+id/text_view_title_discount_parties"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:paddingLeft="16dp"
                 android:text="@string/discount_parties"
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image_view_popular_parties_continuous3"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_arrow"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Medium.20.Black"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -131,10 +145,23 @@
                 android:id="@+id/text_view_title_elite_parties"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:paddingLeft="16dp"
                 android:text="@string/elite_parties"
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image_view_popular_parties_continuous4"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_arrow"
+                android:text="@string/popular_parties"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Medium.20.Black"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView

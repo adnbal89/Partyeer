@@ -28,6 +28,12 @@ private class SearchPartyViewHolder(
 ) : ViewBindingRecyclerViewHolder<Party, ItemLayoutSearchPartyBinding>(
     ItemLayoutSearchPartyBinding.inflate(parent.inflater(), parent, false)
 ) {
+    init {
+        itemBinding.layoutHeadLines.setOnClickListener {
+            clickAtPosition(bindingAdapterPosition)
+        }
+    }
+
     override fun bindItem(item: Party) {
         with(itemBinding) {
             Glide.with(context).load(item.pictures[0].preview)

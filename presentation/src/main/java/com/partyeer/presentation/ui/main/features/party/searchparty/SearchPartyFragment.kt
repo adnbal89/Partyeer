@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,17 +13,23 @@ import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.FragmentSearchPartyBinding
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
+import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import com.partyeer.presentation.ui.main.util.setDivider
 import com.partyeer.presentation.ui.main.view.extension.onQueryTextSubmit
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchPartyViewModel>() {
     private lateinit var partyArrayList: ArrayList<Party>
 
+    @Inject
+    lateinit var navigator: Navigator
+
     private val searchPartyListRecyclerViewAdapter by lazy {
         SearchPartyRecyclerViewAdapter() { party ->
-            Toast.makeText(requireContext(), "Recyc item clicked", Toast.LENGTH_LONG).show()
+            navigator.toPartyDetailsActivity(party)
+                .navigate()
         }
     }
 
@@ -38,44 +43,29 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchPartyListRecyclerViewAdapter.apply {
-                onItemClick = {
-
-                }
-            }
+            adapter = searchPartyListRecyclerViewAdapter
         }
 
         with(binding.recyclerViewHappyHours) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchPartyListRecyclerViewAdapter.apply {
-                onItemClick = {
+            adapter = searchPartyListRecyclerViewAdapter
 
-                }
-            }
         }
 
         with(binding.recyclerViewDiscountParties) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchPartyListRecyclerViewAdapter.apply {
-                onItemClick = {
-
-                }
-            }
+            adapter = searchPartyListRecyclerViewAdapter
         }
 
         with(binding.recyclerViewEliteParties) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchPartyListRecyclerViewAdapter.apply {
-                onItemClick = {
-
-                }
-            }
+            adapter = searchPartyListRecyclerViewAdapter
         }
     }
 

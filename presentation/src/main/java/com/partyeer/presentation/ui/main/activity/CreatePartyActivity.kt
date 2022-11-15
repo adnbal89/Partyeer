@@ -24,13 +24,18 @@ import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityCreatePartyBinding
 import com.partyeer.presentation.ui.main.activity.viewmodel.CreatePartyViewModel
 import com.partyeer.presentation.ui.main.base.BaseActivity
+import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
     TimePickerDialog.OnTimeSetListener {
     private val viewModel: CreatePartyViewModel by viewModels()
+
+    @Inject
+    lateinit var navigator: Navigator
 
     private lateinit var binding: ActivityCreatePartyBinding
     private var partyPictureList: MutableList<Picture> = arrayListOf()

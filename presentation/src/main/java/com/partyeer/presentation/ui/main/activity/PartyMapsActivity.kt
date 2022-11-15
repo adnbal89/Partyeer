@@ -14,12 +14,17 @@ import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.features.party.googlemaps.MarkerInfoWindowAdapter
 import com.partyeer.presentation.ui.main.features.party.googlemaps.PartyMapItemRenderer
 import com.partyeer.presentation.ui.main.features.party.googlemaps.model.PartyMapItem
+import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class PartyMapsActivity : BaseActivity(), OnMapReadyCallback {
     //private var partyList: ArrayList<Party> = ArrayList<Party>()
     private lateinit var partyList: List<PartyMapItem>
+
+    @Inject
+    lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

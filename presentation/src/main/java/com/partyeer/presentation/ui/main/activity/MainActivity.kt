@@ -16,6 +16,7 @@ import com.partyeer.presentation.ui.main.features.party.home.HomeFragment
 import com.partyeer.presentation.ui.main.features.party.searchparty.SearchPartyFragment
 import com.partyeer.presentation.ui.main.features.profile.ProfileFragment
 import com.partyeer.presentation.ui.main.util.DialogManager
+import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var imageUri: Uri
+
+    @Inject
+    lateinit var navigator: Navigator
 
     //Fragments bound to bottom nav.
     private lateinit var homeFragment: HomeFragment
@@ -41,7 +45,6 @@ class MainActivity : AppCompatActivity() {
     private var selectedIndex = 0
     private val selectedFragment
         get() = fragments[selectedIndex]
-
 
     private fun selectFragment(selectedFragment: Fragment) {
         var transaction = supportFragmentManager.beginTransaction()
