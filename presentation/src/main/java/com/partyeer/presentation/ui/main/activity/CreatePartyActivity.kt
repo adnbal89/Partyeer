@@ -49,13 +49,20 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetMultipleContents())
         { uriList ->
-            binding.imageViewPartyLogo.setImageURI(uriList[0])
-            logoUri = uriList[0].toString()
+            //if not null
+            uriList?.let { it ->
+                //TODO: refactor
+                if (it.size > 0) {
+                    binding.imageViewPartyLogo.setImageURI(it[0])
+                    logoUri = it[0].toString()
 
-            uriList.forEach {
-                val picture = Picture(it.toString(), it.toString())
-                partyPictureList.add(picture)
+                    uriList.forEach { uri ->
+                        val picture = Picture(uri.toString(), uri.toString())
+                        partyPictureList.add(picture)
+                    }
+                }
             }
+
         }
 
     @SuppressLint("ClickableViewAccessibility")
