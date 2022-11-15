@@ -19,6 +19,7 @@ class SearchPartyViewModel @Inject constructor(
     state: SavedStateHandle
 ) : BaseViewModel() {
     private val currentQuery = state.getLiveData<String?>("currentQuery", null)
+
     //TODO: current query to be preserved for search bar
     val hasCurrentQuery = currentQuery.asFlow().map { it != null }
 

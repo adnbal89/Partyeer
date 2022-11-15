@@ -1,7 +1,5 @@
 package com.partyeer.presentation.ui.main.activity.viewmodel
 
-import android.app.Activity
-import android.content.Intent
 import android.location.Location
 import androidx.lifecycle.viewModelScope
 import com.partyeer.domain.repository.party.model.Concept

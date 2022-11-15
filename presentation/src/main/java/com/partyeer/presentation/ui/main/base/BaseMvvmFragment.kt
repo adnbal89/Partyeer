@@ -24,13 +24,13 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrag
     protected open fun observeEvents() {
         //--------------stateflow-------
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-            viewModel.loading.collect { loading ->
-                when (loading) {
-                    true -> showLoading()
-                    else -> hideLoading()
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.loading.collect { loading ->
+                    when (loading) {
+                        true -> showLoading()
+                        else -> hideLoading()
+                    }
                 }
-            }
             }
         }
         //--------------stateflow-------

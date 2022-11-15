@@ -63,7 +63,6 @@ ext.versions = [
         lifecycle_version            : '2.5.1',
 
 
-
 ]
 
 def dependencies = [
@@ -77,9 +76,9 @@ def dependencies = [
 
         play_services_maps   : implementation("com.google.android.gms:play-services-maps:${versions.play_services_maps}"),
 
-        lifecycle_viewmodel   : implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle_version}"),
+        lifecycle_viewmodel  : implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle_version}"),
 
-        lifecycle_runtime   : implementation("androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle_version}"),
+        lifecycle_runtime    : implementation("androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle_version}"),
 
         kotlin               : [
                 plugin: classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"),
