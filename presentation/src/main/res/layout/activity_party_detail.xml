@@ -126,7 +126,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
                 android:gravity="center_vertical"
-
                 android:text="55"
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -138,14 +137,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_party_properties">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/tag1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/tag"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_tags"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_layout_party_tags" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

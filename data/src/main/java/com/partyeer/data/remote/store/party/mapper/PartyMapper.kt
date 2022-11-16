@@ -30,6 +30,7 @@ class PartyMapper @Inject constructor(
             likedUserIdList = source.likedUserIdList,
             appliedUserIdList = source.appliedUserIdList,
             creatorUserId = source.creatorUserId,
+            tagList = source.tagList
         )
     }
 

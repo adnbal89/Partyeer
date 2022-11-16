@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.R
-import com.partyeer.presentation.databinding.ItemLayoutPartyBinding
+import com.partyeer.presentation.databinding.ItemLayoutPartyDetailedBinding
 import com.partyeer.presentation.ui.main.extension.inflater
 import com.partyeer.presentation.ui.main.features.party.createparty.PictureRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.view.recycler.BaseRecyclerViewAdapter
@@ -30,8 +30,8 @@ private class PartyViewHolder(
     parent: ViewGroup,
     clickAtPosition: (Int) -> Unit,
     clickPartyTitleAtPosition: (Int) -> Unit
-) : ViewBindingRecyclerViewHolder<Party, ItemLayoutPartyBinding>(
-    ItemLayoutPartyBinding.inflate(parent.inflater(), parent, false)
+) : ViewBindingRecyclerViewHolder<Party, ItemLayoutPartyDetailedBinding>(
+    ItemLayoutPartyDetailedBinding.inflate(parent.inflater(), parent, false)
 ) {
     init {
         itemBinding.imageViewOptionsMenu.setOnClickListener {
@@ -63,7 +63,7 @@ private class PartyViewHolder(
             textViewPartyTitle.text = item.title
             textViewPartyConcept.text = item.concept.description
             textViewPartyLocation.text = "Berlin, Germany"
-            textViewPartyTime.text = DateFormat.format(" dd/MM HH:mm", item.timeStart)
+            textViewPartyTime.text = item.formattedDate.toString()
             textViewPartyLikeCounter.text = item.likeCount.toString()
 
             imageViewShare.setOnClickListener {

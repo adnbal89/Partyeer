@@ -1,5 +1,6 @@
 package com.partyeer.domain.repository.party.model
 
+import android.text.format.DateFormat
 import com.partyeer.domain.repository.base.model.BaseItem
 import kotlinx.parcelize.Parcelize
 
@@ -21,6 +22,10 @@ data class Party(
     var likedUserIdList: HashMap<String, Boolean> = HashMap(),
     var appliedUserIdList: HashMap<String, Boolean> = HashMap(),
     val creatorUserId: String,
-    var address: String = "Party Address"
-) : BaseItem()
+    var address: String = "Party Address",
+    var tagList: HashMap<String, Boolean> = HashMap(),
+) : BaseItem(){
+    val formattedDate :CharSequence
+        get() = DateFormat.format(" dd/MM HH:mm", timeStart)
+}
 

@@ -3,7 +3,9 @@ package com.partyeer.presentation.ui.main.activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.R
@@ -11,7 +13,9 @@ import com.partyeer.presentation.databinding.ActivityPartyDetailBinding
 import com.partyeer.presentation.ui.main.activity.viewmodel.PartyDetailViewModel
 import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.features.party.createparty.PictureRecyclerViewAdapter
+import com.partyeer.presentation.ui.main.features.party.details.PartyTagRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.util.navigation.Navigator
+import com.partyeer.presentation.ui.main.util.setDivider
 import javax.inject.Inject
 
 class PartyDetailActivity : BaseActivity() {
@@ -20,6 +24,11 @@ class PartyDetailActivity : BaseActivity() {
     private lateinit var binding: ActivityPartyDetailBinding
     private lateinit var party: Party
     private val pictureRecyclerViewAdapter = PictureRecyclerViewAdapter()
+    private val partyTagRecyclerViewAdapter by lazy {
+        PartyTagRecyclerViewAdapter {
+            Toast.makeText(this, "User clicked on Tag : " + it, Toast.LENGTH_LONG).show()
+        }
+    }
 
     @Inject
     lateinit var navigator: Navigator
@@ -33,6 +42,7 @@ class PartyDetailActivity : BaseActivity() {
 
         party = intent.getParcelableExtra<Party>("party").let { it!! }
         pictureRecyclerViewAdapter.setItems(party.pictures)
+        partyTagRecyclerViewAdapter.setItems(party.tagList.keys)
 
         supportActionBar?.title = party.title
 
@@ -59,6 +69,14 @@ class PartyDetailActivity : BaseActivity() {
                     }
                 })
             }
+
+            with(recyclerViewTags) {
+                setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
+                layoutManager =
+                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = partyTagRecyclerViewAdapter
+            }
+
             imageViewApprovedUsers.setOnClickListener {
                 val intent = Intent(this@PartyDetailActivity, InviteeListActivity::class.java)
                 intent.putExtra("partyInviteeList", party.inviteeList)

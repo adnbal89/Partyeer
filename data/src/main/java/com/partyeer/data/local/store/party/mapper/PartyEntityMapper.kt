@@ -26,6 +26,7 @@ class PartyEntityMapper : BaseMapper<PartyEntity, Party> {
             likedUserIdList = source.likedUserIdList,
             appliedUserIdList = source.appliedUserIdList,
             creatorUserId = source.creatorUserId,
+            tagList = source.tagList
         )
     }
 }

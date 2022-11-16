@@ -19,4 +19,5 @@ data class PartyEntity(
     var likedUserIdList: HashMap<String, Boolean> = HashMap(),
     var appliedUserIdList: HashMap<String, Boolean> = HashMap(),
     val creatorUserId: String,
+    val tagList: HashMap<String, Boolean> = HashMap()
 ) : BaseEntity()

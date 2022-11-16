@@ -50,7 +50,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_title_popular_parties"
-                tools:listitem="@layout/item_layout_search_party" />
+                tools:listitem="@layout/item_layout_party_basic" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,7 +90,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_title_happy_hours"
-                tools:listitem="@layout/item_layout_search_party" />
+                tools:listitem="@layout/item_layout_party_basic" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,7 +130,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_title_discount_parties"
-                tools:listitem="@layout/item_layout_search_party" />
+                tools:listitem="@layout/item_layout_party_basic" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -172,7 +172,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_title_elite_parties"
-                tools:listitem="@layout/item_layout_search_party" />
+                tools:listitem="@layout/item_layout_party_basic" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
