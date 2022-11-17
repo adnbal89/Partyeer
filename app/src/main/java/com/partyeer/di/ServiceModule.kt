@@ -30,7 +30,7 @@ object ServiceModule {
 
     @Singleton
     @Provides
-    fun provideFirebaseDatabaseReference() = Firebase.database.getReference("party")
+    fun provideFirebaseDatabaseReference() = Firebase.database
 
     @Singleton
     @Provides

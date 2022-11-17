@@ -27,5 +27,8 @@ class PartyRemoteDataSource @Inject constructor(
         partyRemoteService.applyToParty(partyId)
     }
 
+    override suspend fun getPartiesTaggedBy(tag: String): Flow<List<PartyDTO>> =
+        partyRemoteService.getPartiesTaggedBy(tag)
+
 
 }

@@ -30,4 +30,11 @@ class Navigator @Inject constructor(private val activity: Activity) {
 
         return NavigationCreator(activity).intent(intent)
     }
+
+    fun toSameTaggedPartiesActivity(tag: String): NavigationCreator {
+        val intent = Intent(activity, SameTaggedPartiesActivity::class.java)
+        intent.putExtra("tag", tag)
+
+        return NavigationCreator(activity).intent(intent)
+    }
 }

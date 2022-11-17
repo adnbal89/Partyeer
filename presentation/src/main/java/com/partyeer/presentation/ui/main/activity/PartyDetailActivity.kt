@@ -3,7 +3,6 @@ package com.partyeer.presentation.ui.main.activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
@@ -16,8 +15,10 @@ import com.partyeer.presentation.ui.main.features.party.createparty.PictureRecyc
 import com.partyeer.presentation.ui.main.features.party.details.PartyTagRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import com.partyeer.presentation.ui.main.util.setDivider
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class PartyDetailActivity : BaseActivity() {
     private val viewModel: PartyDetailViewModel by viewModels()
 
@@ -25,8 +26,8 @@ class PartyDetailActivity : BaseActivity() {
     private lateinit var party: Party
     private val pictureRecyclerViewAdapter = PictureRecyclerViewAdapter()
     private val partyTagRecyclerViewAdapter by lazy {
-        PartyTagRecyclerViewAdapter {
-            Toast.makeText(this, "User clicked on Tag : " + it, Toast.LENGTH_LONG).show()
+        PartyTagRecyclerViewAdapter { tag ->
+            navigator.toSameTaggedPartiesActivity(tag!!).navigate()
         }
     }
 

@@ -10,19 +10,19 @@ import com.partyeer.presentation.ui.main.view.recycler.BaseRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.view.recycler.BaseRecyclerViewHolder
 import com.partyeer.presentation.ui.main.view.recycler.ViewBindingRecyclerViewHolder
 
-class SearchPartyRecyclerViewAdapter(
+class BasicPartyRecyclerViewAdapter(
     private val clickListener: (Party?) -> Unit
 ) : BaseRecyclerViewAdapter<Party>() {
 
     override fun createNewViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseRecyclerViewHolder<Party> = SearchPartyViewHolder(parent) { position ->
+    ): BaseRecyclerViewHolder<Party> = BasicPartyViewHolder(parent) { position ->
         clickListener(getItem(position))
     }
 }
 
-private class SearchPartyViewHolder(
+private class BasicPartyViewHolder(
     parent: ViewGroup,
     clickAtPosition: (Int) -> Unit
 ) : ViewBindingRecyclerViewHolder<Party, ItemLayoutPartyBasicBinding>(
@@ -39,7 +39,7 @@ private class SearchPartyViewHolder(
 
     override fun bindItem(item: Party) {
         with(itemBinding) {
-            Glide.with(context).load(item.pictures[0].preview)
+            Glide.with(context).load(item.logoUrl)
                 .diskCacheStrategy(DiskCacheStrategy.ALL).into(imageViewPartyLogo)
             textViewPartyTitle.text = item.title + ", " + item.address
 

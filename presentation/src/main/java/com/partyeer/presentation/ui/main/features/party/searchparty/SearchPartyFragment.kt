@@ -27,7 +27,7 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
     lateinit var navigator: Navigator
 
     private val searchPartyListRecyclerViewAdapter by lazy {
-        SearchPartyRecyclerViewAdapter() { party ->
+        BasicPartyRecyclerViewAdapter() { party ->
             navigator.toPartyDetailsActivity(party)
                 .navigate()
         }

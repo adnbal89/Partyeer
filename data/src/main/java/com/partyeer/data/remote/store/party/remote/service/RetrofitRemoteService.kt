@@ -26,4 +26,8 @@ class RetrofitRemoteService : PartyRemoteService {
         TODO("Not yet implemented")
     }
 
+    override suspend fun getPartiesTaggedBy(tag: String): Flow<List<PartyDTO>> {
+        TODO("Not yet implemented")
+    }
+
 }

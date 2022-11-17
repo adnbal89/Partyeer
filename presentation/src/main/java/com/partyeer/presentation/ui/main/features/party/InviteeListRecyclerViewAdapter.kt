@@ -34,7 +34,6 @@ private class InviteeListViewHolder(
     override fun bindItem(item: String) {
         with(itemBinding) {
             textViewInviteeName.text = item
-
         }
     }
 

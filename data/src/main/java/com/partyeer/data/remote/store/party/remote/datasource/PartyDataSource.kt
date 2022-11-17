@@ -15,4 +15,6 @@ interface PartyDataSource {
     suspend fun getPartyConcepts(): Flow<List<ConceptDTO>>
 
     suspend fun applyToParty(partyId: String)
+
+    suspend fun getPartiesTaggedBy(tag: String): Flow<List<PartyDTO>>
 }

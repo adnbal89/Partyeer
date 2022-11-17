@@ -46,10 +46,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    companion object {
-        private const val DEFAULT_PARTY_ID = "From Network"
-    }
-
     fun applyToParty(partyId: String?) {
         applyToParty(this) {
             onSuccess = {

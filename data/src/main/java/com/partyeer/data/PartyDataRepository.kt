@@ -47,5 +47,13 @@ class PartyDataRepository @Inject constructor(
         partyDataSource.applyToParty(partyId)
     }
 
+    override suspend fun getPartiesTaggedBy(tag: String): Flow<List<Party>> {
+
+        val x = partyDataSource.getPartiesTaggedBy(tag)
+        val y = x.map {
+            partyMapper.map(it)
+        }
+        return y
+    }
 
 }

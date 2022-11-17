@@ -18,4 +18,6 @@ interface PartyRepository : BaseRepository {
     suspend fun getPartyConcepts(): Flow<List<Concept>>
 
     suspend fun applyToParty(partyId: String)
+
+    suspend fun getPartiesTaggedBy(tag: String): Flow<List<Party>>
 }

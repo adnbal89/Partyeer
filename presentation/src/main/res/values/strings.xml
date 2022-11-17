@@ -96,6 +96,7 @@
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="tagged_parties">Tagged Parties</string>
 
 
     <string-array name="party_concepts">
