@@ -73,9 +73,6 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
-        installSplashScreen()
-        Thread.sleep(1500L)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

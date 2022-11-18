@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityPartyDetailBinding
-import com.partyeer.presentation.ui.main.activity.viewmodel.PartyDetailViewModel
+import com.partyeer.presentation.ui.main.features.party.details.PartyDetailViewModel
 import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.features.party.createparty.PictureRecyclerViewAdapter
 import com.partyeer.presentation.ui.main.features.party.details.PartyTagRecyclerViewAdapter

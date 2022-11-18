@@ -6,7 +6,6 @@ import android.view.MenuInflater
 import android.view.View
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityCreatePartyBinding
-import com.partyeer.presentation.ui.main.activity.viewmodel.CreatePartyViewModel
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
 import dagger.hilt.android.AndroidEntryPoint
 

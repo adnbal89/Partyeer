@@ -9,10 +9,10 @@
 
     <application>
         <activity
-            android:name=".ui.main.activity.MainActivity"
+            android:name=".ui.main.activity.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.App.SplashScreen">
+            android:theme="@style/Theme.Material3.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,6 +21,12 @@
 
         <activity
             android:name=".ui.main.activity.CreatePartyActivity"
+            android:exported="true"
+            android:label="@string/title_create_party"
+            android:theme="@style/Theme.Partyeer" />
+
+        <activity
+            android:name=".ui.main.activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Partyeer" />
@@ -41,6 +47,12 @@
             android:name=".ui.main.activity.InviteeListActivity"
             android:exported="true"
             android:label="@string/guest_list"
+            android:theme="@style/Theme.Partyeer" />
+
+        <activity
+            android:name=".ui.main.activity.LoginActivity"
+            android:exported="true"
+            android:label="@string/login"
             android:theme="@style/Theme.Partyeer" />
 
         <activity

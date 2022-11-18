@@ -1,4 +1,4 @@
-package com.partyeer.presentation.ui.main.activity.viewmodel
+package com.partyeer.presentation.ui.main.features.party.createparty
 
 import android.location.Location
 import androidx.lifecycle.viewModelScope

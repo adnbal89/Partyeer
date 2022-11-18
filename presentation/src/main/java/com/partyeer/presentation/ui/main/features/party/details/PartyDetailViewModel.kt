@@ -1,4 +1,4 @@
-package com.partyeer.presentation.ui.main.activity.viewmodel
+package com.partyeer.presentation.ui.main.features.party.details
 
 import com.partyeer.presentation.ui.main.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

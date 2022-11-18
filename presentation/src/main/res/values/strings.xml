@@ -97,6 +97,9 @@
     <string name="following">Following</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="tagged_parties">Tagged Parties</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 
 
     <string-array name="party_concepts">
