@@ -41,6 +41,12 @@ class LoginActivity : BaseActivity() {
             if (userMail.isNullOrBlank().not() && password.isNullOrBlank().not())
                 signIn(userMail, password)
         }
+
+        binding.buttonSignup.setOnClickListener {
+            val userMail = binding.textViewUserName.editText?.text.toString()
+            val password = binding.textViewPassword.editText?.text.toString()
+            createAccount(userMail, password)
+        }
     }
 
     override fun onStart() {
@@ -59,7 +65,8 @@ class LoginActivity : BaseActivity() {
                 // Sign in success, update UI with the signed-in user's information
                 Log.d(TAG, "createUserWithEmail:success")
                 val user = auth.currentUser
-                updateUI(user)
+                sendEmailVerification(user!!)
+                navigator.toMainActivity().clearBackStack().navigate()
             } else {
                 // If sign in fails, display a message to the user.
                 Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -95,11 +102,18 @@ class LoginActivity : BaseActivity() {
         // [END sign_in_with_email]
     }
 
-    private fun sendEmailVerification() {
+    private fun sendEmailVerification(user: FirebaseUser) {
         // [START send_email_verification]
-        val user = auth.currentUser!!
         user.sendEmailVerification().addOnCompleteListener(this) { task ->
-            // Email Verification sent
+            if(task.isSuccessful){
+                Toast.makeText(
+                    baseContext, "Email Successfully sent!!.", Toast.LENGTH_LONG
+                ).show()
+            }else{
+                Toast.makeText(
+                    baseContext, "Email failed.", Toast.LENGTH_SHORT
+                ).show()
+            }
         }
         // [END send_email_verification]
     }

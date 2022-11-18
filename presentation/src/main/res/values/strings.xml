@@ -100,6 +100,8 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="mail_address">Mail Address</string>
 
 
     <string-array name="party_concepts">
