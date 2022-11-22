@@ -193,6 +193,7 @@ ext.domainDependencies = [
         dependencies.dagger.hilt,
         dependencies.dagger.compiler,
         dependencies.coroutines,
+        dependencies.firebase_auth
 
 ]
 
@@ -206,7 +207,8 @@ ext.dataDependencies = [
         dependencies.okhttp,
         dependencies.moshi,
         dependencies.firebase_database,
-        dependencies.firebase_storage
+        dependencies.firebase_storage,
+        dependencies.firebase_auth
 
 ]
 

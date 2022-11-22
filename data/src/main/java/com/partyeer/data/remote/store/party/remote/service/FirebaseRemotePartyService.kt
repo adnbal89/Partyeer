@@ -19,7 +19,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FirebaseRemoteService @Inject constructor(
+class FirebaseRemotePartyService @Inject constructor(
     private val firebaseDatabase: FirebaseDatabase,
     private val firebaseStorage: FirebaseStorage
 ) : PartyRemoteService {

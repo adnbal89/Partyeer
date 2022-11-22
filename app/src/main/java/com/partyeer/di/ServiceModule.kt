@@ -1,5 +1,6 @@
 package com.partyeer.di
 
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -35,5 +36,9 @@ object ServiceModule {
     @Singleton
     @Provides
     fun provideFirebaseStorage() = Firebase.storage
+
+    @Singleton
+    @Provides
+    fun provideFirebaseAuth() = Firebase.auth
 
 }

@@ -30,7 +30,7 @@ class SplashActivity : BaseActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             if (viewModel.isLoggedIn()) {
-                navigator.toMainActivity()
+                navigator.toMainActivity(viewModel.firebaseUser)
                     .clearBackStack()
                     .navigate()
             } else {

@@ -1,5 +1,7 @@
 package com.partyeer.di
 
+import com.partyeer.data.remote.store.login.mapper.UserCredentialDTOMapper
+import com.partyeer.data.remote.store.login.mapper.UserCredentialMapper
 import com.partyeer.data.remote.store.party.mapper.ConceptDTOMapper
 import com.partyeer.data.remote.store.party.mapper.ConceptMapper
 import com.partyeer.data.remote.store.party.mapper.PictureDTOMapper
@@ -34,4 +36,13 @@ object MapperModule {
     fun providePictureDTOMapper(): PictureDTOMapper =
         PictureDTOMapper()
 
+    @Singleton
+    @Provides
+    fun provideUserCredentialDTOMapper(): UserCredentialDTOMapper =
+        UserCredentialDTOMapper()
+
+    @Singleton
+    @Provides
+    fun provideUserCredentialMapper(): UserCredentialMapper =
+        UserCredentialMapper()
 }

@@ -1,5 +1,6 @@
 package com.partyeer.data.remote.store.party.remote.service
 
+import com.partyeer.data.remote.RemoteService
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import kotlinx.coroutines.flow.Flow
