@@ -8,4 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface LoginRepository : BaseRepository {
 
     suspend fun isUserValid(userCredential: UserCredential): Flow<FirebaseUser?>
+
+    suspend fun createUserWithEmail(userCredential: UserCredential): Flow<FirebaseUser?>
+
 }

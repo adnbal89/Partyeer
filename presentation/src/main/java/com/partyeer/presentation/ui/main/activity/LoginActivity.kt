@@ -36,8 +36,6 @@ class LoginActivity : BaseActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = Firebase.auth
-
         binding.buttonLogin.setOnClickListener {
             val userMail = binding.textViewUserName.editText?.text.toString()
             val password = binding.textViewPassword.editText?.text.toString()
@@ -68,60 +66,6 @@ class LoginActivity : BaseActivity() {
                 }
             }
         }
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            println("Auth present.")
-        }
-    }
-
-    private fun createAccount(email: String, password: String) {
-        // [START create_user_with_email]
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-                // Sign in success, update UI with the signed-in user's information
-                Log.d(TAG, "createUserWithEmail:success")
-                val user = auth.currentUser
-                sendEmailVerification(user!!)
-                //navigator.toMainActivity().clearBackStack().navigate()
-            } else {
-                // If sign in fails, display a message to the user.
-                Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                Toast.makeText(
-                    baseContext, "Authentication failed.", Toast.LENGTH_SHORT
-                ).show()
-                updateUI(null)
-            }
-        }
-        // [END create_user_with_email]
-    }
-
-    private fun sendEmailVerification(user: FirebaseUser) {
-        // [START send_email_verification]
-        user.sendEmailVerification().addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(
-                    baseContext, "Email Successfully sent!!.", Toast.LENGTH_LONG
-                ).show()
-            } else {
-                Toast.makeText(
-                    baseContext, "Email failed.", Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-        // [END send_email_verification]
-    }
-
-    private fun updateUI(user: FirebaseUser?) {
-        binding.textViewPassword.editText?.setText("")
-    }
-
-    private fun reload() {
 
     }
 

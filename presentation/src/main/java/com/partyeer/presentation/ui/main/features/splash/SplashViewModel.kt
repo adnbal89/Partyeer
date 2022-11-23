@@ -12,6 +12,6 @@ class SplashViewModel @Inject constructor(
     val firebaseUser = firebaseAuth.currentUser
 
     fun isLoggedIn(): Boolean {
-        return firebaseUser != null
+        return (firebaseUser != null)
     }
 }

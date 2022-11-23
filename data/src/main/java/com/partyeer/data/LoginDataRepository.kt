@@ -14,4 +14,8 @@ class LoginDataRepository @Inject constructor(
 ) : LoginRepository {
     override suspend fun isUserValid(userCredential: UserCredential): Flow<FirebaseUser?> =
         loginDataSource.isUserValid(userCredentialDTOMapper.map(userCredential))
+
+    override suspend fun createUserWithEmail(userCredential: UserCredential): Flow<FirebaseUser?> =
+        loginDataSource.createUserWithEmail(userCredentialDTOMapper.map(userCredential))
+
 }

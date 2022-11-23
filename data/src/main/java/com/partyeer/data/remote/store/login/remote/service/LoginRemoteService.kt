@@ -8,5 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface LoginRemoteService : RemoteService {
 
     suspend fun isUserValid(userCredentialDTO: UserCredentialDTO): Flow<FirebaseUser?>
+    suspend fun createUserWithEmail(userCredentialDTO: UserCredentialDTO): Flow<FirebaseUser?>
 
 }

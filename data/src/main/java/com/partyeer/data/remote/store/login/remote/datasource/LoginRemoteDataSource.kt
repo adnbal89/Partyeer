@@ -12,4 +12,8 @@ class LoginRemoteDataSource @Inject constructor(
 
     override suspend fun isUserValid(userCredentialDTO: UserCredentialDTO): Flow<FirebaseUser?> =
         loginRemoteService.isUserValid(userCredentialDTO)
+
+    override suspend fun createUserWithEmail(userCredentialDTO: UserCredentialDTO): Flow<FirebaseUser?> =
+        loginRemoteService.createUserWithEmail(userCredentialDTO)
+
 }

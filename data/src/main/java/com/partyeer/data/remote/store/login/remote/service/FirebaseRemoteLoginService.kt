@@ -25,12 +25,9 @@ class FirebaseRemoteLoginService @Inject constructor(
             )
             val callback =
                 OnCompleteListener<AuthResult?> { task ->
-                    println("Firebase : ")
                     if (task.isSuccessful) {
-                        println("Firebase : is successsful")
                         trySend(task.result.user)
                     } else {
-                        println("Firebase : is failed")
                         trySend(null)
                     }
                 }
@@ -43,4 +40,34 @@ class FirebaseRemoteLoginService @Inject constructor(
 
             }
         }
+
+    override suspend fun createUserWithEmail(userCredentialDTO: UserCredentialDTO): Flow<FirebaseUser?> =
+        callbackFlow {
+
+            val signIn = firebaseAuth.createUserWithEmailAndPassword(
+                userCredentialDTO.userMail,
+                userCredentialDTO.password
+            )
+            val callback =
+                OnCompleteListener<AuthResult?> { task ->
+                    if (task.isSuccessful) {
+                        trySend(task.result.user)
+                        sendEmailVerification(task.result.user)
+                    } else {
+                        trySend(null)
+                    }
+                }
+            try {
+                signIn.addOnCompleteListener(callback)
+            } catch (e: FirebaseAuthException) {
+                Timber.e(e.localizedMessage)
+            }
+            awaitClose {
+
+            }
+        }
+
+    private fun sendEmailVerification(user: FirebaseUser?) {
+        user?.sendEmailVerification()
+    }
 }
