@@ -79,11 +79,11 @@
             android:id="@+id/button_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
             android:text="@string/sign_up"
             app:backgroundTint="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/button_login"
             app:layout_constraintEnd_toStartOf="@+id/button_login"
-            android:layout_marginRight="24dp"
             app:layout_constraintTop_toTopOf="@+id/button_login" />
 
         <com.google.android.material.button.MaterialButton
@@ -95,6 +95,14 @@
             app:backgroundTint="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_password" />
+
+        <androidx.compose.ui.platform.ComposeView
+            android:id="@+id/composeView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_signup" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

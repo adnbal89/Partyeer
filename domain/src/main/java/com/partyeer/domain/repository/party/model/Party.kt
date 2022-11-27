@@ -24,8 +24,8 @@ data class Party(
     val creatorUserId: String,
     var address: String = "Party Address",
     var tagList: HashMap<String, Boolean> = HashMap(),
-) : BaseItem(){
-    val formattedDate :CharSequence
+) : BaseItem() {
+    val formattedDate: CharSequence
         get() = DateFormat.format(" dd/MM HH:mm", timeStart)
 }
 

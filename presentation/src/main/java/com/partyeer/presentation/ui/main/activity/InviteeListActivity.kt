@@ -12,8 +12,10 @@ import com.partyeer.presentation.ui.main.features.party.InviteeListRecyclerViewA
 import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import com.partyeer.presentation.ui.main.util.setDivider
 import com.partyeer.presentation.ui.main.view.extension.onQueryTextSubmit
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class InviteeListActivity : BaseActivity() {
     private lateinit var partyInviteeList: HashMap<String, Boolean>
     private lateinit var binding: ActivityPartyInviteeListBinding

@@ -7,13 +7,18 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import com.partyeer.presentation.R
+import com.partyeer.presentation.ui.main.util.DialogManager
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 abstract class BaseActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    @Inject
+    lateinit var dialogManager: DialogManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -27,5 +32,16 @@ abstract class BaseActivity : AppCompatActivity() {
         return true
     }
 
+    open fun showLoading() {
+        dialogManager.showLoading()
+    }
 
+    open fun hideLoading() {
+        dialogManager.dismissLoading()
+    }
+
+    open fun showError(error: Throwable) {
+        dialogManager.dismissLoading()
+        dialogManager.showErrorDialog(error)
+    }
 }

@@ -18,7 +18,7 @@ class SameTaggedPartiesActivity : BaseActivity() {
     private val viewModel: SameTaggedPartiesViewModel by viewModels()
     private lateinit var binding: ActivitySameTaggedPartiesBinding
     private val partyListRecyclerViewAdapter by lazy {
-        BasicPartyRecyclerViewAdapter{
+        BasicPartyRecyclerViewAdapter {
 
         }
     }

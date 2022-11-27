@@ -152,7 +152,7 @@ def dependencies = [
 
         firebase_auth        : implementation("com.google.firebase:firebase-auth-ktx:${versions.firebase_auth_version}"),
 
-
+        place_picker         : implementation("com.github.Prog-MohamedAbdelnaser:location-picker-places-search-lib:Tag")
 ]
 
 ext.rootDependencies = [
@@ -183,7 +183,7 @@ ext.presentationDependencies = [
         dependencies.maps_ktx,
         dependencies.lifecycle_viewmodel,
         dependencies.lifecycle_runtime,
-        dependencies.firebase_auth
+        dependencies.firebase_auth,
 
 ]
 

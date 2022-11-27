@@ -1,6 +1,5 @@
 package com.partyeer.presentation.ui.main.features.party
 
-import android.text.format.DateFormat
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.partyeer.domain.repository.party.model.Party
