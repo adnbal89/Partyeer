@@ -41,5 +41,4 @@
     <string name="login">Login</string>
     <string name="sign_up">Sign up</string>
     <string name="mail_address">Mail Address</string>
-    <string name="address_desc">Address</string>
 </resources>

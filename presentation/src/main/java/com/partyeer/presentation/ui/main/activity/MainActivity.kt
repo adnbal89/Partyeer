@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import com.partyeer.presentation.R
@@ -83,7 +84,6 @@ class MainActivity : AppCompatActivity() {
             homeFragment = HomeFragment()
             searchPartyFragment = SearchPartyFragment()
             profileFragment = ProfileFragment()
-            profileFragment.arguments = intent.extras
 
             supportFragmentManager.inTransaction {
                 add(

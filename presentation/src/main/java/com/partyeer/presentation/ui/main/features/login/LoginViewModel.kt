@@ -16,8 +16,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val checkUserAuthenticated: CheckUserAuthenticated,
     private val createUserWithEmail: CreateUserWithEmail,
-) : BaseViewModel() {
 
+    ) : BaseViewModel() {
     private val eventChannel = Channel<LoginStatus>()
     val events = eventChannel.receiveAsFlow()
 

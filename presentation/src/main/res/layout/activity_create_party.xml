@@ -143,49 +143,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linear_layout_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_ends_time_layout">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_view_address_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginBottom="2dp"
-                android:hint="@string/address_desc"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toStartOf="@+id/image_view_add_location"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:hint="@string/address_desc">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_view_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:enabled="false"
-                    android:focusable="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <ImageView
-                android:id="@+id/image_view_add_location"
-                android:layout_width="51dp"
-                android:layout_height="39dp"
-                android:src="@drawable/ic_add_location"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_view_party_description"
             android:layout_width="match_parent"
@@ -194,7 +151,7 @@
             android:hint="@string/party_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_address"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_ends_time_layout"
             tools:hint="End Time">
 
             <com.google.android.material.textfield.TextInputEditText

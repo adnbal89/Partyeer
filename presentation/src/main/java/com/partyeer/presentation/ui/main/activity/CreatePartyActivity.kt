@@ -22,8 +22,8 @@ import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.model.Picture
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityCreatePartyBinding
-import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.features.party.createparty.CreatePartyViewModel
+import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
