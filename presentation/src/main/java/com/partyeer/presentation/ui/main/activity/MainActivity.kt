@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var imageUri: Uri
 
-
     @Inject
     lateinit var navigator: Navigator
 

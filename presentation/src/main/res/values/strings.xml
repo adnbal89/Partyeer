@@ -104,7 +104,6 @@
     <string name="mail_address">Mail Address</string>
     <string name="party_address">Address</string>
     <string name="address_desc">Address</string>
-    <string name="location_pick_pin">Location Pick Pin</string>
 
 
     <string-array name="party_concepts">
