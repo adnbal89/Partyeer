@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:paddingBottom="80dp"
@@ -82,11 +79,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_view_party_location"
+            android:id="@+id/text_view_entry_fee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:hint="@string/party_location"
+            android:hint="@string/entry_fee"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_party_concept"
@@ -109,7 +106,7 @@
             android:hint="@string/party_start_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_party_location"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_entry_fee"
             tools:hint="Start Time">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -182,7 +179,8 @@
                 android:src="@drawable/ic_add_location"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/location_pick_pin" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -204,6 +202,24 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarLayout"
+            />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_map_ok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:text="@string/ok"
+        app:layout_constraintTop_toBottomOf="@+id/map"
+        app:layout_constraintEnd_toEndOf="@+id/map"
+        />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>

@@ -3,6 +3,7 @@ package com.partyeer.presentation.ui.main.activity
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.location.Geocoder
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -17,6 +18,15 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.ktx.awaitMap
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.model.Picture
@@ -26,13 +36,17 @@ import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.features.party.createparty.CreatePartyViewModel
 import com.partyeer.presentation.ui.main.util.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
 class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
-    TimePickerDialog.OnTimeSetListener {
+    TimePickerDialog.OnTimeSetListener, OnMapReadyCallback {
     private val viewModel: CreatePartyViewModel by viewModels()
+    private lateinit var locationPinAddress: String
+    private lateinit var partyLocationCoords: LatLng
 
     @Inject
     lateinit var navigator: Navigator
@@ -68,13 +82,30 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityCreatePartyBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+        lifecycleScope.launchWhenCreated {
+            mapFragment?.awaitMap()
+        }
+        mapFragment?.getMapAsync(this)
+
+
         binding.imageViewPartyLogo.setOnClickListener {
             getContent.launch("image/*")
+        }
+
+        binding.imageViewAddLocation.setOnClickListener {
+            binding.map.visibility = View.VISIBLE
+            binding.buttonMapOk.visibility = View.VISIBLE
+        }
+
+        binding.buttonMapOk.setOnClickListener {
+            binding.map.visibility = View.GONE
+            binding.buttonMapOk.visibility = View.GONE
+            binding.textViewAddress.setText(locationPinAddress)
         }
 
         timeView = View(this)
@@ -141,18 +172,18 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
                     logoUri,
                     binding.textViewPartyTitle.editText?.text.toString(),
                     Concept(binding.textViewPartyConcept.editText?.text.toString()),
-                    28.987,
-                    40.254,
+                    longitude = partyLocationCoords.longitude,
+                    latitude = partyLocationCoords.latitude,
                     timeStart = startTime,
                     timeEnd = endTime,
-                    "Example Description",
+                    description = binding.textViewPartyDescription.editText?.text.toString(),
                     partyPictureList,
                     likeCount = 51,
-                    entranceFee = "Free",
+                    entranceFee = binding.textViewEntryFee.editText?.text.toString(),
                     hashMapOf<String, Boolean>(),
                     hashMapOf<String, Boolean>(),
                     hashMapOf<String, Boolean>(),
-                    "1"
+                    "adnbal89"
                 )
                 viewModel.createParty(party)
             }
@@ -225,5 +256,43 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         var minute: Int = 0
     )
 
+    override fun onMapReady(googleMap: GoogleMap) {
+        // Add a marker home and move the camera
+        val home = LatLng(40.15, 28.59)
+        var address = Geocoder(baseContext, Locale.getDefault()).getFromLocation(
+            home.latitude,
+            home.longitude,
+            1
+        )[0]
+        locationPinAddress = address.getAddressLine(address.maxAddressLineIndex)
+        partyLocationCoords = home
+        googleMap.addMarker(
+            MarkerOptions().position(home).draggable(true).title("Marker in Sydney")
+        )
 
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(home))
+        googleMap.setOnMarkerDragListener(object : OnMarkerDragListener {
+            override fun onMarkerDragStart(marker: Marker) {}
+            override fun onMarkerDrag(marker: Marker) {}
+            override fun onMarkerDragEnd(marker: Marker) {
+                val latLng = marker.position
+                latLng.let { partyLocationCoords = latLng }
+
+                val geocoder = Geocoder(baseContext, Locale.getDefault())
+                try {
+                    address =
+                        geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1).firstOrNull()
+                    address?.let {
+
+                        locationPinAddress = it.getAddressLine(address.maxAddressLineIndex)
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        })
+
+        // Enable the zoom controls for the map
+        googleMap.getUiSettings().isZoomControlsEnabled = true
+    }
 }
