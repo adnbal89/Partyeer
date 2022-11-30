@@ -47,7 +47,7 @@ ext.versions = [
 
         timber                       : '5.0.1',
 
-        firebase                     : '4.3.13',
+        firebase                     : '4.3.14',
 
         firebase_database            : '20.0.6',
 

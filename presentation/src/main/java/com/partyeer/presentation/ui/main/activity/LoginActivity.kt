@@ -48,8 +48,11 @@ class LoginActivity : BaseActivity() {
             val userMail = binding.textViewUserName.editText?.text.toString()
             val password = binding.textViewPassword.editText?.text.toString()
             val userCredential = UserCredential(userMail, password)
-            if (UserCredentialBlankChecker.check(userCredential) && UserCredentialValidChecker.check(userCredential))
-            viewModel.signupUser(userCredential)
+            if (UserCredentialBlankChecker.check(userCredential) && UserCredentialValidChecker.check(
+                    userCredential
+                )
+            )
+                viewModel.signupUser(userCredential)
             else
                 Toast.makeText(
                     this@LoginActivity,

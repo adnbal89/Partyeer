@@ -2,10 +2,7 @@ package com.partyeer.di
 
 import com.partyeer.data.remote.store.login.mapper.UserCredentialDTOMapper
 import com.partyeer.data.remote.store.login.mapper.UserCredentialMapper
-import com.partyeer.data.remote.store.party.mapper.ConceptDTOMapper
-import com.partyeer.data.remote.store.party.mapper.ConceptMapper
-import com.partyeer.data.remote.store.party.mapper.PictureDTOMapper
-import com.partyeer.data.remote.store.party.mapper.PictureMapper
+import com.partyeer.data.remote.store.party.mapper.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,4 +42,14 @@ object MapperModule {
     @Provides
     fun provideUserCredentialMapper(): UserCredentialMapper =
         UserCredentialMapper()
+
+    @Singleton
+    @Provides
+    fun provideAddressDTOMapper(): AddressDTOMapper =
+        AddressDTOMapper()
+
+    @Singleton
+    @Provides
+    fun provideAddressMapper(): AddressMapper =
+        AddressMapper()
 }
