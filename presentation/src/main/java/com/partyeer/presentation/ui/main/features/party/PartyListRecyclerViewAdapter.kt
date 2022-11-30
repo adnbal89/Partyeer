@@ -13,7 +13,8 @@ import com.partyeer.presentation.ui.main.view.recycler.ViewBindingRecyclerViewHo
 
 class PartyListRecyclerViewAdapter(
     private val clickListener: (Party?) -> Unit,
-    private val clickPartyTitleListener: (Party?) -> Unit
+    private val clickPartyTitleListener: (Party?) -> Unit,
+    private val clickPartyLocationListener: (Party?) -> Unit,
 ) : BaseRecyclerViewAdapter<Party>() {
 
     override fun createNewViewHolder(
@@ -21,14 +22,16 @@ class PartyListRecyclerViewAdapter(
         viewType: Int
     ): BaseRecyclerViewHolder<Party> = PartyViewHolder(parent,
         { position -> clickListener(getItem(position)) },
-        { position -> clickPartyTitleListener(getItem(position)) })
+        { position -> clickPartyTitleListener(getItem(position)) },
+        { position -> clickPartyLocationListener(getItem(position)) })
 }
 
 
 private class PartyViewHolder(
     parent: ViewGroup,
     clickAtPosition: (Int) -> Unit,
-    clickPartyTitleAtPosition: (Int) -> Unit
+    clickPartyTitleAtPosition: (Int) -> Unit,
+    clickPartyLocationAtPosition: (Int) -> Unit
 ) : ViewBindingRecyclerViewHolder<Party, ItemLayoutPartyDetailedBinding>(
     ItemLayoutPartyDetailedBinding.inflate(parent.inflater(), parent, false)
 ) {
@@ -39,6 +42,10 @@ private class PartyViewHolder(
 
         itemBinding.textViewPartyTitle.setOnClickListener {
             clickPartyTitleAtPosition(bindingAdapterPosition)
+        }
+
+        itemBinding.constraintLayoutPartyLocation.setOnClickListener {
+            clickPartyLocationAtPosition(bindingAdapterPosition)
         }
     }
 
@@ -61,15 +68,11 @@ private class PartyViewHolder(
             }
             textViewPartyTitle.text = item.title
             textViewPartyConcept.text = item.concept.description
-            textViewPartyLocation.text = "Berlin, Germany"
+            textViewPartyLocation.text = item.address.adminArea
             textViewPartyTime.text = item.formattedDate.toString()
             textViewPartyLikeCounter.text = item.likeCount.toString()
 
             imageViewShare.setOnClickListener {
-
-            }
-
-            constraintLayoutPartyLocation.setOnClickListener {
 
             }
 

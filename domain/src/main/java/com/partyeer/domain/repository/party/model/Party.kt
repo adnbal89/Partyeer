@@ -10,8 +10,6 @@ data class Party(
     val logoUrl: String?,
     val title: String,
     val concept: Concept,
-    val longitude: Double,
-    val latitude: Double,
     var timeStart: Long,
     var timeEnd: Long,
     val description: String?,
@@ -22,10 +20,11 @@ data class Party(
     var likedUserIdList: HashMap<String, Boolean> = HashMap(),
     var appliedUserIdList: HashMap<String, Boolean> = HashMap(),
     val creatorUserId: String,
-    var address: String = "Party Address",
+    val address: Address = Address(),
     var tagList: HashMap<String, Boolean> = HashMap(),
 ) : BaseItem() {
     val formattedDate: CharSequence
         get() = DateFormat.format(" dd/MM HH:mm", timeStart)
+
 }
 

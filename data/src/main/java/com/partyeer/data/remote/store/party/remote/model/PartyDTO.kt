@@ -7,8 +7,6 @@ data class PartyDTO(
     var logoUrl: String? = "",
     val title: String = "",
     val concept: ConceptDTO = ConceptDTO(""),
-    val longitude: Double = 0.0,
-    val latitude: Double = 0.0,
     val timeStart: Long = 0,
     var timeEnd: Long = 0,
     val description: String? = "",
@@ -19,5 +17,6 @@ data class PartyDTO(
     var likedUserIdList: HashMap<String, Boolean> = HashMap(),
     var appliedUserIdList: HashMap<String, Boolean> = HashMap(),
     val creatorUserId: String = "",
+    val address: AddressDTO = AddressDTO(),
     val tagList: HashMap<String, Boolean> = HashMap()
 ) : BaseResponse()

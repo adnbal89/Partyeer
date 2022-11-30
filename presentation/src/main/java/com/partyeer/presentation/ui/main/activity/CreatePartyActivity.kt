@@ -27,6 +27,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.ktx.awaitMap
+import com.partyeer.domain.repository.party.model.Address
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.model.Picture
@@ -45,7 +46,7 @@ import javax.inject.Inject
 class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
     TimePickerDialog.OnTimeSetListener, OnMapReadyCallback {
     private val viewModel: CreatePartyViewModel by viewModels()
-    private lateinit var locationPinAddress: String
+    private lateinit var locationPinAddress: Address
     private lateinit var partyLocationCoords: LatLng
 
     @Inject
@@ -105,7 +106,7 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         binding.buttonMapOk.setOnClickListener {
             binding.map.visibility = View.GONE
             binding.buttonMapOk.visibility = View.GONE
-            binding.textViewAddress.setText(locationPinAddress)
+            binding.textViewAddress.setText(locationPinAddress.addressLine)
         }
 
         timeView = View(this)
@@ -168,22 +169,21 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
             }
             R.id.action_publish -> {
                 party = Party(
-                    binding.textViewPartyTitle.editText?.text.toString(),
-                    logoUri,
-                    binding.textViewPartyTitle.editText?.text.toString(),
-                    Concept(binding.textViewPartyConcept.editText?.text.toString()),
-                    longitude = partyLocationCoords.longitude,
-                    latitude = partyLocationCoords.latitude,
+                    id = binding.textViewPartyTitle.editText?.text.toString(),
+                    logoUrl = logoUri,
+                    title = binding.textViewPartyTitle.editText?.text.toString(),
+                    concept = Concept(binding.textViewPartyConcept.editText?.text.toString()),
                     timeStart = startTime,
                     timeEnd = endTime,
                     description = binding.textViewPartyDescription.editText?.text.toString(),
-                    partyPictureList,
+                    pictures = partyPictureList,
                     likeCount = 51,
                     entranceFee = binding.textViewEntryFee.editText?.text.toString(),
-                    hashMapOf<String, Boolean>(),
-                    hashMapOf<String, Boolean>(),
-                    hashMapOf<String, Boolean>(),
-                    "adnbal89"
+                    inviteeList = hashMapOf<String, Boolean>(),
+                    likedUserIdList = hashMapOf<String, Boolean>(),
+                    appliedUserIdList = hashMapOf<String, Boolean>(),
+                    address = locationPinAddress,
+                    creatorUserId = "adnbal89"
                 )
                 viewModel.createParty(party)
             }
@@ -264,7 +264,16 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
             home.longitude,
             1
         )[0]
-        locationPinAddress = address.getAddressLine(address.maxAddressLineIndex)
+        locationPinAddress = Address(
+            address.featureName,
+            address.adminArea,
+            address.subAdminArea,
+            address.locality,
+            address.subLocality,
+            address.latitude,
+            address.longitude,
+            address.getAddressLine(0)
+        )
         partyLocationCoords = home
         googleMap.addMarker(
             MarkerOptions().position(home).draggable(true).title("Marker in Sydney")
@@ -284,7 +293,16 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
                         geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1).firstOrNull()
                     address?.let {
 
-                        locationPinAddress = it.getAddressLine(address.maxAddressLineIndex)
+                        locationPinAddress = Address(
+                            address.featureName,
+                            address.adminArea,
+                            address.subAdminArea,
+                            address.locality,
+                            address.subLocality,
+                            address.latitude,
+                            address.longitude,
+                            address.getAddressLine(0)
+                        )
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()

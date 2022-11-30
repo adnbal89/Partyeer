@@ -49,7 +49,7 @@ class PartyDetailActivity : BaseActivity() {
 
         with(binding) {
             textViewStartTimeValue.text = party.timeStart.toString()
-            textViewLocationValue.text = party.address
+            textViewLocationValue.text = party.address.addressLine
             textViewApprovedCount.text = party.inviteeList.count().toString()
             textViewLikeCount.text = party.likeCount.toString()
             textViewStartTimeValue.text =

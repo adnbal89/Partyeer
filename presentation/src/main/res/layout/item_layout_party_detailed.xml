@@ -143,7 +143,7 @@
 
             <ImageView
                 android:id="@+id/imageViewLocationLogo"
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_location_on_24"
                 app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +153,6 @@
                 android:id="@+id/text_view_party_location"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Label"
                 app:layout_constraintEnd_toEndOf="parent"

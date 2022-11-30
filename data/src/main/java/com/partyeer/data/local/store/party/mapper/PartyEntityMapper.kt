@@ -14,8 +14,6 @@ class PartyEntityMapper : BaseMapper<PartyEntity, Party> {
             logoUrl = source.logoUrl,
             title = source.title,
             concept = conceptMapper.map(source.concept),
-            longitude = source.longitude,
-            latitude = source.latitude,
             timeStart = source.timeStart,
             timeEnd = source.timeEnd,
             entranceFee = source.entranceFee,

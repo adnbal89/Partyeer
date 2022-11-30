@@ -84,7 +84,7 @@
     <string name="starts_at">Starts at</string>
     <string name="ends_at">Ends At</string>
     <string name="entry_fee">Entry Fee</string>
-    <string name="description">Description</string>
+    <string name="description">Description :</string>
     <string name="location">Location</string>
     <string name="Maps">Maps</string>
     <string name="party_details">Party Details</string>
@@ -105,6 +105,7 @@
     <string name="party_address">Address</string>
     <string name="address_desc">Address</string>
     <string name="location_pick_pin">Location Pick Pin</string>
+    <string name="end_time">End Time</string>
 
 
     <string-array name="party_concepts">

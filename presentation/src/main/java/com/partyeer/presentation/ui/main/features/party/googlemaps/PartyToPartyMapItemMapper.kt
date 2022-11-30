@@ -10,9 +10,8 @@ class PartyToPartyMapItemMapper : BaseMapper<Party, PartyMapItem> {
     override fun map(source: Party, vararg extra: Any?): PartyMapItem {
         return PartyMapItem(
             partyTitle = source.title,
-            latLng = LatLng(source.latitude, source.longitude),
-            //TODO: fill the address property
-            address = source.address
+            latLng = LatLng(source.address.latitude, source.address.longitude),
+            address = source.address.addressLine?:""
         )
     }
 }

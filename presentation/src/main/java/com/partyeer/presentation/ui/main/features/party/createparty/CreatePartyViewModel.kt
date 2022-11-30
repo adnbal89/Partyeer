@@ -31,8 +31,6 @@ class CreatePartyViewModel @Inject constructor(
             "",
             "Example",
             Concept("Techno"),
-            40.254,
-            28.987,
             1665264150,
             1665264150,
             "Example Description",

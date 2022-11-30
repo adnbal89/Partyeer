@@ -7,8 +7,6 @@ data class PartyEntity(
     val logoUrl: String?,
     val title: String,
     val concept: ConceptEntity,
-    val longitude: Double,
-    val latitude: Double,
     var timeStart: Long,
     var timeEnd: Long,
     val description: String?,
@@ -19,5 +17,6 @@ data class PartyEntity(
     var likedUserIdList: HashMap<String, Boolean> = HashMap(),
     var appliedUserIdList: HashMap<String, Boolean> = HashMap(),
     val creatorUserId: String,
+    val address: AddressEntity,
     val tagList: HashMap<String, Boolean> = HashMap()
 ) : BaseEntity()

@@ -68,6 +68,14 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             val intent = Intent(requireActivity(), PartyDetailActivity::class.java)
             intent.putExtra("party", party)
             requireContext().startActivity(intent)
+        }, {
+            if (it?.address?.latitude != 0.0) {
+                val intent = Intent(requireActivity(), PartyMapsActivity::class.java)
+                partyArrayList.clear()
+                partyArrayList.add(partyMapper.map(it!!))
+                intent.putExtra("partyList", partyArrayList)
+                requireContext().startActivity(intent)
+            }
         })
     }
 
