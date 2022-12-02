@@ -15,6 +15,7 @@ class PartyListRecyclerViewAdapter(
     private val clickListener: (Party?) -> Unit,
     private val clickPartyTitleListener: (Party?) -> Unit,
     private val clickPartyLocationListener: (Party?) -> Unit,
+    private val clickPartyCreatorLogoListener: (Party?) -> Unit,
 ) : BaseRecyclerViewAdapter<Party>() {
 
     override fun createNewViewHolder(
@@ -23,7 +24,8 @@ class PartyListRecyclerViewAdapter(
     ): BaseRecyclerViewHolder<Party> = PartyViewHolder(parent,
         { position -> clickListener(getItem(position)) },
         { position -> clickPartyTitleListener(getItem(position)) },
-        { position -> clickPartyLocationListener(getItem(position)) })
+        { position -> clickPartyLocationListener(getItem(position)) },
+        { position -> clickPartyCreatorLogoListener(getItem(position)) })
 }
 
 
@@ -31,7 +33,8 @@ private class PartyViewHolder(
     parent: ViewGroup,
     clickAtPosition: (Int) -> Unit,
     clickPartyTitleAtPosition: (Int) -> Unit,
-    clickPartyLocationAtPosition: (Int) -> Unit
+    clickPartyLocationAtPosition: (Int) -> Unit,
+    clickPartyCreatorLogoAtPosition: (Int) -> Unit,
 ) : ViewBindingRecyclerViewHolder<Party, ItemLayoutPartyDetailedBinding>(
     ItemLayoutPartyDetailedBinding.inflate(parent.inflater(), parent, false)
 ) {
@@ -47,6 +50,11 @@ private class PartyViewHolder(
         itemBinding.constraintLayoutPartyLocation.setOnClickListener {
             clickPartyLocationAtPosition(bindingAdapterPosition)
         }
+
+        itemBinding.imageViewPartyCreatorLogo.setOnClickListener {
+            clickPartyCreatorLogoAtPosition(bindingAdapterPosition)
+        }
+
     }
 
     override fun bindItem(item: Party) {
@@ -73,10 +81,6 @@ private class PartyViewHolder(
             textViewPartyLikeCounter.text = item.likeCount.toString()
 
             imageViewShare.setOnClickListener {
-
-            }
-
-            imageViewPartyCreatorLogo.setOnClickListener {
 
             }
         }

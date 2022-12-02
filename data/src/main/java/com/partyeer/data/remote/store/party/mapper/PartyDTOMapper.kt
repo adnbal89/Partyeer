@@ -1,7 +1,6 @@
 package com.partyeer.data.remote.store.party.mapper
 
 import com.partyeer.data.base.mapper.BaseMapper
-import com.partyeer.data.remote.store.party.remote.model.AddressDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import com.partyeer.domain.repository.party.model.Party
 import javax.inject.Inject

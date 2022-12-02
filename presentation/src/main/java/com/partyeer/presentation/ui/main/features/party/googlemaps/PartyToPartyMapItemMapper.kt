@@ -11,7 +11,7 @@ class PartyToPartyMapItemMapper : BaseMapper<Party, PartyMapItem> {
         return PartyMapItem(
             partyTitle = source.title,
             latLng = LatLng(source.address.latitude, source.address.longitude),
-            address = source.address.addressLine?:""
+            address = source.address.addressLine ?: ""
         )
     }
 }

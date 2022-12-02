@@ -16,6 +16,7 @@ import com.partyeer.presentation.databinding.BottomSheetDialogLayoutBinding
 import com.partyeer.presentation.databinding.FragmentHomeBinding
 import com.partyeer.presentation.ui.main.activity.PartyDetailActivity
 import com.partyeer.presentation.ui.main.activity.PartyMapsActivity
+import com.partyeer.presentation.ui.main.activity.UserProfileActivity
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
 import com.partyeer.presentation.ui.main.extension.showSnackbar
 import com.partyeer.presentation.ui.main.features.party.PartyListRecyclerViewAdapter
@@ -76,6 +77,10 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
                 intent.putExtra("partyList", partyArrayList)
                 requireContext().startActivity(intent)
             }
+        }, {
+            val intent = Intent(requireActivity(), UserProfileActivity::class.java)
+            intent.putExtra("userName", it?.creatorUserId)
+            requireContext().startActivity(intent)
         })
     }
 

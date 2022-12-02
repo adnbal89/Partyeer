@@ -19,23 +19,16 @@ class PartyDataRepository @Inject constructor(
 ) : PartyRepository {
 
     override suspend fun getPartyList(): Flow<List<Party>> {
-        //delay(2500L)
-
-        val x = partyDataSource.getPartyList()
-        val y = x.map {
+        return partyDataSource.getPartyList().map {
             partyMapper.map(it)
         }
-        return y
     }
 
     override suspend fun getParty(id: String): Party {
-        //TODO: remove delay
-        //delay(1500)
         return partyMapper.map(partyDataSource.getParty(id))
     }
 
     override suspend fun createParty(party: Party) {
-        //delay(1000)
         partyDataSource.createParty(partyDTOMapper.map(party))
     }
 
@@ -48,12 +41,9 @@ class PartyDataRepository @Inject constructor(
     }
 
     override suspend fun getPartiesTaggedBy(tag: String): Flow<List<Party>> {
-
-        val x = partyDataSource.getPartiesTaggedBy(tag)
-        val y = x.map {
+        return partyDataSource.getPartiesTaggedBy(tag).map {
             partyMapper.map(it)
         }
-        return y
     }
 
 }
