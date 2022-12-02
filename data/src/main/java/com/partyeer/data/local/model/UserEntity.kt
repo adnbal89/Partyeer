@@ -1,7 +1,6 @@
 package com.partyeer.data.local.model
 
 import com.partyeer.data.base.local.model.BaseEntity
-import com.partyeer.data.remote.store.party.remote.model.PictureDTO
 
 data class UserEntity(
     val id: String = "",

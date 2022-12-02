@@ -1,8 +1,8 @@
 package com.partyeer.domain.repository.user.usecase
 
 import com.partyeer.domain.repository.base.usecase.CoroutineUseCase
-import com.partyeer.domain.repository.user.model.User
 import com.partyeer.domain.repository.user.UserRepository
+import com.partyeer.domain.repository.user.model.User
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

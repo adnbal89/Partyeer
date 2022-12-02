@@ -8,7 +8,7 @@ import javax.inject.Inject
 class UserRemoteDataSource @Inject constructor(
     private val userRemoteService: UserRemoteService
 ) : UserDataSource {
-    override suspend fun getUserDetailsByUserName(userName: String): Flow<UserDTO?>  {
+    override suspend fun getUserDetailsByUserName(userName: String): Flow<UserDTO?> {
         return userRemoteService.getUserDetailsByUserName(userName)
     }
 }

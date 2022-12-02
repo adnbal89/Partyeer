@@ -49,5 +49,4 @@ interface RepositoryModule {
     fun bindUserRemoteService(remoteService: FirebaseRemoteUserService): UserRemoteService
 
 
-
 }
