@@ -26,17 +26,18 @@ import com.partyeer.presentation.ui.main.util.setDivider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
     private lateinit var partyArrayList: ArrayList<PartyMapItem>
-    private lateinit var partyMapper: PartyToPartyMapItemMapper
+    private val partyMapper: PartyToPartyMapItemMapper = PartyToPartyMapItemMapper()
     private lateinit var bottomSheetView: BottomSheetDialogLayoutBinding
     private lateinit var bottomSheetDialog: BottomSheetDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        partyMapper = PartyToPartyMapItemMapper()
+
         bottomSheetDialog = BottomSheetDialog(requireContext())
         bottomSheetView =
             BottomSheetDialogLayoutBinding.inflate(layoutInflater, binding.root, false)

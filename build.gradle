@@ -12,6 +12,8 @@ buildscript {
         addDependencies(dependencies, rootDependencies)
 
     }
+
+
 }
 
 allprojects {

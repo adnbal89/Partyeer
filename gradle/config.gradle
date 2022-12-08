@@ -63,8 +63,6 @@ ext.versions = [
         lifecycle_version            : '2.5.1',
 
         firebase_auth_version        : '21.1.0',
-        places_api_version           : '2.6.0',
-        places_ktx_api_version       : '2.0.0'
 
 
 ]
@@ -154,10 +152,6 @@ def dependencies = [
 
         firebase_auth        : implementation("com.google.firebase:firebase-auth-ktx:${versions.firebase_auth_version}"),
 
-        place_picker         : implementation("com.github.Prog-MohamedAbdelnaser:location-picker-places-search-lib:Tag"),
-
-        places_api           : implementation("com.google.android.libraries.places:places:${versions.places_api_version}"),
-        places_ktx_api       : implementation("com.google.maps.android:places-ktx:${versions.places_ktx_api_version}")
 
 ]
 
@@ -189,8 +183,7 @@ ext.presentationDependencies = [
         dependencies.maps_ktx,
         dependencies.lifecycle_viewmodel,
         dependencies.lifecycle_runtime,
-        dependencies.firebase_auth,
-        dependencies.places_api
+        dependencies.firebase_auth
 
 ]
 
