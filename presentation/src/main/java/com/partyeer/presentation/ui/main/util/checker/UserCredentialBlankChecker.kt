@@ -9,4 +9,6 @@ object UserCredentialBlankChecker : UserCredentialChecker {
             .not() && userCredential.password.isNullOrBlank()
             .not()
     }
+
+
 }
