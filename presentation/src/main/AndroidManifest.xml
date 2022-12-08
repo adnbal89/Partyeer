@@ -60,5 +60,11 @@
             android:exported="true"
             android:label="@string/tagged_parties"
             android:theme="@style/Theme.Partyeer" />
+
+        <activity
+            android:name=".ui.main.activity.UserProfileActivity"
+            android:exported="true"
+            android:label="@string/user_profile"
+            android:theme="@style/Theme.Partyeer" />
     </application>
 </manifest>

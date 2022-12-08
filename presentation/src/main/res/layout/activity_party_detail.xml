@@ -178,10 +178,11 @@
 
             <TextView
                 android:id="@+id/text_view_location_value"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Location"
+                android:text="@string/location"
+                android:textAlignment="viewEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -191,7 +192,6 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/starts_at"
-
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -199,10 +199,10 @@
 
             <TextView
                 android:id="@+id/text_view_start_time_value"
-                android:layout_width="200dp"
-                android:layout_height="30dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Location"
+                android:text="@string/starts_at"
                 android:textAlignment="viewEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_location_value" />
@@ -220,10 +220,10 @@
 
             <TextView
                 android:id="@+id/text_view_end_time_value"
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:text="@string/location"
+                android:text="@string/ends_at"
                 android:textAlignment="viewEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_start_time_value" />
@@ -243,9 +243,9 @@
             <TextView
                 android:id="@+id/text_view_entry_fee_value"
                 android:layout_width="100dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Location"
+                android:text="@string/entry_fee"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_end_time_value" />
 
@@ -255,7 +255,6 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/description"
-
                 android:textAppearance="@style/TextAppearance.Medium.20.Black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -264,9 +263,9 @@
             <TextView
                 android:id="@+id/text_view_description_value"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Location"
+                android:text="@string/description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_description_title" />
 

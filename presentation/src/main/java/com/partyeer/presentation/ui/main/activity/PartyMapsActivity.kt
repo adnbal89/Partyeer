@@ -43,14 +43,20 @@ class PartyMapsActivity : BaseActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         val bounds = LatLngBounds.builder()
+        if (partyList.size > 0) {
+            partyList.forEach {
+                bounds.include(it.latLng)
+            }
+            val zoom = if (partyList.size > 1)
+                CameraUpdateFactory.zoomTo(5.0f)
+            else
+                CameraUpdateFactory.zoomTo(10.0f)
 
-        partyList.forEach {
-            bounds.include(it.latLng)
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 10))
+            googleMap.animateCamera(zoom)
+            addClusteredMarkers(googleMap)
+            //googleMap.moveCamera(CameraUpdateFactory.newLatLng(bursa))
         }
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 10))
-
-        addClusteredMarkers(googleMap)
-        //googleMap.moveCamera(CameraUpdateFactory.newLatLng(bursa))
     }
 
     private fun addClusteredMarkers(googleMap: GoogleMap) {

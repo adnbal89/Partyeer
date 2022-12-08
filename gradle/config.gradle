@@ -43,11 +43,11 @@ ext.versions = [
 
         moshi                        : '1.13.0',
 
-        glide                        : '4.13.1',
+        glide                        : '4.14.2',
 
         timber                       : '5.0.1',
 
-        firebase                     : '4.3.13',
+        firebase                     : '4.3.14',
 
         firebase_database            : '20.0.6',
 

@@ -41,7 +41,7 @@ private class BasicPartyViewHolder(
         with(itemBinding) {
             Glide.with(context).load(item.logoUrl)
                 .diskCacheStrategy(DiskCacheStrategy.ALL).into(imageViewPartyLogo)
-            textViewPartyTitle.text = item.title + ", " + item.address
+            textViewPartyTitle.text = item.detailedTitle
 
         }
     }

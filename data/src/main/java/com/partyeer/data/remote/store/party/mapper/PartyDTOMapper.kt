@@ -10,6 +10,8 @@ import javax.inject.Singleton
 class PartyDTOMapper @Inject constructor(
     val conceptDTOMapper: ConceptDTOMapper,
     val pictureDTOMapper: PictureDTOMapper,
+    val addressDTOMapper: AddressDTOMapper,
+    val partyCreatorUserDTOMapper: PartyCreatorUserDTOMapper
 ) : BaseMapper<Party, PartyDTO> {
 
     override fun map(source: Party, vararg extra: Any?): PartyDTO {
@@ -18,19 +20,18 @@ class PartyDTOMapper @Inject constructor(
             logoUrl = source.logoUrl,
             title = source.title,
             concept = conceptDTOMapper.map(source.concept),
-            longitude = source.longitude,
-            latitude = source.latitude,
             timeStart = source.timeStart,
             timeEnd = source.timeEnd,
             description = source.description,
             entranceFee = source.entranceFee,
             pictures = pictureDTOMapper.map(source.pictures).toMutableList(),
             likeCount = source.likeCount,
-            inviteeList = source.inviteeList,
-            likedUserIdList = source.likedUserIdList,
-            appliedUserIdList = source.appliedUserIdList,
-            creatorUserId = source.creatorUserId,
-            tagList = source.tagList
+            inviteeMap = source.inviteeMap,
+            likedUserIdMap = source.likedUserIdMap,
+            appliedUserIdMap = source.appliedUserIdMap,
+            address = addressDTOMapper.map(source.address),
+            tagMap = source.tagMap,
+            partyCreatorUser = partyCreatorUserDTOMapper.map(source.partyCreatorUser)
         )
     }
 }

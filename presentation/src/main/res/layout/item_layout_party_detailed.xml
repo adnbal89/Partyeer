@@ -14,13 +14,14 @@
         android:id="@+id/layoutHeadLines"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewPartyCreatorLogo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_margin="4dp"
             android:clickable="true"
             android:focusable="true"
@@ -28,7 +29,8 @@
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
         <TextView
             android:id="@+id/text_view_party_title"
@@ -143,7 +145,7 @@
 
             <ImageView
                 android:id="@+id/imageViewLocationLogo"
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_location_on_24"
                 app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +155,6 @@
                 android:id="@+id/text_view_party_location"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Label"
                 app:layout_constraintEnd_toEndOf="parent"

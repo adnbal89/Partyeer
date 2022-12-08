@@ -41,4 +41,7 @@
     <string name="login">Login</string>
     <string name="sign_up">Sign up</string>
     <string name="mail_address">Mail Address</string>
+    <string name="address_desc">Address</string>
+    <string name="location_pick_pin">Location Pick Pin</string>
+    <string name="user_profile">User Profile</string>
 </resources>
