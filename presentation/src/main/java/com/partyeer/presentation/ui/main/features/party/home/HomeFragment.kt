@@ -47,7 +47,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private val partyListRecyclerViewAdapter by lazy {
         PartyListRecyclerViewAdapter({ party ->
-            if (party?.appliedUserIdList?.containsKey("adnbal89") == false) {
+            if (party?.appliedUserIdMap?.containsKey("adnbal89") == false) {
                 bottomSheetView.textViewApply.visibility = View.VISIBLE
             } else {
                 bottomSheetView.textViewApply.visibility = View.GONE
@@ -56,7 +56,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
             bottomSheetView.textViewApply.setOnClickListener {
                 viewModel.applyToParty(party?.id)
-                party?.appliedUserIdList?.set("adnbal89", true)
+                party?.appliedUserIdMap?.set("adnbal89", true)
             }
             bottomSheetView.textViewHide.setOnClickListener {
                 bottomSheetDialog.dismiss()
@@ -79,7 +79,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             }
         }, {
             val intent = Intent(requireActivity(), UserProfileActivity::class.java)
-            intent.putExtra("userName", it?.creatorUserId)
+            intent.putExtra("userName", it?.partyCreatorUser?.userName)
             requireContext().startActivity(intent)
         })
     }

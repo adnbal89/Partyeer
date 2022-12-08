@@ -2,6 +2,8 @@ package com.partyeer.presentation.ui.main.features.party
 
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ItemLayoutPartyDetailedBinding
@@ -74,6 +76,11 @@ private class PartyViewHolder(
                     }
                 })
             }
+
+            Glide.with(context).load(item.partyCreatorUser.profilePicture.preview)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(imageViewPartyCreatorLogo)
+
             textViewPartyTitle.text = item.title
             textViewPartyConcept.text = item.concept.description
             textViewPartyLocation.text = item.address.adminArea

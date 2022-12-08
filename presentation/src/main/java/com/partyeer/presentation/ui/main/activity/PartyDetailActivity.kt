@@ -43,20 +43,20 @@ class PartyDetailActivity : BaseActivity() {
 
         party = intent.getParcelableExtra<Party>("party").let { it!! }
         pictureRecyclerViewAdapter.setItems(party.pictures)
-        partyTagRecyclerViewAdapter.setItems(party.tagList.keys)
+        partyTagRecyclerViewAdapter.setItems(party.tagMap.keys)
 
         supportActionBar?.title = party.title
 
         with(binding) {
             textViewStartTimeValue.text = party.timeStart.toString()
             textViewLocationValue.text = party.address.addressLine
-            textViewApprovedCount.text = party.inviteeList.count().toString()
+            textViewApprovedCount.text = party.inviteeMap.count().toString()
             textViewLikeCount.text = party.likeCount.toString()
             textViewStartTimeValue.text =
                 DateFormat.format("E, dd/MMM/yyyy HH:mm", party.timeStart)
             textViewEndTimeValue.text =
                 DateFormat.format("E, dd/MMM/yyyy HH:mm", party.timeStart)
-            textViewCreatorName.text = party.creatorUserId
+            textViewCreatorName.text = party.partyCreatorUser.userName
             textViewEntryFeeValue.text = party.entranceFee
             textViewDescriptionValue.text = party.description
 
@@ -80,7 +80,7 @@ class PartyDetailActivity : BaseActivity() {
 
             imageViewApprovedUsers.setOnClickListener {
                 val intent = Intent(this@PartyDetailActivity, InviteeListActivity::class.java)
-                intent.putExtra("partyInviteeList", party.inviteeList)
+                intent.putExtra("partyInviteeList", party.inviteeMap)
                 startActivity(intent)
             }
         }

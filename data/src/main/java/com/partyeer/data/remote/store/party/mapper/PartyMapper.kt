@@ -11,6 +11,7 @@ class PartyMapper @Inject constructor(
     private val conceptMapper: ConceptMapper,
     private val pictureMapper: PictureMapper,
     private val addressMapper: AddressMapper,
+    private val partyCreatorUserMapper: PartyCreatorUserMapper
 ) : BaseMapper<PartyDTO, Party> {
 
     override fun map(source: PartyDTO, vararg extra: Any?): Party {
@@ -25,12 +26,12 @@ class PartyMapper @Inject constructor(
             entranceFee = source.entranceFee,
             pictures = pictureMapper.map(source.pictures).toMutableList(),
             likeCount = source.likeCount,
-            inviteeList = source.inviteeList,
-            likedUserIdList = source.likedUserIdList,
-            appliedUserIdList = source.appliedUserIdList,
-            creatorUserId = source.creatorUserId,
+            inviteeMap = source.inviteeMap,
+            likedUserIdMap = source.likedUserIdMap,
+            appliedUserIdMap = source.appliedUserIdMap,
             address = addressMapper.map(source.address),
-            tagList = source.tagList
+            tagMap = source.tagMap,
+            partyCreatorUser = partyCreatorUserMapper.map(source.partyCreatorUser)
         )
     }
 

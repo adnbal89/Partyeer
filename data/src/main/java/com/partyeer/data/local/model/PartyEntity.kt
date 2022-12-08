@@ -13,10 +13,10 @@ data class PartyEntity(
     var entranceFee: String,
     val pictures: MutableList<PictureEntity>,
     var likeCount: Int = 0,
-    var inviteeList: HashMap<String, Boolean> = HashMap(),
-    var likedUserIdList: HashMap<String, Boolean> = HashMap(),
-    var appliedUserIdList: HashMap<String, Boolean> = HashMap(),
-    val creatorUserId: String,
+    var inviteeMap: HashMap<String, Boolean> = HashMap(),
+    var likedUserIdMap: HashMap<String, Boolean> = HashMap(),
+    var appliedUserIdMap: HashMap<String, Boolean> = HashMap(),
     val address: AddressEntity,
-    val tagList: HashMap<String, Boolean> = HashMap()
+    val tagMap: HashMap<String, Boolean> = HashMap(),
+    val partyCreatorUser: PartyCreatorUserEntity = PartyCreatorUserEntity()
 ) : BaseEntity()

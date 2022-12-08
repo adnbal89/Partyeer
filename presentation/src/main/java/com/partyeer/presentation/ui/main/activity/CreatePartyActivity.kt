@@ -31,6 +31,7 @@ import com.partyeer.domain.repository.party.model.Address
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.model.Picture
+import com.partyeer.domain.repository.user.model.PartyCreatorUser
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.ActivityCreatePartyBinding
 import com.partyeer.presentation.ui.main.base.BaseActivity
@@ -179,11 +180,17 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
                     pictures = partyPictureList,
                     likeCount = 51,
                     entranceFee = binding.textViewEntryFee.editText?.text.toString(),
-                    inviteeList = hashMapOf<String, Boolean>(),
-                    likedUserIdList = hashMapOf<String, Boolean>(),
-                    appliedUserIdList = hashMapOf<String, Boolean>(),
+                    inviteeMap = hashMapOf<String, Boolean>(),
+                    likedUserIdMap = hashMapOf<String, Boolean>(),
+                    appliedUserIdMap = hashMapOf<String, Boolean>(),
                     address = locationPinAddress,
-                    creatorUserId = "adnbal89"
+                    partyCreatorUser = PartyCreatorUser(
+                        "adnbal89", "adnbal89",
+                        Picture(
+                            "https://firebasestorage.googleapis.com/v0/b/partyeer-8888a.appspot.com/o/images%2FprofileAdnbal89.jpeg?alt=media&token=de7a8aed-cd6e-4100-9c44-622d50328145",
+                            "https://firebasestorage.googleapis.com/v0/b/partyeer-8888a.appspot.com/o/images%2FprofileAdnbal89.jpeg?alt=media&token=de7a8aed-cd6e-4100-9c44-622d50328145"
+                        )
+                    )
                 )
                 viewModel.createParty(party)
             }
@@ -276,7 +283,7 @@ class CreatePartyActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
         )
         partyLocationCoords = home
         googleMap.addMarker(
-            MarkerOptions().position(home).draggable(true).title("Marker in Sydney")
+            MarkerOptions().position(home).draggable(true).title("Your Address")
         )
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(home))

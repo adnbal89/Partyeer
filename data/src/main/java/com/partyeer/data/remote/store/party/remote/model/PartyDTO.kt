@@ -1,6 +1,7 @@
 package com.partyeer.data.remote.store.party.remote.model
 
 import com.partyeer.data.base.remote.model.BaseResponse
+import com.partyeer.data.remote.store.user.remote.model.PartyCreatorUserDTO
 
 data class PartyDTO(
     val id: String = "",
@@ -13,10 +14,10 @@ data class PartyDTO(
     var entranceFee: String = "",
     val pictures: MutableList<PictureDTO> = mutableListOf(),
     var likeCount: Int = 0,
-    var inviteeList: HashMap<String, Boolean> = HashMap(),
-    var likedUserIdList: HashMap<String, Boolean> = HashMap(),
-    var appliedUserIdList: HashMap<String, Boolean> = HashMap(),
-    val creatorUserId: String = "",
+    var inviteeMap: HashMap<String, Boolean> = HashMap(),
+    var likedUserIdMap: HashMap<String, Boolean> = HashMap(),
+    var appliedUserIdMap: HashMap<String, Boolean> = HashMap(),
     val address: AddressDTO = AddressDTO(),
-    val tagList: HashMap<String, Boolean> = HashMap()
+    val tagMap: HashMap<String, Boolean> = HashMap(),
+    val partyCreatorUser: PartyCreatorUserDTO = PartyCreatorUserDTO()
 ) : BaseResponse()

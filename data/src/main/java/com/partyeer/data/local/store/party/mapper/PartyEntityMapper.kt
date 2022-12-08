@@ -20,11 +20,10 @@ class PartyEntityMapper : BaseMapper<PartyEntity, Party> {
             description = source.description,
             pictures = pictureMapper.map(source.pictures).toMutableList(),
             likeCount = source.likeCount,
-            inviteeList = source.inviteeList,
-            likedUserIdList = source.likedUserIdList,
-            appliedUserIdList = source.appliedUserIdList,
-            creatorUserId = source.creatorUserId,
-            tagList = source.tagList
+            inviteeMap = source.inviteeMap,
+            likedUserIdMap = source.likedUserIdMap,
+            appliedUserIdMap = source.appliedUserIdMap,
+            tagMap = source.tagMap
         )
     }
 }

@@ -52,4 +52,5 @@ object MapperModule {
     @Provides
     fun provideAddressMapper(): AddressMapper =
         AddressMapper()
+
 }

@@ -2,6 +2,7 @@ package com.partyeer.presentation.ui.main.features.party.createparty
 
 import android.location.Location
 import androidx.lifecycle.viewModelScope
+import com.partyeer.domain.repository.party.model.Address
 import com.partyeer.domain.repository.party.model.Concept
 import com.partyeer.domain.repository.party.model.Party
 import com.partyeer.domain.repository.party.usecase.CreateParty
@@ -40,7 +41,7 @@ class CreatePartyViewModel @Inject constructor(
             hashMapOf(),
             hashMapOf(),
             hashMapOf(),
-            "1"
+            Address(),
         )
     )
     val party: StateFlow<Party>
