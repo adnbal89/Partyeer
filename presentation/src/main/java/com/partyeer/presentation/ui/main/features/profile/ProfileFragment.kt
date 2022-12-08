@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import com.google.firebase.auth.FirebaseUser
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.FragmentProfileBinding
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
@@ -19,8 +18,6 @@ class ProfileFragment : BaseMvvmFragment<FragmentProfileBinding, ProfileViewMode
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
-        val firebaseUser = activity?.intent?.extras?.get("firebaseUser") as FirebaseUser
-        binding.textViewProfileName.text = firebaseUser.email
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
