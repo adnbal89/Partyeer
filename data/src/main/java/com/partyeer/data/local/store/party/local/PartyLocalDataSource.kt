@@ -3,6 +3,7 @@ package com.partyeer.data.local.store.party.local
 import com.partyeer.data.remote.store.party.remote.datasource.PartyDataSource
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
+import com.partyeer.data.remote.store.party.remote.model.TagDTO
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -32,6 +33,10 @@ class PartyLocalDataSource @Inject constructor(
     }
 
     override suspend fun getPartiesTaggedBy(tag: String): Flow<List<PartyDTO>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllSearchTagsAndSubContents(): Flow<List<TagDTO>> {
         TODO("Not yet implemented")
     }
 }

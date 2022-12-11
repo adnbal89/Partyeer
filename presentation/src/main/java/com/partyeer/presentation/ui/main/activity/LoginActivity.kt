@@ -10,6 +10,7 @@ import com.partyeer.domain.repository.login.model.UserCredential
 import com.partyeer.presentation.databinding.ActivityLoginBinding
 import com.partyeer.presentation.ui.main.base.BaseActivity
 import com.partyeer.presentation.ui.main.features.login.LoginViewModel
+import com.partyeer.presentation.ui.main.util.UserSharedPreferences
 import com.partyeer.presentation.ui.main.util.checker.UserCredentialBlankChecker
 import com.partyeer.presentation.ui.main.util.checker.UserCredentialValidChecker
 import com.partyeer.presentation.ui.main.util.navigation.Navigator
@@ -33,45 +34,44 @@ class LoginActivity : BaseActivity() {
         binding.buttonLogin.setOnClickListener {
             val userMail = binding.textViewUserName.editText?.text.toString()
             val password = binding.textViewPassword.editText?.text.toString()
+
             val userCredential = UserCredential(userMail, password)
-            if (UserCredentialBlankChecker.check(userCredential))
-                viewModel.isUserValid(userCredential)
-            else
-                Toast.makeText(
-                    this@LoginActivity,
-                    "Mail or Password cannot be blank",
-                    Toast.LENGTH_SHORT
-                ).show()
+            if (UserCredentialBlankChecker.check(userCredential)) viewModel.isUserValid(
+                userCredential
+            )
+            else Toast.makeText(
+                this@LoginActivity, "Mail or Password cannot be blank", Toast.LENGTH_SHORT
+            ).show()
         }
 
         binding.buttonSignup.setOnClickListener {
             val userMail = binding.textViewUserName.editText?.text.toString()
             val password = binding.textViewPassword.editText?.text.toString()
+
             val userCredential = UserCredential(userMail, password)
             if (UserCredentialBlankChecker.check(userCredential) && UserCredentialValidChecker.check(
                     userCredential
                 )
-            )
-                viewModel.signupUser(userCredential)
-            else
-                Toast.makeText(
-                    this@LoginActivity,
-                    "Mail or Password cannot be blank and must conform to security rules.",
-                    Toast.LENGTH_SHORT
-                ).show()
+            ) viewModel.signupUser(userCredential)
+            else Toast.makeText(
+                this@LoginActivity,
+                "Mail or Password cannot be blank and must conform to security rules.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.events.collect {
                     when (it) {
-                        is LoginViewModel.LoginStatus.Success -> navigator.toMainActivity(it.firebaseUser)
-                            .clearBackStack().navigate()
-                        LoginViewModel.LoginStatus.Error -> Toast.makeText(
-                            this@LoginActivity,
-                            "Login Failed!",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        is LoginViewModel.LoginStatus.Success -> {
+                            navigator.toMainActivity(it.firebaseUser).clearBackStack().navigate()
+                        }
+                        LoginViewModel.LoginStatus.Error -> {
+                            Toast.makeText(
+                                this@LoginActivity, "Login Failed!", Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 }
             }

@@ -79,11 +79,11 @@
             android:id="@+id/button_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
             android:text="@string/sign_up"
             app:backgroundTint="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/button_login"
             app:layout_constraintEnd_toStartOf="@+id/button_login"
-            android:layout_marginRight="24dp"
             app:layout_constraintTop_toTopOf="@+id/button_login" />
 
         <com.google.android.material.button.MaterialButton

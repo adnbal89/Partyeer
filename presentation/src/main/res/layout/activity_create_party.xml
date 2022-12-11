@@ -77,16 +77,16 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_view_entry_fee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:hint="@string/entry_fee"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_party_concept"
-            tools:hint="Location">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_view_entry_fee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:hint="@string/entry_fee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_party_concept"
+        tools:hint="Location">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -94,19 +94,19 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_view_start_time_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="1dp"
-            android:hint="@string/party_start_time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_entry_fee"
-            tools:hint="Start Time">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_view_start_time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="1dp"
+        android:hint="@string/party_start_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_entry_fee"
+        tools:hint="Start Time">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_view_start_time"
@@ -139,60 +139,60 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linear_layout_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_ends_time_layout">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_view_address_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginBottom="2dp"
-                android:hint="@string/address_desc"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toStartOf="@+id/image_view_add_location"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:hint="@string/address_desc">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_view_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:enabled="false"
-                    android:focusable="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <ImageView
-                android:id="@+id/image_view_add_location"
-                android:layout_width="51dp"
-                android:layout_height="39dp"
-                android:src="@drawable/ic_add_location"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/location_pick_pin" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linear_layout_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_ends_time_layout">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_view_party_description"
-            android:layout_width="match_parent"
+            android:id="@+id/text_view_address_layout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:hint="@string/party_description"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:hint="@string/address_desc"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/image_view_add_location"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_address"
-            tools:hint="End Time">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:hint="@string/address_desc">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_view_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:enabled="false"
+                android:focusable="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/image_view_add_location"
+            android:layout_width="51dp"
+            android:layout_height="39dp"
+            android:contentDescription="@string/location_pick_pin"
+            android:src="@drawable/ic_add_location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_view_party_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:hint="@string/party_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_address"
+        tools:hint="End Time">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -201,24 +201,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarLayout"
-            />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_map_ok"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:visibility="gone"
         android:text="@string/ok"
-        app:layout_constraintTop_toBottomOf="@+id/map"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/map"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/map" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

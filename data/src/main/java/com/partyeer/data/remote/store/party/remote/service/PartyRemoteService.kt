@@ -3,6 +3,7 @@ package com.partyeer.data.remote.store.party.remote.service
 import com.partyeer.data.remote.RemoteService
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
+import com.partyeer.data.remote.store.party.remote.model.TagDTO
 import kotlinx.coroutines.flow.Flow
 
 interface PartyRemoteService : RemoteService {
@@ -15,7 +16,9 @@ interface PartyRemoteService : RemoteService {
 
     suspend fun getPartyConcepts(): Flow<List<ConceptDTO>>
 
-    suspend fun applyToParty(partyId: String)
+    suspend fun applyToParty(partyId: String, userName: String)
 
     suspend fun getPartiesTaggedBy(tag: String): Flow<List<PartyDTO>>
+
+    suspend fun getAllSearchTagsAndSubContents(): Flow<List<TagDTO>>
 }

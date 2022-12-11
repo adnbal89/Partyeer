@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.partyeer.domain.repository.party.model.Party
+import com.partyeer.domain.repository.party.model.Tag
 import com.partyeer.presentation.R
 import com.partyeer.presentation.databinding.FragmentSearchPartyBinding
 import com.partyeer.presentation.ui.main.base.BaseMvvmFragment
@@ -26,7 +27,25 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
     @Inject
     lateinit var navigator: Navigator
 
-    private val searchPartyListRecyclerViewAdapter by lazy {
+    private val searchPartyListPopularPartiesRecyclerViewAdapter by lazy {
+        BasicPartyRecyclerViewAdapter() { party ->
+            navigator.toPartyDetailsActivity(party)
+                .navigate()
+        }
+    }
+    private val searchPartyListHappyHourPartiesRecyclerViewAdapter by lazy {
+        BasicPartyRecyclerViewAdapter() { party ->
+            navigator.toPartyDetailsActivity(party)
+                .navigate()
+        }
+    }
+    private val searchPartyListDiscountPartiesRecyclerViewAdapter by lazy {
+        BasicPartyRecyclerViewAdapter() { party ->
+            navigator.toPartyDetailsActivity(party)
+                .navigate()
+        }
+    }
+    private val searchPartyListElitePartiesRecyclerViewAdapter by lazy {
         BasicPartyRecyclerViewAdapter() { party ->
             navigator.toPartyDetailsActivity(party)
                 .navigate()
@@ -43,14 +62,14 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchPartyListRecyclerViewAdapter
+            adapter = searchPartyListPopularPartiesRecyclerViewAdapter
         }
 
         with(binding.recyclerViewHappyHours) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchPartyListRecyclerViewAdapter
+            adapter = searchPartyListHappyHourPartiesRecyclerViewAdapter
 
         }
 
@@ -58,14 +77,30 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchPartyListRecyclerViewAdapter
+            adapter = searchPartyListDiscountPartiesRecyclerViewAdapter
         }
 
         with(binding.recyclerViewEliteParties) {
             setDivider(drawableRes = R.drawable.bg_divider, showLastDivider = false)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchPartyListRecyclerViewAdapter
+            adapter = searchPartyListElitePartiesRecyclerViewAdapter
+        }
+
+        with(binding) {
+            //TODO : fix and make dynamic
+            imageViewPopularPartiesContinuous.setOnClickListener {
+                navigator.toSameTaggedPartiesActivity("Beer").navigate()
+            }
+            imageViewPopularPartiesContinuous2.setOnClickListener {
+                navigator.toSameTaggedPartiesActivity("Beer").navigate()
+            }
+            imageViewPopularPartiesContinuous3.setOnClickListener {
+                navigator.toSameTaggedPartiesActivity("Beer").navigate()
+            }
+            imageViewPopularPartiesContinuous4.setOnClickListener {
+                navigator.toSameTaggedPartiesActivity("Beer").navigate()
+            }
         }
     }
 
@@ -74,10 +109,13 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.partyList.collect { partyList ->
-                    partyArrayList = ArrayList<Party>()
-                    with(binding) {
-                        searchPartyListRecyclerViewAdapter.setItems(partyList)
+                viewModel.tagList.collect {
+                    if (it.size >= 4) {
+                        createSearchPartyTitles(binding, it)
+                        searchPartyListPopularPartiesRecyclerViewAdapter.setItems(it.get(0).parties.values)
+                        searchPartyListHappyHourPartiesRecyclerViewAdapter.setItems(it.get(1).parties.values)
+                        searchPartyListDiscountPartiesRecyclerViewAdapter.setItems(it.get(2).parties.values)
+                        searchPartyListElitePartiesRecyclerViewAdapter.setItems(it.get(3).parties.values)
                     }
                 }
             }
@@ -102,5 +140,13 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
         }
 
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun createSearchPartyTitles(binding: FragmentSearchPartyBinding, tagList: List<Tag>) {
+        binding.textViewTitlePopularParties.text = tagList[0].title
+        binding.textViewTitleHappyHours.text = tagList[1].title
+        binding.textViewTitleDiscountParties.text = tagList[2].title
+        binding.textViewTitleEliteParties.text = tagList[3].title
+
     }
 }

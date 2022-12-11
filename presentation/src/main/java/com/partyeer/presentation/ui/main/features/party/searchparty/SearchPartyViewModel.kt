@@ -2,8 +2,8 @@ package com.partyeer.presentation.ui.main.features.party.searchparty
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.partyeer.domain.repository.party.model.Party
-import com.partyeer.domain.repository.party.usecase.GetAllParties
+import com.partyeer.domain.repository.party.model.Tag
+import com.partyeer.domain.repository.party.usecase.GetAllSearchTagsAndSubContents
 import com.partyeer.presentation.ui.main.base.BaseViewModel
 import com.partyeer.presentation.ui.main.view.extension.asFlow
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchPartyViewModel @Inject constructor(
-    private val getPartyList: GetAllParties,
+    private val getAllSearchTagsAndSubContents: GetAllSearchTagsAndSubContents,
     state: SavedStateHandle
 ) : BaseViewModel() {
     private val currentQuery = state.getLiveData<String?>("currentQuery", null)
@@ -23,25 +23,26 @@ class SearchPartyViewModel @Inject constructor(
     //TODO: current query to be preserved for search bar
     val hasCurrentQuery = currentQuery.asFlow().map { it != null }
 
-    private val _partyList = MutableStateFlow<List<Party>>(
+    private val _tagList = MutableStateFlow<List<Tag>>(
         mutableListOf()
     )
-    val partyList: StateFlow<List<Party>>
-        get() = _partyList
+    val tagList: StateFlow<List<Tag>>
+        get() = _tagList
 
     override fun onViewAttached() {
         super.onViewAttached()
 
-        getPartyList(this) {
+        getAllSearchTagsAndSubContents(this) {
             onSuccess = {
                 viewModelScope.launch {
-                    it.collect { list ->
-                        _partyList.value = list
+                    it.collect {
+                        println(it)
+                        _tagList.value = it
                     }
                 }
             }
             onError = {
-
+                println(it)
             }
         }
     }

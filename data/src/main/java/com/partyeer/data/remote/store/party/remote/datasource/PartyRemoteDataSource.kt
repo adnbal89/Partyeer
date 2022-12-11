@@ -2,6 +2,7 @@ package com.partyeer.data.remote.store.party.remote.datasource
 
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
+import com.partyeer.data.remote.store.party.remote.model.TagDTO
 import com.partyeer.data.remote.store.party.remote.service.PartyRemoteService
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -23,12 +24,15 @@ class PartyRemoteDataSource @Inject constructor(
     override suspend fun getPartyConcepts(): Flow<List<ConceptDTO>> =
         partyRemoteService.getPartyConcepts()
 
-    override suspend fun applyToParty(partyId: String) {
-        partyRemoteService.applyToParty(partyId)
+    override suspend fun applyToParty(partyId: String, userName: String) {
+        partyRemoteService.applyToParty(partyId, userName)
     }
 
     override suspend fun getPartiesTaggedBy(tag: String): Flow<List<PartyDTO>> =
         partyRemoteService.getPartiesTaggedBy(tag)
+
+    override suspend fun getAllSearchTagsAndSubContents(): Flow<List<TagDTO>> =
+        partyRemoteService.getAllSearchTagsAndSubContents()
 
 
 }

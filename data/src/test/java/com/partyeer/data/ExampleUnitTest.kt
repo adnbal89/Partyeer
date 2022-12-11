@@ -1,6 +1,10 @@
 package com.partyeer.data
 
-import org.junit.Assert.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import com.partyeer.data.remote.store.party.remote.service.FirebaseRemotePartyService
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
@@ -9,6 +13,8 @@ import org.junit.Test
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+    val firebaseDatabase = FirebaseRemotePartyService(Firebase.database, Firebase.storage)
+
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)

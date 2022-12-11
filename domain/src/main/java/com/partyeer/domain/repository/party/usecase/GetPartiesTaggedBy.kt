@@ -11,6 +11,7 @@ import javax.inject.Singleton
 class GetPartiesTaggedBy @Inject constructor(
     private val repository: PartyRepository
 ) : CoroutineUseCase<String, Flow<List<Party>>>() {
+
     override suspend fun buildUseCase(params: String?): Flow<List<Party>> {
         return repository.getPartiesTaggedBy(params!!)
     }

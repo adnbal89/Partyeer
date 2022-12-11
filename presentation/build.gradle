@@ -48,6 +48,8 @@ android {
 dependencies {
     implementation project(':domain')
     implementation project(':util')
+    implementation 'androidx.test.ext:junit-ktx:1.1.4'
+    androidTestImplementation 'junit:junit:4.12'
 
     addDependencies(dependencies, presentationDependencies)
 }

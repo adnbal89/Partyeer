@@ -33,10 +33,14 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
     private val partyMapper: PartyToPartyMapItemMapper = PartyToPartyMapItemMapper()
     private lateinit var bottomSheetView: BottomSheetDialogLayoutBinding
     private lateinit var bottomSheetDialog: BottomSheetDialog
+    private lateinit var userName : String
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+
+            userName = activity?.intent?.getStringExtra("firebaseUser")!!
+        println("userName : $userName")
 
         bottomSheetDialog = BottomSheetDialog(requireContext())
         bottomSheetView =
@@ -48,7 +52,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private val partyListRecyclerViewAdapter by lazy {
         PartyListRecyclerViewAdapter({ party ->
-            if (party?.appliedUserIdMap?.containsKey("adnbal89") == false) {
+            if (party?.appliedUserIdMap?.containsKey(userName) == false) {
                 bottomSheetView.textViewApply.visibility = View.VISIBLE
             } else {
                 bottomSheetView.textViewApply.visibility = View.GONE
@@ -56,8 +60,8 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             bottomSheetDialog.show();
 
             bottomSheetView.textViewApply.setOnClickListener {
+                party?.appliedUserIdMap?.set(userName, true)
                 viewModel.applyToParty(party?.id)
-                party?.appliedUserIdMap?.set("adnbal89", true)
             }
             bottomSheetView.textViewHide.setOnClickListener {
                 bottomSheetDialog.dismiss()

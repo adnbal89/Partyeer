@@ -4,6 +4,7 @@ import com.partyeer.domain.repository.base.model.BaseItem
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Concept(
-    val description: String = ""
+data class Tag(
+    val title: String = "",
+    val parties: Map<String, Party> = hashMapOf()
 ) : BaseItem()

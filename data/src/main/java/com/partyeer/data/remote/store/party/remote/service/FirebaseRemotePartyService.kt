@@ -10,6 +10,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.partyeer.data.remote.store.party.remote.model.ConceptDTO
 import com.partyeer.data.remote.store.party.remote.model.PartyDTO
 import com.partyeer.data.remote.store.party.remote.model.PictureDTO
+import com.partyeer.data.remote.store.party.remote.model.TagDTO
 import com.partyeer.util.formatter.FileNameFormatter
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -24,19 +25,20 @@ class FirebaseRemotePartyService @Inject constructor(
     private val firebaseStorage: FirebaseStorage
 ) : PartyRemoteService {
 
-    private val list = arrayListOf<PartyDTO>()
+    private val partyDTOArrayList = arrayListOf<PartyDTO>()
+    private val tagDTOArrayList = arrayListOf<TagDTO>()
     private var listSizeCounter = 0
 
     override suspend fun getPartyList(): Flow<List<PartyDTO>> =
         callbackFlow {
             val callback = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    list.clear()
+                    partyDTOArrayList.clear()
                     for (snapshot in dataSnapshot.children) {
                         val party = snapshot.getValue(PartyDTO::class.java)
-                        party?.let { list.add(it) }
+                        party?.let { partyDTOArrayList.add(it) }
                     }
-                    trySend(list)
+                    trySend(partyDTOArrayList)
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -68,22 +70,22 @@ class FirebaseRemotePartyService @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun applyToParty(partyId: String) {
+    override suspend fun applyToParty(partyId: String, userName: String) {
         val party = firebaseDatabase.getReference("party").child(partyId)
         //TODO : implement dynamically.
-        party.child("appliedUserIdList").child("adnbal89").setValue(true)
+        party.child("appliedUserIdList").child(userName).setValue(true)
     }
 
     override suspend fun getPartiesTaggedBy(tag: String): Flow<List<PartyDTO>> =
         callbackFlow {
             val callback = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    list.clear()
+                    partyDTOArrayList.clear()
                     for (snapshot in dataSnapshot.children) {
                         val party = snapshot.getValue(PartyDTO::class.java)
-                        party?.let { list.add(it) }
+                        party?.let { partyDTOArrayList.add(it) }
                     }
-                    trySend(list)
+                    trySend(partyDTOArrayList)
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -100,6 +102,36 @@ class FirebaseRemotePartyService @Inject constructor(
             awaitClose {
                 Timber.i("Closing")
                 firebaseDatabase.getReference("tags").child(tag).child("parties")
+                    .removeEventListener(callback)
+            }
+        }
+
+    override suspend fun getAllSearchTagsAndSubContents(): Flow<List<TagDTO>> =
+        callbackFlow {
+            val callback = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    tagDTOArrayList.clear()
+                    for (snapshot in dataSnapshot.children) {
+                        val tagDTO = snapshot.getValue(TagDTO::class.java)
+                        tagDTO?.let { tagDTOArrayList.add(it) }
+                    }
+                    trySend(tagDTOArrayList)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Timber.i(databaseError.message)
+                }
+            }
+
+            try {
+                firebaseDatabase.getReference("tags").child("searchTags")
+                    .addListenerForSingleValueEvent(callback)
+            } catch (e: FirebaseException) {
+                Timber.e(e.localizedMessage)
+            }
+            awaitClose {
+                Timber.i("Closing")
+                firebaseDatabase.getReference("tags").child("searchTags")
                     .removeEventListener(callback)
             }
         }
@@ -139,4 +171,5 @@ class FirebaseRemotePartyService @Inject constructor(
             .addOnSuccessListener {
             }
     }
+
 }
