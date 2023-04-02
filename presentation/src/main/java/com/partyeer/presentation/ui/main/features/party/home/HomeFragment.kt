@@ -61,7 +61,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
 
             bottomSheetView.textViewApply.setOnClickListener {
                 party?.appliedUserIdMap?.set(userName, true)
-                viewModel.applyToParty(party?.id)
+                viewModel.applyToParty(party?.id, userName)
             }
             bottomSheetView.textViewHide.setOnClickListener {
                 bottomSheetDialog.dismiss()
@@ -127,7 +127,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding, HomeViewModel>() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.events.collect {
                     when (it) {
-                        is HomeViewModel.Event.ErrorOccurred -> TODO()
+                        is HomeViewModel.Event.ErrorOccurred -> println(it)
                         is HomeViewModel.Event.PartyApplicationSuccessfullyCompleted -> {
                             showSnackbar("You have applied to Party")
                             bottomSheetView.textViewApply.visibility = View.GONE

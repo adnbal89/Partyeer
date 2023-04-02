@@ -28,7 +28,7 @@ class PartyLocalDataSource @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun applyToParty(partyId: String) {
+    override suspend fun applyToParty(partyId: String, userName: String) {
         TODO("Not yet implemented")
     }
 

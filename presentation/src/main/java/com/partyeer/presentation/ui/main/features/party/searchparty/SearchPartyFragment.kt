@@ -90,16 +90,16 @@ class SearchPartyFragment : BaseMvvmFragment<FragmentSearchPartyBinding, SearchP
         with(binding) {
             //TODO : fix and make dynamic
             imageViewPopularPartiesContinuous.setOnClickListener {
-                navigator.toSameTaggedPartiesActivity("Beer").navigate()
+                navigator.toSameTaggedPartiesActivity("Coke").navigate()
             }
             imageViewPopularPartiesContinuous2.setOnClickListener {
-                navigator.toSameTaggedPartiesActivity("Beer").navigate()
+                navigator.toSameTaggedPartiesActivity("Coke").navigate()
             }
             imageViewPopularPartiesContinuous3.setOnClickListener {
-                navigator.toSameTaggedPartiesActivity("Beer").navigate()
+                navigator.toSameTaggedPartiesActivity("Coke").navigate()
             }
             imageViewPopularPartiesContinuous4.setOnClickListener {
-                navigator.toSameTaggedPartiesActivity("Beer").navigate()
+                navigator.toSameTaggedPartiesActivity("Coke").navigate()
             }
         }
     }

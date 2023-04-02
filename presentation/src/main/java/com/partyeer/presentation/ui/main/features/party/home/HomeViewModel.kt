@@ -46,7 +46,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun applyToParty(partyId: String?) {
+    fun applyToParty(partyId: String?, userName: String?) {
         applyToParty(this) {
             onSuccess = {
                 viewModelScope.launch {
@@ -58,7 +58,7 @@ class HomeViewModel @Inject constructor(
                     eventChannel.send(Event.ErrorOccurred(it))
                 }
             }
-            params = partyId
+            params = ApplyToParty.Params(partyId!!,userName!!)
         }
     }
 

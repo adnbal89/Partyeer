@@ -15,7 +15,7 @@ class Navigator @Inject constructor(private val activity: Activity) {
 
     fun toMainActivity(firebaseUser: FirebaseUser?): NavigationCreator {
         val intent = Intent(activity, MainActivity::class.java)
-        intent.putExtra("firebaseUser", firebaseUser?.email)
+        intent.putExtra("firebaseUser", firebaseUser?.email?.substringBefore("@"))
 
         return NavigationCreator(activity).intent(intent)
     }

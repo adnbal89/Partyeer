@@ -8,12 +8,14 @@ import javax.inject.Singleton
 @Singleton
 class ApplyToParty @Inject constructor(
     private val repository: PartyRepository
-) : CoroutineUseCase<String, Unit>() {
+) : CoroutineUseCase<ApplyToParty.Params, Unit>() {
 
-    override suspend fun buildUseCase(params: String?) =
-        repository.applyToParty(params!!)
+    override suspend fun buildUseCase(params: Params?) =
+        repository.applyToParty(params?.partyId!!, params?.userName!!)
 
     data class Params(
-        val partyId: String
+        val partyId: String,
+        val userName: String
     )
+
 }

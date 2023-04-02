@@ -39,8 +39,8 @@ class PartyDataRepository @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun applyToParty(partyId: String) {
-        partyDataSource.applyToParty(partyId)
+    override suspend fun applyToParty(partyId: String, userName: String) {
+        partyDataSource.applyToParty(partyId, userName)
     }
 
     override suspend fun getPartiesTaggedBy(tag: String): Flow<List<Party>> {
